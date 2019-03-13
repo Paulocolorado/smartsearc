@@ -26,13 +26,13 @@ class connection{
         //print_r($this->conexion);
     }
 
-/funcion que ejecuta una sentencia sql sobre la base de dato y devuelve la consulta a dicha base/
+    /*funcion que ejecuta una sentencia sql sobre la base de dato y devuelve la consulta a dicha base*/
     function query($sql){
         $query=mysqli_query($this->conexion,$sql) or die('Error MySql: '.mysqli_error($this->conexion).' '.$sql);
         return $query;
     }//query
 
-/funcion que devuelve el numero de filas cuando se le pasa una consulta generada por sql/
+    /*funcion que devuelve el numero de filas cuando se le pasa una consulta generada por sql*/
     function num_rows($query){
         $num_rows=mysqli_num_rows($query);
         return $num_rows;
@@ -53,12 +53,12 @@ class connection{
     }//fetch_object
 
 
-/funcion que libera el buffer de la consulta generada por sql que se le pasa/
+    /*funcion que libera el buffer de la consulta generada por sql que se le pasa*/
     function free_result($query){
         mysqli_free_result($query);
     }//free_result
 
-/funcion que cierra la conexion de la base de datos/
+    /*funcion que cierra la conexion de la base de datos*/
     function cerrar(){
         mysqli_close();
     }//cerrar conexion
