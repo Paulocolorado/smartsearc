@@ -1,0 +1,2358 @@
+Index: swdoc/co/clave.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/clave.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/clave.php	(date 1552496910000)
+@@ -1,6 +1,6 @@
+ <?
+ error_reporting( E_ALL );
+-$ip = "localhost"; //servidor mysql
++$ip = "127.0.0.1"; //servidor mysql
+ $login = "haptrack_docu";
+ $pass = "*SmartApp135";
+ $db = "haptrack_docu";
+Index: swdoc/co/clientes.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/clientes.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/clientes.php	(date 1552509601000)
+@@ -111,15 +111,15 @@
+ 		  if ($datos["estado"]=="1")
+ 		  print "</strong>";
+ 		  ?></td>
+-          <td ><?=$datos["identificacion"]?></td>
+-          <td ><?=$datos["estado"]?></td>
++          <td ><?php $datos["identificacion"]?></td>
++          <td ><?php $datos["estado"]?></td>
+           <td ><?
+ 			  if ($_SESSION["vg_id"] == 1 || $_SESSION["vg_id"] == 2 ) {
+ 			  ?>
+-			  <a href="editarcliente.php?idc=<?=$datos["id_cliente"]?>" >Editar</a>&nbsp;&nbsp;-&nbsp;&nbsp;
++			  <a href="editarcliente.php?idc=<?php $datos["id_cliente"]?>" >Editar</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+ 			<?
+ 			  }
+-			  ?><a href="navegam.php?idc=<?=$datos["id_cliente"]?>&nom=<?=$datos["nombre"]?>" >Ver documentos </a></td>
++			  ?><a href="navegam.php?idc=<?php $datos["id_cliente"]?>&nom=<?php $datos["nombre"]?>" >Ver documentos </a></td>
+         </tr>
+         <?
+ 		}
+@@ -129,8 +129,8 @@
+         </table>
+         </div>
+              <div class="form-group">
+-                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?=$k?>">
+-                          <input type="hidden" name="idcb" value="<?=$idcb?>">
++                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?php $k?>">
++                          <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <button class="btn btn-primary" type="submit">Adicionar Cliente</button>
+                 </div>
+             </div> 
+@@ -176,18 +176,18 @@
+                 <form name="fcarrito" action="agregarcarrito.php" method="post">
+                     <input type="hidden" name="idprod" value="">
+                     <input type="hidden" name="qt" value="">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/co/menusup.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/menusup.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/menusup.php	(date 1552509602000)
+@@ -3,7 +3,7 @@
+               
+                 <li>
+                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+-                        <?=$_SESSION["vg_nombre"]?>
++                        <?php $_SESSION["vg_nombre"]?>
+                         <span class="caret"></span>
+                     </a>
+                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+Index: swdoc/co/int_cat.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/int_cat.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/int_cat.php	(date 1552509602000)
+@@ -114,7 +114,7 @@
+ 		?>
+         <tr >
+           <td ><? print $datos["categoria"]?></td>
+-          <td ><a href="editarcat.php?idc=<?=$datos["idacat"]?>" >Edit</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="int_subcat.php?idc=<?=$datos["idacat"]?>&nom=<?=$datos["categoria"]?>" >Sub Cat </a></td>
++          <td ><a href="editarcat.php?idc=<?php $datos["idacat"]?>" >Edit</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="int_subcat.php?idc=<?php $datos["idacat"]?>&nom=<?php $datos["categoria"]?>" >Sub Cat </a></td>
+         </tr>
+         <?
+ 		}
+Index: swdoc/HapAdmcom/productosresp.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/productosresp.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/productosresp.php	(date 1552509602000)
+@@ -126,10 +126,10 @@
+                 ?>
+         
+         <tr class="gradeX">
+-            <td><?=$datos["fecha"]?></td>
+-            <td><?=htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
+-            <td><?=$datos["tipo"]?></td>
+-            <td><a href="docs/<?=$datos["adjunto"]?>">Ver</a></td>
++            <td><?php $datos["fecha"]?></td>
++            <td><?php htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
++            <td><?php $datos["tipo"]?></td>
++            <td><a href="docs/<?php $datos["adjunto"]?>">Ver</a></td>
+         </tr>
+         <?
+ 		}
+Index: swdoc/co/nuevasubcat.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/nuevasubcat.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/nuevasubcat.php	(date 1552509602000)
+@@ -81,9 +81,9 @@
+                                 <div class="form-group ">
+                                     <label for="nit" class="control-label col-lg-2">Category</label>
+                                         <div class="col-lg-10"><span class="titulosint">
+-                                        <?=$_REQUEST["nom"]?>	
+-            <input name="id_cat_adm" type="hidden" id="id_cat_adm" value="<?=$_REQUEST["idc"]?>">
+-            <input name="nom" type="hidden" id="nom" value="<?=$_REQUEST["nom"]?>">
++                                        <?php $_REQUEST["nom"]?>	
++            <input name="id_cat_adm" type="hidden" id="id_cat_adm" value="<?php $_REQUEST["idc"]?>">
++            <input name="nom" type="hidden" id="nom" value="<?php $_REQUEST["nom"]?>">
+                                   </span> </div>
+                                   </div>
+                                   <div class="form-group ">
+@@ -105,7 +105,7 @@
+                           <div class="col-lg-offset-2 col-lg-10">
+                                             <button class="btn btn-primary" type="submit">Send</button>
+                                             <button class="btn btn-default" type="button" onClick="window.location='int_subcat.php&mn=3'">Cancel</button>
+-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
++                                            <input name="idc" type="hidden" id="idc" value="<?php $_REQUEST["idc"]?>">
+                                         </div>
+                                     </div>
+                               </form>
+Index: swdoc/HapAdmcom/editarcat.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/editarcat.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/editarcat.php	(date 1552509601000)
+@@ -79,15 +79,15 @@
+                                   <div class="form-group ">
+                                     <label for="nit" class="control-label col-lg-2">Category</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?=$datos["categoria"]?>" />
+-                                            <input name="idacat" type="hidden" id="idacat" value="<?=$datos["idacat"]?>">
++                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?php $datos["categoria"]?>" />
++                                            <input name="idacat" type="hidden" id="idacat" value="<?php $datos["idacat"]?>">
+                                         </div>
+                                   </div>
+                                   <div class="form-group">
+                           <div class="col-lg-offset-2 col-lg-10">
+                                             <button class="btn btn-primary" type="submit">Send</button>
+                                             <button class="btn btn-default" type="button" onClick="window.location='int_cat.php?mn=3'">Cancel</button>
+-                                            <input name="idc" type="hidden" id="idc" value="<?=$idc?>">
++                                            <input name="idc" type="hidden" id="idc" value="<?php $idc?>">
+                                         </div>
+                                     </div>
+                               </form>
+Index: swdoc/co/editarcliente.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/editarcliente.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/editarcliente.php	(date 1552509602000)
+@@ -80,37 +80,37 @@
+                                   <div class="form-group ">
+                                     <label for="nit" class="control-label col-lg-2">Nombre</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?=$datos["nombre"]?>" />
++                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?php $datos["nombre"]?>" />
+                                         </div>
+                                   </div>
+                                   <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">NIT</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="identificacion" name="identificacion" type="text" value="<?=$datos["identificacion"]?>" />
++                                            <input class=" form-control" id="identificacion" name="identificacion" type="text" value="<?php $datos["identificacion"]?>" />
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Email</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="email" name="email" type="text" value="<?=$datos["email"]?>" />
++                                            <input class=" form-control" id="email" name="email" type="text" value="<?php $datos["email"]?>" />
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Dirección</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="direccion" name="direccion" type="text" value="<?=$datos["direccion"]?>"/>
++                                            <input class=" form-control" id="direccion" name="direccion" type="text" value="<?php $datos["direccion"]?>"/>
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Teléfono</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="telefono" name="telefono" type="text" value="<?=$datos["telefono"]?>" />
++                                            <input class=" form-control" id="telefono" name="telefono" type="text" value="<?php $datos["telefono"]?>" />
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Ciudad</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="ciudad" name="ciudad" type="text" value="<?=$datos["ciudad"]?>" />
++                                            <input class=" form-control" id="ciudad" name="ciudad" type="text" value="<?php $datos["ciudad"]?>" />
+                                         </div>
+                                     </div>
+                                     
+@@ -132,7 +132,7 @@
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Clave</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?=$datos["clave"]?>"/>
++                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?php $datos["clave"]?>"/>
+                                         </div>
+                                     </div>
+                                     
+@@ -152,7 +152,7 @@
+                                         <div class="col-lg-offset-2 col-lg-10">
+                                             <button class="btn btn-primary" type="submit">Actualizar</button>
+                                             <button class="btn btn-default" type="button" onClick="window.location='clientes.php'">Cancelar</button>
+-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
++                                            <input name="idc" type="hidden" id="idc" value="<?php $_REQUEST["idc"]?>">
+                                         </div>
+                                     </div>
+                               </form>
+Index: swdoc/co/eval_entrada.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/eval_entrada.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/eval_entrada.php	(date 1552509602000)
+@@ -1,4 +1,4 @@
+-<?php 
++<?
+ 
+ include "dbclass.php";
+ //include "validasession.php";
+@@ -8,7 +8,7 @@
+ 
+ //echo "mensaje";exit();
+ 
+-//$query = "select a.id_cliente,a.nombre nc, a.cuota, b.nombre nus, b.apellido apus, b.estado, b.iduc from clientes a, usuarioscliente b where a.id_cliente = b.id_cliente and  b.email = '".mysqli_real_escape_string($dbcon,$_POST["email"])."' and b.clave = '".mysqli_real_escape_string($dbcon,$_POST["clave"])."' and a.estado = 1 and b.estado = 1";
++//$query = "select a.id_cliente,a.nombre nc, a.cuota, b.nombre nus, b.apellido apus, b.estado, b.iduc from clientes a, usuarioscliente b where a.id_cliente = b.id_cliente and  b.email = '".mysql_real_escape_string($dbcon,$_POST["email"])."' and b.clave = '".mysql_real_escape_string($dbcon,$_POST["clave"])."' and a.estado = 1 and b.estado = 1";
+ $query = "select a.id_cliente,a.nombre nc, a.cuota, b.nombre nus, b.apellido apus, b.estado, b.iduc from clientes a, usuarioscliente b where a.id_cliente = b.id_cliente and  b.email = '".$_POST["email"]."' and b.clave = '".$_POST["clave"]."' and a.estado = 1 and b.estado = 1";
+ 
+ //print $query;
+@@ -37,8 +37,8 @@
+ 	//header("Location: int_iniciopp.php?idc=".$datos[id_cliente]."&nomc=".$datos[nombre]);
+ 	?>
+ 	<form name="abc" method="post" action="inicio.php" target="_parent">
+-	  <input type="hidden" name="idwh" value="<?=$datos["id_cliente"]?>">
+-	  <input type="hidden" name="nomwh" value="<?=$datos["nombre"]?>">
++	  <input type="hidden" name="idwh" value="<?php $datos["id_cliente"]?>">
++	  <input type="hidden" name="nomwh" value="<?php $datos["nombre"]?>">
+ 	</form>
+ 	<script language="javascript">
+ 	document.abc.submit();
+Index: swdoc/HapAdmcom/nav.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/nav.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/nav.php	(date 1552509602000)
+@@ -18,7 +18,7 @@
+                 <div class="media logged-user">
+                     <img alt="" src="images/photos/user-avatar.png" class="media-object">
+                     <div class="media-body">
+-                        <h4><a href="#"><?=$_SESSION["vg_nomcli"]?></a></h4>
++                        <h4><a href="#"><?php $_SESSION["vg_nomcli"]?></a></h4>
+                         <span>"La Pétala."</span>
+                     </div>
+                 </div>
+Index: swdoc/co/images/_notes/_vti_cnf/dwsync.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/images/_notes/_vti_cnf/dwsync.xml	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/images/_notes/_vti_cnf/dwsync.xml	(date 1552507211000)
+@@ -6,4 +6,4 @@
+ vti_timecreated:TR|05 Jul 2011 15:57:33 -0000
+ vti_cacheddtm:TX|05 Jul 2011 15:57:33 -0000
+ vti_filesize:IR|3432
+-vti_backlinkinfo:VX|
++vti_backlinkinfo:VX|
+\ No newline at end of file
+Index: swdoc/HapAdmcom/editarusr.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/editarusr.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/editarusr.php	(date 1552509601000)
+@@ -81,19 +81,19 @@
+                                   <div class="form-group ">
+                                     <label for="nit" class="control-label col-lg-2">Nombre</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?=$datos["nombre"]?>" />
++                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?php $datos["nombre"]?>" />
+                                         </div>
+                                   </div>
+                                   <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">apellido</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="apellido" name="apellido" type="text" value="<?=$datos["apellido"]?>" />
++                                            <input class=" form-control" id="apellido" name="apellido" type="text" value="<?php $datos["apellido"]?>" />
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Email</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="email" name="email" type="email" value="<?=$datos["email"]?>" />
++                                            <input class=" form-control" id="email" name="email" type="email" value="<?php $datos["email"]?>" />
+                                         </div>
+                                     </div>
+                                     
+@@ -115,7 +115,7 @@
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Clave</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?=$datos["clave"]?>"/>
++                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?php $datos["clave"]?>"/>
+                                         </div>
+                                     </div>
+                                     
+@@ -129,12 +129,12 @@
+ 	if ($datos["estado"] == 1) $seledo = "selected";
+ 	else  $seledo = "";
+ 	?>
+-                                                  <option value="1" <?=$seledo?>>Activo</option>
++                                                  <option value="1" <?php $seledo?>>Activo</option>
+                                                  <?
+ 	if ($datos["estado"] == 0) $seledo = "selected";
+ 	else  $seledo = "";
+ 	?>
+-                                                  <option value="0" <?=$seledo?>>Inactivo</option>
++                                                  <option value="0" <?php $seledo?>>Inactivo</option>
+                                             </select>
+                                         </div>
+                                   </div>
+@@ -143,8 +143,8 @@
+                                         <div class="col-lg-offset-2 col-lg-10">
+                                             <button class="btn btn-primary" type="submit">Actualizar</button>
+                                             <button class="btn btn-default" type="button" onClick="window.location='clientes.php'">Cancelar</button>
+-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
+-                                       <input name="idc1" type="hidden" id="idc1" value="<?=$datos["id_cliente"]?>">
++                                            <input name="idc" type="hidden" id="idc" value="<?php $_REQUEST["idc"]?>">
++                                       <input name="idc1" type="hidden" id="idc1" value="<?php $datos["id_cliente"]?>">
+                                         </div>
+                                     </div>
+                               </form>
+Index: swdoc/HapAdmcom/ingprod.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/ingprod.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/ingprod.php	(date 1552509602000)
+@@ -107,8 +107,8 @@
+ 		{
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+-              <option value="<?=$datos["idacat"]?>" >
+-              <?=$datos["categoria"]?>
++              <option value="<?php $datos["idacat"]?>" >
++              <?php $datos["categoria"]?>
+               </option>
+               <?
+ 	  }
+Index: swdoc/co/dbclass.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/dbclass.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/dbclass.php	(date 1552509601000)
+@@ -14,16 +14,16 @@
+   //print "-db2-".$ip."-db2-";
+     $this->connect($ip,$login,$pass);
+     if ($db)
+-      mysqli_select_db($this->_link, $db);
++      mysql_select_db($this->_link, $db);
+   }
+     
+   function select_db($db) {
+-    mysqli_select_db($this->_link, $db);
++    mysql_select_db($this->_link, $db);
+   }
+   
+   // connects to the database and puts connection in $link
+   function connect($ip,$login,$pass) { 
+-    $this->_link = mysqli_connect($ip,$login,$pass);
++    $this->_link = mysql_connect($ip,$login,$pass);
+     return (true);
+   }
+   
+@@ -39,9 +39,9 @@
+   //print "<br>-q1-".$query."-q1-<br>";
+     if ($query)
+       $this->_query = $query;
+-    $this->_res = mysqli_query($db,$this->_query);
++    $this->_res = mysql_query($db,$this->_query);
+     //if (!$this->_res) 
+-     // echo "ERROR:<BR>".$this->_query."<BR>".mysqli_error()."<BR>";
++     // echo "ERROR:<BR>".$this->_query."<BR>".mysql_error()."<BR>";
+ 	  $this->_res;
+   }
+ 
+@@ -49,45 +49,45 @@
+   function result($row=0,$col=0,$query=0) {
+     if ($query) {
+       $this->query($query);
+-      return mysqli_result($this->_res,$row);
++      return mysql_result($this->_res,$row);
+     } else {
+       if (!$this->_res) return;
+-      return mysqli_result($this->_res,$row,$col);
++      return mysql_result($this->_res,$row,$col);
+     }
+   }
+   
+   function fetch_array($query=0) {
+     if ($query)
+       $this->query($query);
+-    return mysqli_fetch_array($this->_res);
++    return mysql_fetch_array($this->_res);
+   }
+   
+   function num_rows($query=0) {
+     if ($query)
+       $this->query($query);
+     if ($this->_res)
+-      return mysqli_num_rows($this->_res);
++      return mysql_num_rows($this->_res);
+     else
+       return 0;
+   }
+   
+   function affected_rows() { // show how many rows were affected
+     if ($this->_res)
+-      return mysqli_affected_rows();
++      return mysql_affected_rows();
+     else
+       return 0;
+   }
+   
+   function last_insert() { // show how many rows were affected
+     if ($this->_res)
+-      return mysqli_insert_id();
++      return mysql_insert_id();
+     else
+       return 0;
+   }
+   
+   
+   function close() {
+-      return mysqli_close();
++      return mysql_close();
+ 	}
+   
+ }
+Index: swdoc/co/subcategorias.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/subcategorias.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/subcategorias.php	(date 1552509602000)
+@@ -13,8 +13,8 @@
+ {
+ $datos = $dbcon->fetch_array($resultado);
+ ?>
+-  <option value="<?=$datos["idsubcat"]?>" >
+-  <?=htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?>
++  <option value="<?php $datos["idsubcat"]?>" >
++  <?php htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?>
+   </option>
+   <?
+ }
+Index: swdoc/HapAdmcom/edprod.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/edprod.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/edprod.php	(date 1552509601000)
+@@ -118,7 +118,7 @@
+ 			if ($datos["idacat"]==$datos2["idcategoria"]) $selcate = "selected";
+ 			else  $selcate = "";
+ 		?>
+-              <option value="<?=$datos["idacat"]?>" <?=$selcate?>><?=htmlXentities($datos["categoria"])?></option>
++              <option value="<?php $datos["idacat"]?>" <?php $selcate?>><?php htmlXentities($datos["categoria"])?></option>
+               <?
+ 	  }
+ 	  ?>
+@@ -142,7 +142,7 @@
+ 		{
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+-              <option value="<?=$datos["idsubcat"]?>" selected><?=htmlXentities($datos["nombre"])?></option>
++              <option value="<?php $datos["idsubcat"]?>" selected><?php htmlXentities($datos["nombre"])?></option>
+               <?
+ 	  }
+ 	  ?>
+@@ -178,43 +178,43 @@
+                                   <div class="form-group ">
+                                     <label for="nombre" class="control-label col-lg-2">Nombre</label>
+                                         <div class="col-lg-10">
+-                                            <input name="nombre" type="text" required class=" form-control" id="nombre" value="<?=htmlentities($datos2["nombre"], ENT_COMPAT, 'iso-8859-1')?>" />
++                                            <input name="nombre" type="text" required class=" form-control" id="nombre" value="<?php htmlentities($datos2["nombre"], ENT_COMPAT, 'iso-8859-1')?>" />
+                                         </div>
+                                   </div>
+                                   <div class="form-group ">
+                                         <label for="codigo" class="control-label col-lg-2">Código</label>
+                                         <div class="col-lg-10">
+-                                            <input name="codigo" type="text" class=" form-control" id="codigo" value="<?=$datos2["codigo"]?>" />
++                                            <input name="codigo" type="text" class=" form-control" id="codigo" value="<?php $datos2["codigo"]?>" />
+                                         </div>
+                                     </div>
+                                   <div class="form-group ">
+                                         <label for="codigo" class="control-label col-lg-2">Descripci&oacute;n</label>
+                                         <div class="col-lg-10">
+-                                            <textarea name="descripcion" rows="6" required class="form-control"><?=htmlentities($datos2["descripcion"], ENT_COMPAT, 'iso-8859-1')?></textarea>
++                                            <textarea name="descripcion" rows="6" required class="form-control"><?php htmlentities($datos2["descripcion"], ENT_COMPAT, 'iso-8859-1')?></textarea>
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="codigo" class="control-label col-lg-2">Alto</label>
+                                         <div class="col-lg-2">
+-                                            <input name="alto" type="text" required class=" form-control" id="alto"  value="<?=$datos2["alto"]?>" />
++                                            <input name="alto" type="text" required class=" form-control" id="alto"  value="<?php $datos2["alto"]?>" />
+                                             </div>
+                                     <label for="vlbase" class="control-label col-lg-2">Ancho</label>
+                                             <div class="col-lg-2">
+-                                              <input name="ancho" type="text" required class=" form-control" id="ancho"  value="<?=$datos2["ancho"]?>" />
++                                              <input name="ancho" type="text" required class=" form-control" id="ancho"  value="<?php $datos2["ancho"]?>" />
+                                             </div>
+                                     </div>
+                                   <div class="form-group ">
+                                     <label for="vlbase" class="control-label col-lg-2">Valor Base</label>
+                                         <div class="col-lg-2">
+-                                            <input name="vlbase" type="text" required class=" form-control" id="vlbase" value="<?=$datos2["vlbase"]?>" />
++                                            <input name="vlbase" type="text" required class=" form-control" id="vlbase" value="<?php $datos2["vlbase"]?>" />
+                                         </div>
+                                     <label for="vltotal" class="control-label col-lg-2">IVA</label>
+                                         <div class="col-lg-2">
+-                                            <input name="vliva" type="text" required class=" form-control" id="vliva" value="<?=$datos2["vliva"]?>" />
++                                            <input name="vliva" type="text" required class=" form-control" id="vliva" value="<?php $datos2["vliva"]?>" />
+                                         </div>
+                                     <label for="vltotal" class="control-label col-lg-2">Valor Total</label>
+                                         <div class="col-lg-2">
+-                                            <input name="vltotal" type="text" required class=" form-control" id="vltotal" value="<?=$datos2["vltotal"]?>" />
++                                            <input name="vltotal" type="text" required class=" form-control" id="vltotal" value="<?php $datos2["vltotal"]?>" />
+                                         </div>
+                                   </div>
+ 
+@@ -226,12 +226,12 @@
+                                     if ($datos2["activo"]==1) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  type="radio"  name="activo" value="1" <?=$seldestacado?>>
++                                        <input  type="radio"  name="activo" value="1" <?php $seldestacado?>>
+                                         <label>Si. </label><?
+                                     if ($datos2["activo"]==0) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  name="activo"  type="radio" value="0" <?=$seldestacado?>>
++                                        <input  name="activo"  type="radio" value="0" <?php $seldestacado?>>
+                                         <label>No. </label>
+                                        
+                                   </div>
+@@ -289,24 +289,24 @@
+                                     <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Lista 1</label>
+                                     <div class="col-md-2" >
+-                                        <input  type="radio"  name="lista1" value="1" <?=$vlchksi1?>  onClick="document.getElementById('li1').style.display = 'block';">
++                                        <input  type="radio"  name="lista1" value="1" <?php $vlchksi1?>  onClick="document.getElementById('li1').style.display = 'block';">
+                                         <label>Si. </label>
+-                                        <input  name="lista1"  type="radio" value="0" <?=$vlchkno1?> onClick="document.getElementById('li1').style.display = 'none'; document.getElementById('l1tit').value ='-1'; document.getElementById('l1txt').value ='';">
++                                        <input  name="lista1"  type="radio" value="0" <?php $vlchkno1?> onClick="document.getElementById('li1').style.display = 'none'; document.getElementById('l1tit').value ='-1'; document.getElementById('l1txt').value ='';">
+                                         <label>No. </label>
+                                        
+                                   </div>
+                                   </div>
+                                   
+-									  <div id="li1" style="display: <?=$vll1hidden?>">
++									  <div id="li1" style="display: <?php $vll1hidden?>">
+                                   <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Titulo</label>
+ 										   <div class="col-md-2" >
+-												<input class=" form-control" id="l1tit" name="l1tit" type="text" value="<?=htmlentities($datos2["lista1"], ENT_COMPAT, 'iso-8859-1')?>" />
++												<input class=" form-control" id="l1tit" name="l1tit" type="text" value="<?php htmlentities($datos2["lista1"], ENT_COMPAT, 'iso-8859-1')?>" />
+ 										   </div>
+ 										   
+                                     <label for="vltotal" class="control-label col-md-1">Contenido</label>
+ 										   <div class="col-md-2" >
+-												<textarea name="l1txt" class="col-md-2 form-control" rows="10" id="l1txt"><?=$txtli1?></textarea>
++												<textarea name="l1txt" class="col-md-2 form-control" rows="10" id="l1txt"><?php $txtli1?></textarea>
+ 										   </div>
+ 									  </div>
+ 									</div>
+@@ -315,24 +315,24 @@
+                                   <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Lista 2</label>
+                                     <div class="col-md-2" >
+-                                        <input  type="radio"  name="lista2" value="1" <?=$vlchksi2?>  onClick="document.getElementById('li2').style.display = 'block';">
++                                        <input  type="radio"  name="lista2" value="1" <?php $vlchksi2?>  onClick="document.getElementById('li2').style.display = 'block';">
+                                         <label>Si. </label>
+-                                        <input  name="lista2"  type="radio" value="0" <?=$vlchkno2?> onClick="document.getElementById('li2').style.display = 'none'; document.getElementById('l2tit').value ='-1'; document.getElementById('l2txt').value ='';">
++                                        <input  name="lista2"  type="radio" value="0" <?php $vlchkno2?> onClick="document.getElementById('li2').style.display = 'none'; document.getElementById('l2tit').value ='-1'; document.getElementById('l2txt').value ='';">
+                                         <label>No. </label>
+                                        
+                                   </div>
+                                   </div>
+                                   
+-									  <div id="li2" style="display: <?=$vll2hidden?>">
++									  <div id="li2" style="display: <?php $vll2hidden?>">
+                                   <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Titulo</label>
+ 										   <div class="col-md-2" >
+-												<input class=" form-control" id="l2tit" name="l2tit" type="text" value="<?=htmlentities($datos2["lista2"], ENT_COMPAT, 'iso-8859-1')?>" />
++												<input class=" form-control" id="l2tit" name="l2tit" type="text" value="<?php htmlentities($datos2["lista2"], ENT_COMPAT, 'iso-8859-1')?>" />
+ 										   </div>
+ 										   
+                                     <label for="vltotal" class="control-label col-md-1">Contenido</label>
+ 										   <div class="col-md-2" >
+-												<textarea name="l2txt" class="col-md-2 form-control" rows="10" id="l2txt"><?=$txtli2?></textarea>
++												<textarea name="l2txt" class="col-md-2 form-control" rows="10" id="l2txt"><?php $txtli2?></textarea>
+ 										   </div>
+ 									  </div>
+ 									</div>
+@@ -345,14 +345,14 @@
+                                     if ($datos2["destacado"]==1) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  type="radio"  name="destacado" value="1" <?=$seldestacado?>>
++                                        <input  type="radio"  name="destacado" value="1" <?php $seldestacado?>>
+                                         <label>Si. </label>
+-                                      <input name="idprod" type="hidden" id="idprod" value="<?=$_GET["idprod"]?>">
++                                      <input name="idprod" type="hidden" id="idprod" value="<?php $_GET["idprod"]?>">
+                                     <?
+                                     if ($datos2["destacado"]==0) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  name="destacado"  type="radio" value="0" <?=$seldestacado?>>
++                                        <input  name="destacado"  type="radio" value="0" <?php $seldestacado?>>
+                                         <label>No. </label>
+                                        
+                                   </div>
+@@ -364,13 +364,13 @@
+                                     if ($datos2["pdelmes"]==1) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  type="radio"  name="pdelmes" value="1" <?=$seldestacado?>>
++                                        <input  type="radio"  name="pdelmes" value="1" <?php $seldestacado?>>
+                                         <label>Si. </label>
+                                     <?
+                                     if ($datos2["pdelmes"]==0) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  name="pdelmes"  type="radio" value="0" <?=$seldestacado?>>
++                                        <input  name="pdelmes"  type="radio" value="0" <?php $seldestacado?>>
+                                         <label>No. </label>
+                                        
+                                   </div>
+@@ -419,7 +419,7 @@
+                                 <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Imagen Principal</label>
+                                     <div class="col-md-3">
+-                                    <img src="../co/img/product<?=$datos2["imagen"]?>" height="150" ></div>
++                                    <img src="../co/img/product<?php $datos2["imagen"]?>" height="150" ></div>
+                                     <label for="vltotal" class="control-label col-lg-2">Imagen 2 </label>
+                                     <div class="col-md-3">
+                                     <?
+@@ -436,13 +436,13 @@
+ 											
+ 											   
+ 									?>
+-                                    <img src="../co/img/product<?=$vlimg2?>" height="150" ></div>
++                                    <img src="../co/img/product<?php $vlimg2?>" height="150" ></div>
+                                 </div>
+                                 
+                                 <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Imagen 3</label>
+                                     <div class="col-md-3">
+-                                    <img src="../co/img/product<?=$vlimg3?>" height="150" ></div>
++                                    <img src="../co/img/product<?php $vlimg3?>" height="150" ></div>
+                                 </div>
+ 
+                                     <div class="form-group">
+Index: swdoc/HapAdmcom/nuevousuario.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/nuevousuario.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/nuevousuario.php	(date 1552509601000)
+@@ -81,19 +81,19 @@
+                                   <div class="form-group ">
+                                     <label for="nit" class="control-label col-lg-2">Nombre</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?=$datos["nombre"]?>" />
++                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?php $datos["nombre"]?>" />
+                                         </div>
+                                   </div>
+                                   <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">apellido</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="apellido" name="apellido" type="text" value="<?=$datos["apellido"]?>" />
++                                            <input class=" form-control" id="apellido" name="apellido" type="text" value="<?php $datos["apellido"]?>" />
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Email</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="email" name="email" type="email" value="<?=$datos["email"]?>" />
++                                            <input class=" form-control" id="email" name="email" type="email" value="<?php $datos["email"]?>" />
+                                         </div>
+                                     </div>
+                                     
+@@ -115,7 +115,7 @@
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Clave</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?=$datos["clave"]?>"/>
++                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?php $datos["clave"]?>"/>
+                                         </div>
+                                     </div>
+                                     
+@@ -137,8 +137,8 @@
+                                         <div class="col-lg-offset-2 col-lg-10">
+                                             <button class="btn btn-primary" type="submit">Ingresar</button>
+                                             <button class="btn btn-default" type="button" onClick="window.location='clientes.php'">Cancelar</button>
+-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
+-                                       <input name="idc1" type="hidden" id="idc1" value="<?=$_REQUEST["idcb"]?>">
++                                            <input name="idc" type="hidden" id="idc" value="<?php $_REQUEST["idc"]?>">
++                                       <input name="idc1" type="hidden" id="idc1" value="<?php $_REQUEST["idcb"]?>">
+                                         </div>
+                                     </div>
+                               </form>
+Index: swdoc/HapAdmcom/BK_navega.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/BK_navega.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/BK_navega.php	(date 1552509602000)
+@@ -142,7 +142,7 @@
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+         <div class="col-md-2">
+-        <section class="panel"> <a href="#" onDblClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><img src="images/folder.png" width="90" height="64" alt=""/></a> 
++        <section class="panel"> <a href="#" onDblClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><img src="images/folder.png" width="90" height="64" alt=""/></a>
+        	  <a href="#"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a>
+         </section>
+         </div>
+@@ -162,13 +162,13 @@
+ 			$datosd = $dbcond->fetch_array($resultadod);
+ 		?>
+         <div class="col-md-2">
+-        <section class="panel"> <a href="docs/<?=$datosd["adjunto"]?>"><img src="images/documento.png" width="50"  alt=""/></a> 
++        <section class="panel"> <a href="docs/<?php $datosd["adjunto"]?>"><img src="images/documento.png" width="50"  alt=""/></a>
+        	  <a href="#"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a>  <?
+ 			
+         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
+ 			?>
+ 		<br>	
+-    <div align="center"> <a href="#" onClick="aaa('http://www.haptracking.com/swdoc/HapAdmcom/docs/<?=$datosd["adjunto"]?>')"><i class="fa fa-download"> Preview</i></a> </div>
++    <div align="center"> <a href="#" onClick="aaa('http://www.haptracking.com/swdoc/HapAdmcom/docs/<?php $datosd["adjunto"]?>')"><i class="fa fa-download"> Preview</i></a> </div>
+        <?
+ 		}
+ 			?></section>
+@@ -195,8 +195,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="subirdoc.php" method="post" enctype="multipart/form-data" name="subedoc">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+                                     <div class="col-md-4">
+@@ -227,8 +227,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="crearcarpeta.php" method="post"  name="creac">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+                                     <div class="col-md-4">
+@@ -280,20 +280,20 @@
+ <script src="js/scripts.js"></script>
+ 
+                 <form name="ffolder" action="navega.php" method="get">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
+                     <input type="hidden" name="padre" value="">
+-                    <input type="hidden" name="padreactual" value="<?=$vlpadre?>">
++                    <input type="hidden" name="padreactual" value="<?php $vlpadre?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/HapAdmcom/navegam.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/navegam.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/navegam.php	(date 1552509601000)
+@@ -164,8 +164,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="cnc.php" method="post"  name="creaca" id="creaca">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                     <input type="hidden" name="idcarpeta" value="">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+@@ -197,8 +197,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="cndoc.php" method="post"  name="creaca2" id="creaca2">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                     <input type="hidden" name="iddocumento" value="">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+@@ -253,14 +253,14 @@
+ 			else $fondo = "background-color: #F5F5F5";
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+-        <div class="col-md-8" style="<?=$fondo?>">
+-        <a href="#"  onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><img src="images/folder.png" height="30" alt=""/></a> 
+-       	  <a href="#"  onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
++        <div class="col-md-8" style="<?php $fondo?>">
++        <a href="#"  onClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><img src="images/folder.png" height="30" alt=""/></a> 
++       	  <a href="#"  onClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         </div>
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#" onClick="cambianc('<?=$datos["idcarpeta"]?>','<?=$datos["nombre"]?>')" ><i class="fa fa-edit"> Cambiar nombre</i></a></div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#" onClick="cambianc('<?php $datos["idcarpeta"]?>','<?php $datos["nombre"]?>')" ><i class="fa fa-edit"> Cambiar nombre</i></a></div>
+         
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="permisos.php?idcli=<?=$vlidc?>&idcar=<?=$datos["idcarpeta"]?>&idc=<?=$vlidc?>"  ><i class="fa fa-edit"> Permisos</i></a></div>
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="borrarc(<?=$datos["idcarpeta"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="permisos.php?idcli=<?php $vlidc?>&idcar=<?php $datos["idcarpeta"]?>&idc=<?php $vlidc?>"  ><i class="fa fa-edit"> Permisos</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="borrarc(<?php $datos["idcarpeta"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
+         <?
+ 		}
+ 		?>
+@@ -282,25 +282,25 @@
+ 		}
+ 		?>
+         <section>
+-        <div class="col-md-7 " style="<?=$fondo?>">
+-        <a href="docs/<?=$datosd["adjunto"]?>" target="_blank" ><img src="images/<?=$vlicono?>" width="25"  alt=""/></a> 
+-       	  <a href="docs/<?=$datosd["adjunto"]?>" target="_blank"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
++        <div class="col-md-7 " style="<?php $fondo?>">
++        <a href="docs/<?php $datosd["adjunto"]?>" target="_blank" ><img src="images/<?php $vlicono?>" width="25"  alt=""/></a> 
++       	  <a href="docs/<?php $datosd["adjunto"]?>" target="_blank"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         </div>
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#" onClick="cambiandoc('<?=$datosd["iddocumento"]?>','<?=$datosd["nombre"]?>')" ><i class="fa fa-edit"> Cambiar nombre</i></a></div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#" onClick="cambiandoc('<?php $datosd["iddocumento"]?>','<?php $datosd["nombre"]?>')" ><i class="fa fa-edit"> Cambiar nombre</i></a></div>
+          <?
+         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
+ 		
+ 			?>	
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><i class="fa fa-eye"> Preview</i></a></div>	
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?=$datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><i class="fa fa-eye"> Preview</i></a></div>	
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?php $datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
+        <?
+ 		}else{
+ 			?>
+ 			
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div> 
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?=$datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div> 
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?php $datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
+ 			<?
+ 		}
+ 			?>
+@@ -338,8 +338,8 @@
+                                        
+                                                
+                 <form action="subirdocm.php" method="post" enctype="multipart/form-data" name="subedoc">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Archivo</label>
+                                     <div class="col-md-4">
+@@ -363,8 +363,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="crearcarpeta.php" method="post"  name="creac">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+                                     <div class="col-md-4">
+@@ -400,14 +400,14 @@
+ 
+               
+ <form action="borrarcarpeta.php" method="post"  name="borrarcp">
+-	<input type="hidden" name="idc" value="<?=$_REQUEST["idc"]?>">
+-	<input type="hidden" name="padre" value="<?=$_REQUEST["padre"]?>">
++	<input type="hidden" name="idc" value="<?php $_REQUEST["idc"]?>">
++	<input type="hidden" name="padre" value="<?php $_REQUEST["padre"]?>">
+ 	<input type="hidden" name="idcborrar" id="idcborrar" value="">
+ </form>   
+ 
+ <form action="borrardocu.php" method="post"  name="borrardocu">
+-	<input type="hidden" name="idc" value="<?=$_REQUEST["idc"]?>">
+-	<input type="hidden" name="padre" value="<?=$_REQUEST["padre"]?>">
++	<input type="hidden" name="idc" value="<?php $_REQUEST["idc"]?>">
++	<input type="hidden" name="padre" value="<?php $_REQUEST["padre"]?>">
+ 	<input type="hidden" name="idcborrar" id="idcborrar" value="">
+ </form>
+ 
+@@ -431,20 +431,20 @@
+ <script src="js/scripts.js"></script>
+ 
+                 <form name="ffolder" action="navegam.php" method="get">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
+                     <input type="hidden" name="padre" value="">
+-                    <input type="hidden" name="padreactual" value="<?=$vlpadre?>">
++                    <input type="hidden" name="padreactual" value="<?php $vlpadre?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+  
+Index: swdoc/co/productosresp.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/productosresp.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/productosresp.php	(date 1552509601000)
+@@ -128,10 +128,10 @@
+                 ?>
+         
+         <tr class="gradeX">
+-            <td><?=$datos["fecha"]?></td>
+-            <td><?=htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
+-            <td><?=$datos["tipo"]?></td>
+-            <td><a href="../HapAdmcom/docs/<?=$datos["adjunto"]?>" target="_blank">Ver</a></td>
++            <td><?php $datos["fecha"]?></td>
++            <td><?php htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
++            <td><?php $datos["tipo"]?></td>
++            <td><a href="../HapAdmcom/docs/<?php $datos["adjunto"]?>" target="_blank">Ver</a></td>
+         </tr>
+         <?
+ 		}
+Index: swdoc/co/eval_entrada.phpcopy
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/eval_entrada.phpcopy	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/eval_entrada.phpcopy	(date 1552509602000)
+@@ -31,8 +31,8 @@
+ 	//header("Location: int_iniciopp.php?idc=".$datos[id_cliente]."&nomc=".$datos[nombre]);
+ 	?>
+ 	<form name="abc" method="post" action="inicio.php" target="_parent">
+-	  <input type="hidden" name="idwh" value="<?=$datos["id_cliente"]?>">
+-	  <input type="hidden" name="nomwh" value="<?=$datos["nombre"]?>">
++	  <input type="hidden" name="idwh" value="<?php $datos["id_cliente"]?>">
++	  <input type="hidden" name="nomwh" value="<?php $datos["nombre"]?>">
+ 	</form>
+ 	<script language="javascript">
+ 	document.abc.submit();
+Index: swdoc/co/editarcat.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/editarcat.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/editarcat.php	(date 1552509602000)
+@@ -79,15 +79,15 @@
+                                   <div class="form-group ">
+                                     <label for="nit" class="control-label col-lg-2">Category</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?=$datos["categoria"]?>" />
+-                                            <input name="idacat" type="hidden" id="idacat" value="<?=$datos["idacat"]?>">
++                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?php $datos["categoria"]?>" />
++                                            <input name="idacat" type="hidden" id="idacat" value="<?php $datos["idacat"]?>">
+                                         </div>
+                                   </div>
+                                   <div class="form-group">
+                           <div class="col-lg-offset-2 col-lg-10">
+                                             <button class="btn btn-primary" type="submit">Send</button>
+                                             <button class="btn btn-default" type="button" onClick="window.location='int_cat.php?mn=3'">Cancel</button>
+-                                            <input name="idc" type="hidden" id="idc" value="<?=$idc?>">
++                                            <input name="idc" type="hidden" id="idc" value="<?php $idc?>">
+                                         </div>
+                                     </div>
+                               </form>
+Index: swdoc/HapAdmcom/navega.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/navega.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/navega.php	(date 1552509602000)
+@@ -167,8 +167,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="cnc.php" method="post"  name="creaca" id="creaca">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                     <input type="hidden" name="idcarpeta" value="">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+@@ -223,13 +223,13 @@
+ 			else $fondo = "background-color: #F5F5F5";
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+-        <div class="col-md-8" style="<?=$fondo?>">
+-        <a href="#" onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><img src="images/folder.png" height="30" alt=""/></a> 
+-       	  <a href="#" onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
++        <div class="col-md-8" style="<?php $fondo?>">
++        <a href="#" onClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><img src="images/folder.png" height="30" alt=""/></a> 
++       	  <a href="#" onClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         </div>
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#" onClick="cambianc('<?=$datos["idcarpeta"]?>','<?=$datos["nombre"]?>')" ><i class="fa fa-edit"> Cambiar nombre</i></a></div>
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="permisos.php?idcli=<?=$vlidc?>&idcar=<?=$datos["idcarpeta"]?>&idc=<?=$vlidc?>"  ><i class="fa fa-edit"> Permisos</i></a></div>
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="borrarc(<?=$datos["idcarpeta"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#" onClick="cambianc('<?php $datos["idcarpeta"]?>','<?php $datos["nombre"]?>')" ><i class="fa fa-edit"> Cambiar nombre</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="permisos.php?idcli=<?php $vlidc?>&idcar=<?php $datos["idcarpeta"]?>&idc=<?php $vlidc?>"  ><i class="fa fa-edit"> Permisos</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="borrarc(<?php $datos["idcarpeta"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
+         <?
+ 		}
+ 		?>
+@@ -252,25 +252,25 @@
+ 		}
+ 		?>
+         <section>
+-        <div class="col-md-7 " style="<?=$fondo?>">
+-        <a href="docs/<?=$datosd["adjunto"]?>" ><img src="images/<?=$vlicono?>" width="25"  alt=""/></a> 
+-       	  <a href="mostrarpdf.php?Archivo=<?=$datosd["adjunto"]?>"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
++        <div class="col-md-7 " style="<?php $fondo?>">
++        <a href="docs/<?php $datosd["adjunto"]?>" ><img src="images/<?php $vlicono?>" width="25"  alt=""/></a> 
++       	  <a href="mostrarpdf.php?Archivo=<?php $datosd["adjunto"]?>"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         </div>
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#" onClick="cambiandoc('<?=$datosd["iddocumento"]?>','<?=$datosd["nombre"]?>')" ><i class="fa fa-edit"> Cambiar nombre</i></a></div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#" onClick="cambiandoc('<?php $datosd["iddocumento"]?>','<?php $datosd["nombre"]?>')" ><i class="fa fa-edit"> Cambiar nombre</i></a></div>
+          <?
+         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
+ 		
+ 			?>	
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" ><i class="fa fa-eye"> Preview</i></a></div>	
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?=$datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" ><i class="fa fa-eye"> Preview</i></a></div>	
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?php $datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
+        <?
+ 		}else{
+ 			?>
+ 			
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
+-        <div  class="col-md-1 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?=$datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
++        <div  class="col-md-1 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?php $datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
+ 			<?
+ 		}
+ 			?>
+@@ -301,8 +301,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="subirdocm.php" method="post" enctype="multipart/form-data" name="subedoc">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     
+                                     
+@@ -330,8 +330,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="crearcarpeta.php" method="post"  name="creac">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+                                     <div class="col-md-4">
+@@ -367,14 +367,14 @@
+ 
+               
+ <form action="borrarcarpeta.php" method="post"  name="borrarcp">
+-	<input type="hidden" name="idc" value="<?=$_REQUEST["idc"]?>">
+-	<input type="hidden" name="padre" value="<?=$_REQUEST["padre"]?>">
++	<input type="hidden" name="idc" value="<?php $_REQUEST["idc"]?>">
++	<input type="hidden" name="padre" value="<?php $_REQUEST["padre"]?>">
+ 	<input type="hidden" name="idcborrar" id="idcborrar" value="">
+ </form>   
+ 
+ <form action="borrardocu.php" method="post"  name="borrardocu">
+-	<input type="hidden" name="idc" value="<?=$_REQUEST["idc"]?>">
+-	<input type="hidden" name="padre" value="<?=$_REQUEST["padre"]?>">
++	<input type="hidden" name="idc" value="<?php $_REQUEST["idc"]?>">
++	<input type="hidden" name="padre" value="<?php $_REQUEST["padre"]?>">
+ 	<input type="hidden" name="idcborrar" id="idcborrar" value="">
+ </form>
+ 
+@@ -398,20 +398,20 @@
+ <script src="js/scripts.js"></script>
+ 
+                 <form name="ffolder" action="navega.php" method="get">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
+                     <input type="hidden" name="padre" value="">
+-                    <input type="hidden" name="padreactual" value="<?=$vlpadre?>">
++                    <input type="hidden" name="padreactual" value="<?php $vlpadre?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/co/inicio.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/inicio.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/inicio.php	(date 1552509601000)
+@@ -137,8 +137,8 @@
+   text-align: center;";
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+-        <div class="col-md-2" style="<?=$fondo?>">
+-        <a href="#"  onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><img src="images/folder_azul.png"  alt=""/></a> <br>
++        <div class="col-md-2" style="<?php $fondo?>">
++        <a href="#"  onClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><img src="images/folder_azul.png"  alt=""/></a> <br>
+        	  <a href="#"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         </div>
+         <?
+@@ -149,7 +149,7 @@
+         
+                             <section class="panel col-md-6">
+              <div class="panel-body btn-gap center-block">
+-			 	<?=$_SESSION["vg_cuota"]/1000000000?> GB - Ocupado <? $tamarchi = tamanodocs($_SESSION["vg_idc"]);
++			 	<?php $_SESSION["vg_cuota"]/1000000000?> GB - Ocupado <? $tamarchi = tamanodocs($_SESSION["vg_idc"]);
+ 			  	$vltmegas = $tamarchi / 1000000;
+ 				$vlgb = $tamarchi / 1000000000;
+ 			print round($vltmegas,2)." MB";
+@@ -164,8 +164,8 @@
+                                             Espacio utilizado
+                                         </div>
+                                         <div class="progress progress-xs">
+-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <?=$porcentaje?>%">
+-                                                <span class=""><?=round($porcentaje,2)?>%</span>
++                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <?php $porcentaje?>%">
++                                                <span class=""><?php round($porcentaje,2)?>%</span>
+                                             </div>
+                                         </div>
+                                     </div>
+@@ -188,9 +188,9 @@
+ </section>
+ 
+                 <form name="ffolder" action="navega.php" method="get">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
+                     <input type="hidden" name="padre" value="">
+-                    <input type="hidden" name="padreactual" value="<?=$vlpadre?>">
++                    <input type="hidden" name="padreactual" value="<?php $vlpadre?>">
+                   </form>
+ <!-- Placed js at the end of the document so the pages load faster -->
+ <script src="js/jquery-1.10.2.min.js"></script>
+Index: swdoc/HapAdmcom/int_subcat.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/int_subcat.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/int_subcat.php	(date 1552509602000)
+@@ -110,7 +110,7 @@
+           <td ><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
+           <td ><? print htmlentities($_REQUEST["nom"], ENT_COMPAT, 'iso-8859-1')?></td>
+           <td ><? print htmlentities($datos["descripcion"], ENT_COMPAT, 'iso-8859-1')?></td>
+-          <td ><a href="editarsubcat.php?idc=<?=$datos["idsubcat"]?>&nom=<?=$_REQUEST["nom"]?>" >Edit</a></td>
++          <td ><a href="editarsubcat.php?idc=<?php $datos["idsubcat"]?>&nom=<?php $_REQUEST["nom"]?>" >Edit</a></td>
+         </tr>
+         <?
+ 		}
+@@ -123,7 +123,7 @@
+       </div>
+       <div class="form-group">
+       <div class="col-lg-offset-2 col-lg-12">
+-                        <button class="btn btn-primary" type="button" onClick="window.location='nuevasubcat.php?idc=<?=$_REQUEST["idc"]?>&nom=<?=$_REQUEST["nom"]?>'">Add Subcategory</button>
++                        <button class="btn btn-primary" type="button" onClick="window.location='nuevasubcat.php?idc=<?php $_REQUEST["idc"]?>&nom=<?php $_REQUEST["nom"]?>'">Add Subcategory</button>
+                     </div>
+                 </div>
+     </form>
+@@ -167,18 +167,18 @@
+                 <form name="fcarrito" action="agregarcarrito.php" method="post">
+                     <input type="hidden" name="idprod" value="">
+                     <input type="hidden" name="qt" value="">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/co/nav.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/nav.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/nav.php	(date 1552509601000)
+@@ -18,7 +18,7 @@
+                 <div class="media logged-user">
+                     <img alt="" src="images/photos/user-avatar.png" class="media-object">
+                     <div class="media-body">
+-                        <h4><a href="#"><?=$_SESSION["vg_nombre"]?></a></h4>
++                        <h4><a href="#"><?php $_SESSION["vg_nombre"]?></a></h4>
+                         <span>"La Pétala."</span>
+                     </div>
+                 </div>
+Index: swdoc/HapAdmcom/clave.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/clave.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/clave.php	(date 1552496925000)
+@@ -1,6 +1,6 @@
+ <?
+ ERROR_REPORTING("E_ERROR");
+-$ip = "localhost"; //servidor mysql
++$ip = "127.0.0.1"; //servidor mysql
+ $login = "haptrack_docu";
+ $pass = "*SmartApp135";
+ $db = "haptrack_docu";
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- README.md	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ README.md	(date 1552507106000)
+@@ -1,3 +1,5 @@
+ # smartsearc
+ Se recibe el servidor Ubuntu version 14.04.6
+ Apache 2.4.7
++Php 7.0.3
++OpenSSL 1.0.1f
+Index: swdoc/HapAdmcom/clientes.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/clientes.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/clientes.php	(date 1552509602000)
+@@ -113,8 +113,8 @@
+ 		  if ($datos["estado"]=="1")
+ 		  print "</strong>";
+ 		  ?></td>
+-          <td ><?=$datos["identificacion"]?></td>
+-          <td ><?=$datos["cuota"]/1000000000?> GB - Ocupado <? $tamarchi = tamanodocs($datos["id_cliente"]);
++          <td ><?php $datos["identificacion"]?></td>
++          <td ><?php $datos["cuota"]/1000000000?> GB - Ocupado <? $tamarchi = tamanodocs($datos["id_cliente"]);
+ 			  	$vltmegas = $tamarchi / 1000000;
+ 				$vlgb = $tamarchi / 1000000000;
+ 			print round($vltmegas,2)." MB";
+@@ -123,21 +123,21 @@
+ 			  ?>
+           
+ 			<div class="progress progress-xs">
+-				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <?=$porcentaje?>%">
+-					<span class=""><?=round($porcentaje,1)?>%</span>
++				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <?php $porcentaje?>%">
++					<span class=""><?php round($porcentaje,1)?>%</span>
+ 				</div>
+ 			</div>
+           
+           </td>
+-          <td ><?=$datos["estado"]?></td>
++          <td ><?php $datos["estado"]?></td>
+           <td ><?
+ 			  if ($_SESSION["vg_id"] == 1 || $_SESSION["vg_id"] == 2 ) {
+ 			  ?>
+-			  <a href="editarcliente.php?idc=<?=$datos["id_cliente"]?>" >Editar</a>&nbsp;&nbsp;-&nbsp;&nbsp;
++			  <a href="editarcliente.php?idc=<?php $datos["id_cliente"]?>" >Editar</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+ 			<?
+ 			  }
+-			  ?><a href="navegam.php?idc=<?=$datos["id_cliente"]?>&nom=<?=$datos["nombre"]?>" >Ver documentos </a>-&nbsp;&nbsp;
+-       <a href="usuarios.php?idc=<?=$datos["id_cliente"]?>&nom=<?=$datos["nombre"]?>" >Ver usuarios </a></td>
++			  ?><a href="navegam.php?idc=<?php $datos["id_cliente"]?>&nom=<?php $datos["nombre"]?>" >Ver documentos </a>-&nbsp;&nbsp;
++       <a href="usuarios.php?idc=<?php $datos["id_cliente"]?>&nom=<?php $datos["nombre"]?>" >Ver usuarios </a></td>
+         </tr>
+         <?
+ 		}
+@@ -147,8 +147,8 @@
+         </table>
+         </div>
+              <div class="form-group">
+-                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?=$k?>">
+-                          <input type="hidden" name="idcb" value="<?=$idcb?>">
++                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?php $k?>">
++                          <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <button class="btn btn-primary" type="submit">Adicionar Cliente</button>
+                 </div>
+             </div> 
+@@ -194,18 +194,18 @@
+                 <form name="fcarrito" action="agregarcarrito.php" method="post">
+                     <input type="hidden" name="idprod" value="">
+                     <input type="hidden" name="qt" value="">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/HapAdmcom/menusup.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/menusup.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/menusup.php	(date 1552509601000)
+@@ -3,7 +3,7 @@
+               
+                 <li>
+                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+-                        <?=$_SESSION["vg_nombre"]?>
++                        <?php $_SESSION["vg_nombre"]?>
+                         <span class="caret"></span>
+                     </a>
+                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+Index: swdoc/HapAdmcom/int_cat.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/int_cat.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/int_cat.php	(date 1552509601000)
+@@ -114,7 +114,7 @@
+ 		?>
+         <tr >
+           <td ><? print $datos["categoria"]?></td>
+-          <td ><a href="editarcat.php?idc=<?=$datos["idacat"]?>" >Edit</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="int_subcat.php?idc=<?=$datos["idacat"]?>&nom=<?=$datos["categoria"]?>" >Sub Cat </a></td>
++          <td ><a href="editarcat.php?idc=<?php $datos["idacat"]?>" >Edit</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="int_subcat.php?idc=<?php $datos["idacat"]?>&nom=<?php $datos["categoria"]?>" >Sub Cat </a></td>
+         </tr>
+         <?
+ 		}
+Index: swdoc/co/ingprod.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/ingprod.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/ingprod.php	(date 1552509601000)
+@@ -107,8 +107,8 @@
+ 		{
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+-              <option value="<?=$datos["idacat"]?>" >
+-              <?=$datos["categoria"]?>
++              <option value="<?php $datos["idacat"]?>" >
++              <?php $datos["categoria"]?>
+               </option>
+               <?
+ 	  }
+Index: swdoc/HapAdmcom/nuevasubcat.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/nuevasubcat.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/nuevasubcat.php	(date 1552509602000)
+@@ -81,9 +81,9 @@
+                                 <div class="form-group ">
+                                     <label for="nit" class="control-label col-lg-2">Category</label>
+                                         <div class="col-lg-10"><span class="titulosint">
+-                                        <?=$_REQUEST["nom"]?>	
+-            <input name="id_cat_adm" type="hidden" id="id_cat_adm" value="<?=$_REQUEST["idc"]?>">
+-            <input name="nom" type="hidden" id="nom" value="<?=$_REQUEST["nom"]?>">
++                                        <?php $_REQUEST["nom"]?>	
++            <input name="id_cat_adm" type="hidden" id="id_cat_adm" value="<?php $_REQUEST["idc"]?>">
++            <input name="nom" type="hidden" id="nom" value="<?php $_REQUEST["nom"]?>">
+                                   </span> </div>
+                                   </div>
+                                   <div class="form-group ">
+@@ -105,7 +105,7 @@
+                           <div class="col-lg-offset-2 col-lg-10">
+                                             <button class="btn btn-primary" type="submit">Send</button>
+                                             <button class="btn btn-default" type="button" onClick="window.location='int_subcat.php&mn=3'">Cancel</button>
+-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
++                                            <input name="idc" type="hidden" id="idc" value="<?php $_REQUEST["idc"]?>">
+                                         </div>
+                                     </div>
+                               </form>
+Index: swdoc/HapAdmcom/permisos.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/permisos.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/permisos.php	(date 1552509601000)
+@@ -73,7 +73,7 @@
+         <!-- page heading start-->
+         <div class="page-heading">
+             <h3>
+-               Permisos Carpeta: <strong><?=$vlncar?></strong>
++               Permisos Carpeta: <strong><?php $vlncar?></strong>
+             </h3>
+             <ul class="breadcrumb">
+                 <li>
+@@ -130,7 +130,7 @@
+          <?
+ 		  print "<strong>".$datos["nombre"]." ".$datos["apellido"]."</strong>";
+ 		  ?></td>
+-       <td><?=$vltxt?> - <a href="actpermisos.php?idcli=<?=$_REQUEST["idcli"]?>&idcar=<?=$_REQUEST["idcar"]?>&vlper=<?=$vloperacion?>&iduc=<?=$vlvalcb ?>"><?=$vltxtlink?></a></td>
++       <td><?php $vltxt?> - <a href="actpermisos.php?idcli=<?php $_REQUEST["idcli"]?>&idcar=<?php $_REQUEST["idcar"]?>&vlper=<?php $vloperacion?>&iduc=<?php $vlvalcb ?>"><?php $vltxtlink?></a></td>
+         </tr>
+         <?
+ 		}
+@@ -140,9 +140,9 @@
+         </table>
+         </div>
+              <div class="form-group">
+-                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?=$k?>">
+-                          <input type="hidden" name="idcli" value="<?=$_REQUEST["idcli"]?>">
+-                          <input type="hidden" name="idcar" value="<?=$_REQUEST["idcar"]?>">
++                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?php $k?>">
++                          <input type="hidden" name="idcli" value="<?php $_REQUEST["idcli"]?>">
++                          <input type="hidden" name="idcar" value="<?php $_REQUEST["idcar"]?>">
+                 </div>
+             </div> 
+       </div>
+@@ -187,18 +187,18 @@
+                 <form name="fcarrito" action="agregarcarrito.php" method="post">
+                     <input type="hidden" name="idprod" value="">
+                     <input type="hidden" name="qt" value="">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/HapAdmcom/editarcliente.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/editarcliente.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/editarcliente.php	(date 1552509601000)
+@@ -81,37 +81,37 @@
+                                   <div class="form-group ">
+                                     <label for="nit" class="control-label col-lg-2">Nombre</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?=$datos["nombre"]?>" />
++                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?php $datos["nombre"]?>" />
+                                         </div>
+                                   </div>
+                                   <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">NIT</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="identificacion" name="identificacion" type="text" value="<?=$datos["identificacion"]?>" />
++                                            <input class=" form-control" id="identificacion" name="identificacion" type="text" value="<?php $datos["identificacion"]?>" />
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Email</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="email" name="email" type="text" value="<?=$datos["email"]?>" />
++                                            <input class=" form-control" id="email" name="email" type="text" value="<?php $datos["email"]?>" />
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Dirección</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="direccion" name="direccion" type="text" value="<?=$datos["direccion"]?>"/>
++                                            <input class=" form-control" id="direccion" name="direccion" type="text" value="<?php $datos["direccion"]?>"/>
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Teléfono</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="telefono" name="telefono" type="text" value="<?=$datos["telefono"]?>" />
++                                            <input class=" form-control" id="telefono" name="telefono" type="text" value="<?php $datos["telefono"]?>" />
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Ciudad</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="ciudad" name="ciudad" type="text" value="<?=$datos["ciudad"]?>" />
++                                            <input class=" form-control" id="ciudad" name="ciudad" type="text" value="<?php $datos["ciudad"]?>" />
+                                         </div>
+                                     </div>
+                                     
+@@ -133,13 +133,13 @@
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Clave</label>
+                                         <div class="col-lg-10">
+-                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?=$datos["clave"]?>"/>
++                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?php $datos["clave"]?>"/>
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="numfactura" class="control-label col-lg-2">Cuota en GB</label>
+                                         <div class="col-lg-2">
+-                                            <input class=" form-control" id="cuota" name="cuota" type="number"  value="<?=$datos["cuota"]/1000000000?>" required />
++                                            <input class=" form-control" id="cuota" name="cuota" type="number"  value="<?php $datos["cuota"]/1000000000?>" required />
+                                         </div>
+                                     </div>
+                                     
+@@ -159,7 +159,7 @@
+                                         <div class="col-lg-offset-2 col-lg-10">
+                                             <button class="btn btn-primary" type="submit">Actualizar</button>
+                                             <button class="btn btn-default" type="button" onClick="window.location='clientes.php'">Cancelar</button>
+-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
++                                            <input name="idc" type="hidden" id="idc" value="<?php $_REQUEST["idc"]?>">
+                                         </div>
+                                     </div>
+                               </form>
+Index: swdoc/co/edprod.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/edprod.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/edprod.php	(date 1552509601000)
+@@ -118,7 +118,7 @@
+ 			if ($datos["idacat"]==$datos2["idcategoria"]) $selcate = "selected";
+ 			else  $selcate = "";
+ 		?>
+-              <option value="<?=$datos["idacat"]?>" <?=$selcate?>><?=htmlXentities($datos["categoria"])?></option>
++              <option value="<?php $datos["idacat"]?>" <?php $selcate?>><?php htmlXentities($datos["categoria"])?></option>
+               <?
+ 	  }
+ 	  ?>
+@@ -142,7 +142,7 @@
+ 		{
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+-              <option value="<?=$datos["idsubcat"]?>" selected><?=htmlXentities($datos["nombre"])?></option>
++              <option value="<?php $datos["idsubcat"]?>" selected><?php htmlXentities($datos["nombre"])?></option>
+               <?
+ 	  }
+ 	  ?>
+@@ -178,43 +178,43 @@
+                                   <div class="form-group ">
+                                     <label for="nombre" class="control-label col-lg-2">Nombre</label>
+                                         <div class="col-lg-10">
+-                                            <input name="nombre" type="text" required class=" form-control" id="nombre" value="<?=htmlentities($datos2["nombre"], ENT_COMPAT, 'iso-8859-1')?>" />
++                                            <input name="nombre" type="text" required class=" form-control" id="nombre" value="<?php htmlentities($datos2["nombre"], ENT_COMPAT, 'iso-8859-1')?>" />
+                                         </div>
+                                   </div>
+                                   <div class="form-group ">
+                                         <label for="codigo" class="control-label col-lg-2">Código</label>
+                                         <div class="col-lg-10">
+-                                            <input name="codigo" type="text" class=" form-control" id="codigo" value="<?=$datos2["codigo"]?>" />
++                                            <input name="codigo" type="text" class=" form-control" id="codigo" value="<?php $datos2["codigo"]?>" />
+                                         </div>
+                                     </div>
+                                   <div class="form-group ">
+                                         <label for="codigo" class="control-label col-lg-2">Descripci&oacute;n</label>
+                                         <div class="col-lg-10">
+-                                            <textarea name="descripcion" rows="6" required class="form-control"><?=htmlentities($datos2["descripcion"], ENT_COMPAT, 'iso-8859-1')?></textarea>
++                                            <textarea name="descripcion" rows="6" required class="form-control"><?php htmlentities($datos2["descripcion"], ENT_COMPAT, 'iso-8859-1')?></textarea>
+                                         </div>
+                                     </div>
+                                     <div class="form-group ">
+                                         <label for="codigo" class="control-label col-lg-2">Alto</label>
+                                         <div class="col-lg-2">
+-                                            <input name="alto" type="text" required class=" form-control" id="alto"  value="<?=$datos2["alto"]?>" />
++                                            <input name="alto" type="text" required class=" form-control" id="alto"  value="<?php $datos2["alto"]?>" />
+                                             </div>
+                                     <label for="vlbase" class="control-label col-lg-2">Ancho</label>
+                                             <div class="col-lg-2">
+-                                              <input name="ancho" type="text" required class=" form-control" id="ancho"  value="<?=$datos2["ancho"]?>" />
++                                              <input name="ancho" type="text" required class=" form-control" id="ancho"  value="<?php $datos2["ancho"]?>" />
+                                             </div>
+                                     </div>
+                                   <div class="form-group ">
+                                     <label for="vlbase" class="control-label col-lg-2">Valor Base</label>
+                                         <div class="col-lg-2">
+-                                            <input name="vlbase" type="text" required class=" form-control" id="vlbase" value="<?=$datos2["vlbase"]?>" />
++                                            <input name="vlbase" type="text" required class=" form-control" id="vlbase" value="<?php $datos2["vlbase"]?>" />
+                                         </div>
+                                     <label for="vltotal" class="control-label col-lg-2">IVA</label>
+                                         <div class="col-lg-2">
+-                                            <input name="vliva" type="text" required class=" form-control" id="vliva" value="<?=$datos2["vliva"]?>" />
++                                            <input name="vliva" type="text" required class=" form-control" id="vliva" value="<?php $datos2["vliva"]?>" />
+                                         </div>
+                                     <label for="vltotal" class="control-label col-lg-2">Valor Total</label>
+                                         <div class="col-lg-2">
+-                                            <input name="vltotal" type="text" required class=" form-control" id="vltotal" value="<?=$datos2["vltotal"]?>" />
++                                            <input name="vltotal" type="text" required class=" form-control" id="vltotal" value="<?php $datos2["vltotal"]?>" />
+                                         </div>
+                                   </div>
+ 
+@@ -226,12 +226,12 @@
+                                     if ($datos2["activo"]==1) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  type="radio"  name="activo" value="1" <?=$seldestacado?>>
++                                        <input  type="radio"  name="activo" value="1" <?php $seldestacado?>>
+                                         <label>Si. </label><?
+                                     if ($datos2["activo"]==0) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  name="activo"  type="radio" value="0" <?=$seldestacado?>>
++                                        <input  name="activo"  type="radio" value="0" <?php $seldestacado?>>
+                                         <label>No. </label>
+                                        
+                                   </div>
+@@ -289,24 +289,24 @@
+                                     <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Lista 1</label>
+                                     <div class="col-md-2" >
+-                                        <input  type="radio"  name="lista1" value="1" <?=$vlchksi1?>  onClick="document.getElementById('li1').style.display = 'block';">
++                                        <input  type="radio"  name="lista1" value="1" <?php $vlchksi1?>  onClick="document.getElementById('li1').style.display = 'block';">
+                                         <label>Si. </label>
+-                                        <input  name="lista1"  type="radio" value="0" <?=$vlchkno1?> onClick="document.getElementById('li1').style.display = 'none'; document.getElementById('l1tit').value ='-1'; document.getElementById('l1txt').value ='';">
++                                        <input  name="lista1"  type="radio" value="0" <?php $vlchkno1?> onClick="document.getElementById('li1').style.display = 'none'; document.getElementById('l1tit').value ='-1'; document.getElementById('l1txt').value ='';">
+                                         <label>No. </label>
+                                        
+                                   </div>
+                                   </div>
+                                   
+-									  <div id="li1" style="display: <?=$vll1hidden?>">
++									  <div id="li1" style="display: <?php $vll1hidden?>">
+                                   <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Titulo</label>
+ 										   <div class="col-md-2" >
+-												<input class=" form-control" id="l1tit" name="l1tit" type="text" value="<?=htmlentities($datos2["lista1"], ENT_COMPAT, 'iso-8859-1')?>" />
++												<input class=" form-control" id="l1tit" name="l1tit" type="text" value="<?php htmlentities($datos2["lista1"], ENT_COMPAT, 'iso-8859-1')?>" />
+ 										   </div>
+ 										   
+                                     <label for="vltotal" class="control-label col-md-1">Contenido</label>
+ 										   <div class="col-md-2" >
+-												<textarea name="l1txt" class="col-md-2 form-control" rows="10" id="l1txt"><?=$txtli1?></textarea>
++												<textarea name="l1txt" class="col-md-2 form-control" rows="10" id="l1txt"><?php $txtli1?></textarea>
+ 										   </div>
+ 									  </div>
+ 									</div>
+@@ -315,24 +315,24 @@
+                                   <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Lista 2</label>
+                                     <div class="col-md-2" >
+-                                        <input  type="radio"  name="lista2" value="1" <?=$vlchksi2?>  onClick="document.getElementById('li2').style.display = 'block';">
++                                        <input  type="radio"  name="lista2" value="1" <?php $vlchksi2?>  onClick="document.getElementById('li2').style.display = 'block';">
+                                         <label>Si. </label>
+-                                        <input  name="lista2"  type="radio" value="0" <?=$vlchkno2?> onClick="document.getElementById('li2').style.display = 'none'; document.getElementById('l2tit').value ='-1'; document.getElementById('l2txt').value ='';">
++                                        <input  name="lista2"  type="radio" value="0" <?php $vlchkno2?> onClick="document.getElementById('li2').style.display = 'none'; document.getElementById('l2tit').value ='-1'; document.getElementById('l2txt').value ='';">
+                                         <label>No. </label>
+                                        
+                                   </div>
+                                   </div>
+                                   
+-									  <div id="li2" style="display: <?=$vll2hidden?>">
++									  <div id="li2" style="display: <?php $vll2hidden?>">
+                                   <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Titulo</label>
+ 										   <div class="col-md-2" >
+-												<input class=" form-control" id="l2tit" name="l2tit" type="text" value="<?=htmlentities($datos2["lista2"], ENT_COMPAT, 'iso-8859-1')?>" />
++												<input class=" form-control" id="l2tit" name="l2tit" type="text" value="<?php htmlentities($datos2["lista2"], ENT_COMPAT, 'iso-8859-1')?>" />
+ 										   </div>
+ 										   
+                                     <label for="vltotal" class="control-label col-md-1">Contenido</label>
+ 										   <div class="col-md-2" >
+-												<textarea name="l2txt" class="col-md-2 form-control" rows="10" id="l2txt"><?=$txtli2?></textarea>
++												<textarea name="l2txt" class="col-md-2 form-control" rows="10" id="l2txt"><?php $txtli2?></textarea>
+ 										   </div>
+ 									  </div>
+ 									</div>
+@@ -345,14 +345,14 @@
+                                     if ($datos2["destacado"]==1) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  type="radio"  name="destacado" value="1" <?=$seldestacado?>>
++                                        <input  type="radio"  name="destacado" value="1" <?php $seldestacado?>>
+                                         <label>Si. </label>
+-                                      <input name="idprod" type="hidden" id="idprod" value="<?=$_GET["idprod"]?>">
++                                      <input name="idprod" type="hidden" id="idprod" value="<?php $_GET["idprod"]?>">
+                                     <?
+                                     if ($datos2["destacado"]==0) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  name="destacado"  type="radio" value="0" <?=$seldestacado?>>
++                                        <input  name="destacado"  type="radio" value="0" <?php $seldestacado?>>
+                                         <label>No. </label>
+                                        
+                                   </div>
+@@ -364,13 +364,13 @@
+                                     if ($datos2["pdelmes"]==1) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  type="radio"  name="pdelmes" value="1" <?=$seldestacado?>>
++                                        <input  type="radio"  name="pdelmes" value="1" <?php $seldestacado?>>
+                                         <label>Si. </label>
+                                     <?
+                                     if ($datos2["pdelmes"]==0) $seldestacado ="checked";
+ 									else $seldestacado ="";
+ 									?>
+-                                        <input  name="pdelmes"  type="radio" value="0" <?=$seldestacado?>>
++                                        <input  name="pdelmes"  type="radio" value="0" <?php $seldestacado?>>
+                                         <label>No. </label>
+                                        
+                                   </div>
+@@ -419,7 +419,7 @@
+                                 <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Imagen Principal</label>
+                                     <div class="col-md-3">
+-                                    <img src="../co/img/product<?=$datos2["imagen"]?>" height="150" ></div>
++                                    <img src="../co/img/product<?php $datos2["imagen"]?>" height="150" ></div>
+                                     <label for="vltotal" class="control-label col-lg-2">Imagen 2 </label>
+                                     <div class="col-md-3">
+                                     <?
+@@ -436,13 +436,13 @@
+ 											
+ 											   
+ 									?>
+-                                    <img src="../co/img/product<?=$vlimg2?>" height="150" ></div>
++                                    <img src="../co/img/product<?php $vlimg2?>" height="150" ></div>
+                                 </div>
+                                 
+                                 <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Imagen 3</label>
+                                     <div class="col-md-3">
+-                                    <img src="../co/img/product<?=$vlimg3?>" height="150" ></div>
++                                    <img src="../co/img/product<?php $vlimg3?>" height="150" ></div>
+                                 </div>
+ 
+                                     <div class="form-group">
+Index: swdoc/HapAdmcom/eval_entrada.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/eval_entrada.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/eval_entrada.php	(date 1552509602000)
+@@ -27,8 +27,8 @@
+ 	//header("Location: int_iniciopp.php?idc=".$datos[id_cliente]."&nomc=".$datos[nombre]);
+ 	?>
+ 	<form name="abc" method="post" action="inicio.php" target="_parent">
+-	  <input type="hidden" name="idwh" value="<?=$datos["idusuario"]?>">
+-	  <input type="hidden" name="nomwh" value="<?=$datos["nombre"]." ".$datos["apellido"]?>">
++	  <input type="hidden" name="idwh" value="<?php $datos["idusuario"]?>">
++	  <input type="hidden" name="nomwh" value="<?php $datos["nombre"]." ".$datos["apellido"]?>">
+ 	</form>
+ 	<script language="javascript">
+ 	document.abc.submit();
+Index: swdoc/co/BK_navega.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/BK_navega.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/BK_navega.php	(date 1552509602000)
+@@ -145,7 +145,7 @@
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+         <div class="col-md-2">
+-        <section class="panel"> <a href="#" onDblClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><img src="images/folder.png" width="90" height="64" alt=""/></a> 
++        <section class="panel"> <a href="#" onDblClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><img src="images/folder.png" width="90" height="64" alt=""/></a> 
+        	  <a href="#"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a>
+         </section>
+         </div>
+@@ -165,13 +165,13 @@
+ 			$datosd = $dbcond->fetch_array($resultadod);
+ 		?>
+         <div class="col-md-2">
+-        <section class="panel"> <a href="docs/<?=$datosd["adjunto"]?>"><img src="images/documento.png" width="50"  alt=""/></a> 
++        <section class="panel"> <a href="docs/<?php $datosd["adjunto"]?>"><img src="images/documento.png" width="50"  alt=""/></a> 
+        	  <a href="#"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a>  <?
+ 			
+         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
+ 			?>
+ 		<br>	
+-    <div align="center"> <a href="#" onClick="aaa('http://www.haptracking.com/swdoc/HapAdmcom/docs/<?=$datosd["adjunto"]?>')"><i class="fa fa-download"> Preview</i></a> </div>
++    <div align="center"> <a href="#" onClick="aaa('http://www.haptracking.com/swdoc/HapAdmcom/docs/<?php $datosd["adjunto"]?>')"><i class="fa fa-download"> Preview</i></a> </div>
+        <?
+ 		}
+ 			?></section>
+@@ -198,8 +198,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="subirdoc.php" method="post" enctype="multipart/form-data" name="subedoc">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+                                     <div class="col-md-4">
+@@ -230,8 +230,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="crearcarpeta.php" method="post"  name="creac">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+                                     <div class="col-md-4">
+@@ -283,20 +283,20 @@
+ <script src="js/scripts.js"></script>
+ 
+                 <form name="ffolder" action="navega.php" method="get">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
+                     <input type="hidden" name="padre" value="">
+-                    <input type="hidden" name="padreactual" value="<?=$vlpadre?>">
++                    <input type="hidden" name="padreactual" value="<?php $vlpadre?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/co/navegam.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/navegam.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/navegam.php	(date 1552509602000)
+@@ -156,8 +156,8 @@
+ 			else $fondo = "background-color: #F5F5F5";
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+-        <div class="col-md-12" style="<?=$fondo?>"><a href="#" onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><img src="images/folder.png" height="30" alt=""/></a> 
+-       	  <a href="#" onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
++        <div class="col-md-12" style="<?php $fondo?>"><a href="#" onClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><img src="images/folder.png" height="30" alt=""/></a> 
++       	  <a href="#" onClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         </div>
+         <?
+ 		}
+@@ -187,22 +187,22 @@
+ 		}
+ 		?>
+         <section>
+-        <div class="col-md-8 " style="<?=$fondo?>">
+-        <a href="../HapAdmcom/docs/<?=$datosd["adjunto"]?>" target="_blank" ><img src="images/<?=$vlicono?>" width="25"  alt=""/></a> 
+-       	  <a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
++        <div class="col-md-8 " style="<?php $fondo?>">
++        <a href="../HapAdmcom/docs/<?php $datosd["adjunto"]?>" target="_blank" ><img src="images/<?php $vlicono?>" width="25"  alt=""/></a> 
++       	  <a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         </div>
+          <?
+         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
+ 		
+ 			?>	
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>"  target="_blank"><i class="fa fa-eye"> Preview</i></a></div>	
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>"  target="_blank"><i class="fa fa-eye"> Preview</i></a></div>	
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
+        <?
+ 		}else{
+ 			?>
+ 			
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" download><i class="fa fa-download"> Download</i></a></div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" download><i class="fa fa-download"> Download</i></a></div>
+ 			<?
+ 		}
+ 			?>
+@@ -216,7 +216,7 @@
+ 		}else{
+ 		?>
+ 	<section>
+-        <div class="col-md-10 " style="<?=$fondo?>">
++        <div class="col-md-10 " style="<?php $fondo?>">
+ 
+                             <div class="alert alert-block alert-danger fade in">
+                                 <button type="button" class="close close-sm" data-dismiss="alert">
+@@ -257,8 +257,8 @@
+                                        
+                                                
+                 <form action="subirdocm.php" method="post" enctype="multipart/form-data" name="subedoc">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Archivo</label>
+                                     <div class="col-md-4">
+@@ -282,8 +282,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="crearcarpeta.php" method="post"  name="creac">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+                                     <div class="col-md-4">
+@@ -335,20 +335,20 @@
+ <script src="js/scripts.js"></script>
+ 
+                 <form name="ffolder" action="navegam.php" method="get">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
+                     <input type="hidden" name="padre" value="">
+-                    <input type="hidden" name="padreactual" value="<?=$vlpadre?>">
++                    <input type="hidden" name="padreactual" value="<?php $vlpadre?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/HapAdmcom/usuarios.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/usuarios.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/usuarios.php	(date 1552509602000)
+@@ -115,13 +115,13 @@
+ 		  if ($datos["estado"]=="1")
+ 		  print "</strong>";
+ 		  ?></td>
+-          <td ><?=$datos["apellido"]?></td>
+-          <td > <?=$datos["email"]?></td>
+-          <td ><?=$datos["estado"]?></td> 
++          <td ><?php $datos["apellido"]?></td>
++          <td > <?php $datos["email"]?></td>
++          <td ><?php $datos["estado"]?></td> 
+           <td ><?
+ 			  if ($_SESSION["vg_id"] == 1 || $_SESSION["vg_id"] == 2 ) {
+ 			  ?>
+-			  <a href="editarusr.php?idc=<?=$datos["iduc"]?>" >Editar</a>
++			  <a href="editarusr.php?idc=<?php $datos["iduc"]?>" >Editar</a>
+ 			<?
+ 			  }
+ 			  ?></td>
+@@ -134,8 +134,8 @@
+         </table>
+         </div>
+              <div class="form-group">
+-                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?=$k?>">
+-                          <input type="hidden" name="idcb" value="<?=$_REQUEST["idc"]?>">
++                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?php $k?>">
++                          <input type="hidden" name="idcb" value="<?php $_REQUEST["idc"]?>">
+                     <button class="btn btn-primary" type="submit">Adicionar Usuario</button>
+                 </div>
+             </div> 
+@@ -181,18 +181,18 @@
+                 <form name="fcarrito" action="agregarcarrito.php" method="post">
+                     <input type="hidden" name="idprod" value="">
+                     <input type="hidden" name="qt" value="">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/HapAdmcom/tmpUP/cmasivo.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/tmpUP/cmasivo.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/tmpUP/cmasivo.php	(date 1552509602000)
+@@ -93,7 +93,7 @@
+ 		{
+ 			$datos = $dbcon->fetch_array($resultado);
+ 	?>
+-                                         <option value="<?=$datos["id_cliente"]?>" ><?=$datos["nombre"]?></option>
++                                         <option value="<?php $datos["id_cliente"]?>" ><?php $datos["nombre"]?></option>
+                                                 <?
+ 		}
+ 	?>
+@@ -108,8 +108,8 @@
+                                         <div class="col-lg-offset-2 col-lg-10">
+                                             <button class="btn btn-primary" type="submit">Continuar</button>
+                                             <button class="btn btn-default" type="button" onClick="window.location='clientes.php'">Cancelar</button>
+-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
+-                                       <input name="idc1" type="hidden" id="idc1" value="<?=$_REQUEST["idcb"]?>">
++                                            <input name="idc" type="hidden" id="idc" value="<?php $_REQUEST["idc"]?>">
++                                       <input name="idc1" type="hidden" id="idc1" value="<?php $_REQUEST["idcb"]?>">
+                                         </div>
+                                     </div>
+                               </form>
+Index: swdoc/co/navega.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/navega.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/navega.php	(date 1552509602000)
+@@ -156,9 +156,9 @@
+ 			else $fondo = "background-color: #F5F5F5";
+ 			$datos = $dbcon->fetch_array($resultado);
+ 		?>
+-        <div class="col-md-12" style="<?=$fondo?>">
+-        <a href="#" onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><img src="images/folder.png" height="30" alt=""/></a> 
+-       	  <a href="#" onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
++        <div class="col-md-12" style="<?php $fondo?>">
++        <a href="#" onClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><img src="images/folder.png" height="30" alt=""/></a> 
++       	  <a href="#" onClick="cambiarfolder(<?php $datos["idcarpeta"]?>)"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         </div>
+         <?
+ 		}
+@@ -189,22 +189,22 @@
+ 		}
+ 		?>
+         <section>
+-        <div class="col-md-8 " style="<?=$fondo?>">
+-        <a href="../HapAdmcom/docs/<?=$datosd["adjunto"]?>" target="_blank" ><img src="images/<?=$vlicono?>" width="25"  alt=""/></a> 
+-       	  <a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
++        <div class="col-md-8 " style="<?php $fondo?>">
++        <a href="../HapAdmcom/docs/<?php $datosd["adjunto"]?>" target="_blank" ><img src="images/<?php $vlicono?>" width="25"  alt=""/></a> 
++       	  <a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         </div>
+          <?
+         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
+ 		
+ 			?>	
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" ><i class="fa fa-eye"> Preview</i></a></div>	
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" ><i class="fa fa-eye"> Preview</i></a></div>	
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
+        <?
+ 		}else{
+ 			?>
+ 			
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
+-        <div  class="col-md-2 " style="<?=$fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?=$vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
++        <div  class="col-md-2 " style="<?php $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?php $vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
+ 			<?
+ 		}
+ 			?>
+@@ -218,7 +218,7 @@
+ 			}else{
+ 		?>
+ 	<section>
+-        <div class="col-md-10 " style="<?=$fondo?>">
++        <div class="col-md-10 " style="<?php $fondo?>">
+ 
+                             <div class="alert alert-block alert-danger fade in">
+                                 <button type="button" class="close close-sm" data-dismiss="alert">
+@@ -257,8 +257,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="subirdocm.php" method="post" enctype="multipart/form-data" name="subedoc">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     
+                                     
+@@ -286,8 +286,8 @@
+                                 <div class="panel-body">
+                                    
+                 <form action="crearcarpeta.php" method="post"  name="creac">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
++                    <input type="hidden" name="padre" value="<?php $vlpadre?>">
+                    <div class="form-group">
+                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
+                                     <div class="col-md-4">
+@@ -339,20 +339,20 @@
+ <script src="js/scripts.js"></script>
+ 
+                 <form name="ffolder" action="navega.php" method="get">
+-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
++                    <input type="hidden" name="idc" value="<?php $vlidc?>">
+                     <input type="hidden" name="padre" value="">
+-                    <input type="hidden" name="padreactual" value="<?=$vlpadre?>">
++                    <input type="hidden" name="padreactual" value="<?php $vlpadre?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/co/int_subcat.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/co/int_subcat.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/co/int_subcat.php	(date 1552509602000)
+@@ -110,7 +110,7 @@
+           <td ><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
+           <td ><? print htmlentities($_REQUEST["nom"], ENT_COMPAT, 'iso-8859-1')?></td>
+           <td ><? print htmlentities($datos["descripcion"], ENT_COMPAT, 'iso-8859-1')?></td>
+-          <td ><a href="editarsubcat.php?idc=<?=$datos["idsubcat"]?>&nom=<?=$_REQUEST["nom"]?>" >Edit</a></td>
++          <td ><a href="editarsubcat.php?idc=<?php $datos["idsubcat"]?>&nom=<?php $_REQUEST["nom"]?>" >Edit</a></td>
+         </tr>
+         <?
+ 		}
+@@ -123,7 +123,7 @@
+       </div>
+       <div class="form-group">
+       <div class="col-lg-offset-2 col-lg-12">
+-                        <button class="btn btn-primary" type="button" onClick="window.location='nuevasubcat.php?idc=<?=$_REQUEST["idc"]?>&nom=<?=$_REQUEST["nom"]?>'">Add Subcategory</button>
++                        <button class="btn btn-primary" type="button" onClick="window.location='nuevasubcat.php?idc=<?php $_REQUEST["idc"]?>&nom=<?php $_REQUEST["nom"]?>'">Add Subcategory</button>
+                     </div>
+                 </div>
+     </form>
+@@ -167,18 +167,18 @@
+                 <form name="fcarrito" action="agregarcarrito.php" method="post">
+                     <input type="hidden" name="idprod" value="">
+                     <input type="hidden" name="qt" value="">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                   </form>
+                 <form name="fsort" action="resprod.php" method="post">
+-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
+-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
+-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
+-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
+-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
++                    <input type="hidden" name="codigo" value="<?php $codigo?>">
++                    <input type="hidden" name="nombre" value="<?php $nombre?>">
++                    <input type="hidden" name="idcategoria" value="<?php $idcategoria?>">
++                    <input type="hidden" name="setbq" value="<?php $setbq?>">
++                    <input type="hidden" name="idcb" value="<?php $idcb?>">
+                     <input type="hidden" name="ordenarpor" value="">
+                   </form>
+  <form name="exportxls" action="expxls.php" method="post">
+-                    <input type="hidden" name="query" value="<?=$queryexp?>">
++                    <input type="hidden" name="query" value="<?php $queryexp?>">
+                     <input type="hidden" name="nombre" value="">
+  </form>
+ </body>
+Index: swdoc/HapAdmcom/subcategorias.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- swdoc/HapAdmcom/subcategorias.php	(revision 95830881e4aa65194da6bf30b7d59b5141920c56)
++++ swdoc/HapAdmcom/subcategorias.php	(date 1552509602000)
+@@ -13,8 +13,8 @@
+ {
+ $datos = $dbcon->fetch_array($resultado);
+ ?>
+-  <option value="<?=$datos["idsubcat"]?>" >
+-  <?=htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?>
++  <option value="<?php $datos["idsubcat"]?>" >
++  <?php htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?>
+   </option>
+   <?
+ }
