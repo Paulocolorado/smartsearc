@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 session_start();
@@ -32,7 +32,7 @@ $datos = $dbcon->fetch_array($resultado);
 
 <section>
     <!-- left side start-->
-     <? include("nav.php")?>
+     <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -47,7 +47,7 @@ $datos = $dbcon->fetch_array($resultado);
 
 
         <!--notification menu start -->
-    <? include("menusup.php")?>
+    <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -81,9 +81,9 @@ $datos = $dbcon->fetch_array($resultado);
                                 <div class="form-group ">
                                     <label for="nit" class="control-label col-lg-2">Category</label>
                                         <div class="col-lg-10"><span class="titulosint">
-                                        <?=$_REQUEST["nom"]?>	
-            <input name="id_cat_adm" type="hidden" id="id_cat_adm" value="<?=$_REQUEST["idc"]?>">
-            <input name="nom" type="hidden" id="nom" value="<?=$_REQUEST["nom"]?>">
+                                        <?php echo $_REQUEST["nom"]?>	
+            <input name="id_cat_adm" type="hidden" id="id_cat_adm" value="<?php echo $_REQUEST["idc"]?>">
+            <input name="nom" type="hidden" id="nom" value="<?php echo $_REQUEST["nom"]?>">
                                   </span> </div>
                                   </div>
                                   <div class="form-group ">
@@ -105,7 +105,7 @@ $datos = $dbcon->fetch_array($resultado);
                           <div class="col-lg-offset-2 col-lg-10">
                                             <button class="btn btn-primary" type="submit">Send</button>
                                             <button class="btn btn-default" type="button" onClick="window.location='int_subcat.php&mn=3'">Cancel</button>
-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
+                                            <input name="idc" type="hidden" id="idc" value="<?php echo $_REQUEST["idc"]?>">
                                         </div>
                                     </div>
                               </form>
@@ -118,7 +118,7 @@ $datos = $dbcon->fetch_array($resultado);
         <!--body wrapper end-->
 
         <!--footer section start-->
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 

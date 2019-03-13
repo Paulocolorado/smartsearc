@@ -28,13 +28,13 @@
           <img src="images/logosolo.png" alt=""/>
         </div>
         <div class="login-wrap">
-        <?
+        <?php
         if (isset($_GET["msg"]) && $_GET["msg"] ==1) {
 		?>
                     <div class="alert-danger">
                         <p>Por favor verifique su email y clave!.</p>
        				</div>
-                    <?
+                    <?php
 		}
 					?>
             <input type="text" class="form-control" placeholder="Email" autofocus name="email">

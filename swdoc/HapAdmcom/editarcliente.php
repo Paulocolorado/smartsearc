@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 include "funciones.php";
@@ -34,7 +34,7 @@ $datos = $dbcon->fetch_array($resultado);
 
 <section>
     <!-- left side start-->
-     <? include("nav.php")?>
+     <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -49,7 +49,7 @@ $datos = $dbcon->fetch_array($resultado);
 
 
         <!--notification menu start -->
-    <? include("menusup.php")?>
+    <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -81,41 +81,41 @@ $datos = $dbcon->fetch_array($resultado);
                                   <div class="form-group ">
                                     <label for="nit" class="control-label col-lg-2">Nombre</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?=$datos["nombre"]?>" />
+                                            <input class=" form-control" id="nombre" name="nombre" type="text" value="<?php echo $datos["nombre"]?>" />
                                         </div>
                                   </div>
                                   <div class="form-group ">
                                         <label for="numfactura" class="control-label col-lg-2">NIT</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="identificacion" name="identificacion" type="text" value="<?=$datos["identificacion"]?>" />
+                                            <input class=" form-control" id="identificacion" name="identificacion" type="text" value="<?php echo $datos["identificacion"]?>" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="numfactura" class="control-label col-lg-2">Email</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="email" name="email" type="text" value="<?=$datos["email"]?>" />
+                                            <input class=" form-control" id="email" name="email" type="text" value="<?php echo $datos["email"]?>" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="numfactura" class="control-label col-lg-2">Dirección</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="direccion" name="direccion" type="text" value="<?=$datos["direccion"]?>"/>
+                                            <input class=" form-control" id="direccion" name="direccion" type="text" value="<?php echo $datos["direccion"]?>"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="numfactura" class="control-label col-lg-2">Teléfono</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="telefono" name="telefono" type="text" value="<?=$datos["telefono"]?>" />
+                                            <input class=" form-control" id="telefono" name="telefono" type="text" value="<?php echo $datos["telefono"]?>" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="numfactura" class="control-label col-lg-2">Ciudad</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="ciudad" name="ciudad" type="text" value="<?=$datos["ciudad"]?>" />
+                                            <input class=" form-control" id="ciudad" name="ciudad" type="text" value="<?php echo $datos["ciudad"]?>" />
                                         </div>
                                     </div>
                                     
-                                    <?
+                                    <?php
 	/*
                                   <div class="form-group ">
                                     <label for="responsable" class="control-label col-lg-2">Country</label>
@@ -133,13 +133,13 @@ $datos = $dbcon->fetch_array($resultado);
                                     <div class="form-group ">
                                         <label for="numfactura" class="control-label col-lg-2">Clave</label>
                                         <div class="col-lg-10">
-                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?=$datos["clave"]?>"/>
+                                            <input class=" form-control" id="nombre" name="clave" type="text"  value="<?php echo $datos["clave"]?>"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="numfactura" class="control-label col-lg-2">Cuota en GB</label>
                                         <div class="col-lg-2">
-                                            <input class=" form-control" id="cuota" name="cuota" type="number"  value="<?=$datos["cuota"]/1000000000?>" required />
+                                            <input class=" form-control" id="cuota" name="cuota" type="number"  value="<?php echo $datos["cuota"]/1000000000?>" required />
                                         </div>
                                     </div>
                                     
@@ -159,7 +159,7 @@ $datos = $dbcon->fetch_array($resultado);
                                         <div class="col-lg-offset-2 col-lg-10">
                                             <button class="btn btn-primary" type="submit">Actualizar</button>
                                             <button class="btn btn-default" type="button" onClick="window.location='clientes.php'">Cancelar</button>
-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
+                                            <input name="idc" type="hidden" id="idc" value="<?php echo $_REQUEST["idc"]?>">
                                         </div>
                                     </div>
                               </form>
@@ -172,7 +172,7 @@ $datos = $dbcon->fetch_array($resultado);
         <!--body wrapper end-->
 
         <!--footer section start-->
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 

@@ -37,13 +37,13 @@ if ($total > 0){
 	//header("Location: int_iniciopp.php?idc=".$datos[id_cliente]."&nomc=".$datos[nombre]);
 	?>
 	<form name="abc" method="post" action="inicio.php" target="_parent">
-	  <input type="hidden" name="idwh" value="<?=$datos["id_cliente"]?>">
-	  <input type="hidden" name="nomwh" value="<?=$datos["nombre"]?>">
+	  <input type="hidden" name="idwh" value="<?php echo $datos["id_cliente"]?>">
+	  <input type="hidden" name="nomwh" value="<?php echo $datos["nombre"]?>">
 	</form>
 	<script language="javascript">
 	document.abc.submit();
 	</script>
-	<?
+	<?php
 }
 else{
 //print "noooo";

@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 //include "validasession.php";
 session_start();
@@ -27,13 +27,13 @@ if ($total > 0){
 	//header("Location: int_iniciopp.php?idc=".$datos[id_cliente]."&nomc=".$datos[nombre]);
 	?>
 	<form name="abc" method="post" action="inicio.php" target="_parent">
-	  <input type="hidden" name="idwh" value="<?=$datos["idusuario"]?>">
-	  <input type="hidden" name="nomwh" value="<?=$datos["nombre"]." ".$datos["apellido"]?>">
+	  <input type="hidden" name="idwh" value="<?php echo $datos["idusuario"]?>">
+	  <input type="hidden" name="nomwh" value="<?php echo $datos["nombre"]." ".$datos["apellido"]?>">
 	</form>
 	<script language="javascript">
 	document.abc.submit();
 	</script>
-	<?
+	<?php
 }
 else{
 //print "noooo";

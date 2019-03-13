@@ -1,4 +1,4 @@
-<?
+<?php
 include("dbclass.php");
 include("funciones.php");
 //print "<br>".$hijo."<br>";

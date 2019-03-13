@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 include "funciones.php";
@@ -63,7 +63,7 @@ $total = $dbcon->num_rows($resultado);
 
 <section>
     <!-- left side start-->
-     <? include("nav.php") ?>
+     <?php include("nav.php") ?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -79,7 +79,7 @@ $total = $dbcon->num_rows($resultado);
       
 
         <!--notification menu start -->
-     <? include("menusup.php") ?>
+     <?php include("menusup.php") ?>
         <!--notification menu end -->
 
         </div>
@@ -126,7 +126,7 @@ $total = $dbcon->num_rows($resultado);
    	
                             <section class="panel">
                                 <div class="panel-body btn-gap center-block">
-               <?
+               <?php
 		for ($i=0; $i<$total; $i++)
 		{
 			$fondo = "background-color: #ffffff;
@@ -137,11 +137,11 @@ $total = $dbcon->num_rows($resultado);
   text-align: center;";
 			$datos = $dbcon->fetch_array($resultado);
 		?>
-        <div class="col-md-2" style="<?=$fondo?>">
-        <a href="#"  onClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><img src="images/folder_azul.png"  alt=""/></a> <br>
-       	  <a href="#"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+        <div class="col-md-2" style="<?php echo $fondo?>">
+        <a href="#"  onClick="cambiarfolder(<?php echo $datos["idcarpeta"]?>)"><img src="images/folder_azul.png"  alt=""/></a> <br>
+       	  <a href="#"><strong><?php print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
         </div>
-        <?
+        <?php
 		}
 		?>
 			</div>
@@ -149,7 +149,7 @@ $total = $dbcon->num_rows($resultado);
         
                             <section class="panel col-md-6">
              <div class="panel-body btn-gap center-block">
-			 	<?=$_SESSION["vg_cuota"]/1000000000?> GB - Ocupado <? $tamarchi = tamanodocs($_SESSION["vg_idc"]);
+			 	<?php echo $_SESSION["vg_cuota"]/1000000000?> GB - Ocupado <?php $tamarchi = tamanodocs($_SESSION["vg_idc"]);
 			  	$vltmegas = $tamarchi / 1000000;
 				$vlgb = $tamarchi / 1000000000;
 			print round($vltmegas,2)." MB";
@@ -164,8 +164,8 @@ $total = $dbcon->num_rows($resultado);
                                             Espacio utilizado
                                         </div>
                                         <div class="progress progress-xs">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <?=$porcentaje?>%">
-                                                <span class=""><?=round($porcentaje,2)?>%</span>
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $porcentaje?>%">
+                                                <span class=""><?php echo round($porcentaje,2)?>%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +180,7 @@ $total = $dbcon->num_rows($resultado);
         <!--body wrapper end-->
 
         
- <? include("footer.php") ?>
+ <?php include("footer.php") ?>
 
 
     </div>
@@ -188,9 +188,9 @@ $total = $dbcon->num_rows($resultado);
 </section>
 
                 <form name="ffolder" action="navega.php" method="get">
-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+                    <input type="hidden" name="idc" value="<?php echo $vlidc?>">
                     <input type="hidden" name="padre" value="">
-                    <input type="hidden" name="padreactual" value="<?=$vlpadre?>">
+                    <input type="hidden" name="padreactual" value="<?php echo $vlpadre?>">
                   </form>
 <!-- Placed js at the end of the document so the pages load faster -->
 <script src="js/jquery-1.10.2.min.js"></script>

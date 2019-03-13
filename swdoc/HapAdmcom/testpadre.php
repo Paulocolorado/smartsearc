@@ -1,4 +1,4 @@
-<?
+<?php
 
 include "dbclass.php";
 include "validasession.php";
@@ -12,7 +12,7 @@ include "funciones.php";
 </head>
 
 <body>
-<?
+<?php
 	
 	
 	//ftree(11,1);

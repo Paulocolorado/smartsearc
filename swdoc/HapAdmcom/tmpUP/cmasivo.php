@@ -1,4 +1,4 @@
-<?
+<?php
 error_reporting(E_ALL ^ E_NOTICE);
 include "../dbclass.php";
 include "../validasession.php";
@@ -33,7 +33,7 @@ $total = $dbcon->num_rows($resultado);?>
 
 <section>
     <!-- left side start-->
-     <? 
+     <?php 
 	//include("../nav.php")
 	?>
     <!-- left side end-->
@@ -50,7 +50,7 @@ $total = $dbcon->num_rows($resultado);?>
 
 
         <!--notification menu start -->
-    <? 
+    <?php 
 			//include("../menusup.php")
 			?>
         <!--notification menu end -->
@@ -88,13 +88,13 @@ $total = $dbcon->num_rows($resultado);?>
                                         <div class="col-lg-10">
 <select class="form-control input-sm m-bot15" name="idcliente">
                                                 <option value="">Seleccionar cliente</option>
-                                                <?
+                                                <?php
 	for ($i=0; $i<$total; $i++)
 		{
 			$datos = $dbcon->fetch_array($resultado);
 	?>
-                                         <option value="<?=$datos["id_cliente"]?>" ><?=$datos["nombre"]?></option>
-                                                <?
+                                         <option value="<?php echo $datos["id_cliente"]?>" ><?php echo $datos["nombre"]?></option>
+                                                <?php
 		}
 	?>
                                             </select>
@@ -108,8 +108,8 @@ $total = $dbcon->num_rows($resultado);?>
                                         <div class="col-lg-offset-2 col-lg-10">
                                             <button class="btn btn-primary" type="submit">Continuar</button>
                                             <button class="btn btn-default" type="button" onClick="window.location='clientes.php'">Cancelar</button>
-                                            <input name="idc" type="hidden" id="idc" value="<?=$_REQUEST["idc"]?>">
-                                       <input name="idc1" type="hidden" id="idc1" value="<?=$_REQUEST["idcb"]?>">
+                                            <input name="idc" type="hidden" id="idc" value="<?php echo $_REQUEST["idc"]?>">
+                                       <input name="idc1" type="hidden" id="idc1" value="<?php echo $_REQUEST["idcb"]?>">
                                         </div>
                                     </div>
                               </form>
@@ -122,7 +122,7 @@ $total = $dbcon->num_rows($resultado);?>
         <!--body wrapper end-->
 
         <!--footer section start-->
-     <? include("../footer.php")?>
+     <?php include("../footer.php")?>
         <!--footer section end-->
 
 

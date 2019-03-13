@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 $dbcon = new connection($ip, $login, $pass, $db, $query);
@@ -34,7 +34,7 @@ if ($_REQUEST["msg"] == 3) $msgtxt = "La clave nueva y la confirmacion de esta d
 
 <section>
     <!-- left side start-->
-     <? include("nav.php")?>
+     <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -49,7 +49,7 @@ if ($_REQUEST["msg"] == 3) $msgtxt = "La clave nueva y la confirmacion de esta d
 
 
         <!--notification menu start -->
-    <? include("menusup.php")?>
+    <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -75,7 +75,7 @@ if ($_REQUEST["msg"] == 3) $msgtxt = "La clave nueva y la confirmacion de esta d
           <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">Fields</header>
-                        <?
+                        <?php
                         if ($_REQUEST["msg"] == 2){
 						?>
                         <div class="alert alert-block alert-danger fade in">
@@ -84,7 +84,7 @@ if ($_REQUEST["msg"] == 3) $msgtxt = "La clave nueva y la confirmacion de esta d
                                 </button>
                                 <strong>Alerta! </strong> Su clave actual no coincide.
                             </div>
-                        <?
+                        <?php
 						}
                         if ($_REQUEST["msg"] == 3){
 						?>
@@ -94,7 +94,7 @@ if ($_REQUEST["msg"] == 3) $msgtxt = "La clave nueva y la confirmacion de esta d
                                 </button>
                                 <strong>Alerta! </strong> Su nueva clave y confirmación no coinciden.
                             </div>
-                            <?
+                            <?php
 						}
                         if ($_REQUEST["msg"] == 1){
 							?>
@@ -104,7 +104,7 @@ if ($_REQUEST["msg"] == 3) $msgtxt = "La clave nueva y la confirmacion de esta d
                                 </button>
                                 <strong>Bien!</strong> Su clave se actualizó con éxito.
                             </div>
-                        <?
+                        <?php
 						}
 						?>
                         <div class="panel-body">
@@ -145,7 +145,7 @@ if ($_REQUEST["msg"] == 3) $msgtxt = "La clave nueva y la confirmacion de esta d
         <!--body wrapper end-->
 
         <!--footer section start-->
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 

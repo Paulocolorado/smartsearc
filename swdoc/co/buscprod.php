@@ -1,4 +1,4 @@
-<?
+<?php
 // calc an offset of 24 hours
   $offset = 0;	
 // calc the string in GMT not localtime and add the offset
@@ -51,7 +51,7 @@ else $msgtxt = "";
 
 <section>
     <!-- left side start-->
-     <? include("nav.php")?>
+     <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -66,7 +66,7 @@ else $msgtxt = "";
 
 
         <!--notification menu start -->
-    <? include("menusup.php")?>
+    <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -132,7 +132,7 @@ else $msgtxt = "";
         <!--body wrapper end-->
 
         <!--footer section start-->
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 

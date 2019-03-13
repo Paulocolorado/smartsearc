@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 
@@ -42,7 +42,7 @@ $total = $dbcon->num_rows($resultado);
 
 <section>
     <!-- left side start-->
-     <? include("nav.php")?>
+     <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -57,7 +57,7 @@ $total = $dbcon->num_rows($resultado);
 
 
         <!--notification menu start -->
-    <? include("menusup.php")?>
+    <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -140,7 +140,7 @@ $total = $dbcon->num_rows($resultado);
                                         </div>
                                     </div>
                                     
-                                    <? 
+                                    <?php 
 	/*
                                   <div class="form-group ">
                                     <label for="responsable" class="control-label col-lg-2">País</label>
@@ -191,7 +191,7 @@ $total = $dbcon->num_rows($resultado);
         <!--body wrapper end-->
 
         <!--footer section start-->
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 

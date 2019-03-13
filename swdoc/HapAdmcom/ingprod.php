@@ -1,4 +1,4 @@
-<?
+<?php
 // calc an offset of 24 hours
 header('Content-Type: text/html; charset=iso-8859-1');
   $offset = 0;	
@@ -52,7 +52,7 @@ else $msgtxt = "";
 
 <section>
     <!-- left side start-->
-     <? include("nav.php")?>
+     <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -67,7 +67,7 @@ else $msgtxt = "";
 
 
         <!--notification menu start -->
-        <? include("menusup.php")?>
+        <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -102,15 +102,15 @@ else $msgtxt = "";
                                         <div class="selector-pais">
 <select name="categoria" class="form-control input-sm m-bot15" id="categoria" required>
                                                 <option value="">Select</option>
-                           <?
+                           <?php
 		for ($i=0; $i<$total; $i++)
 		{
 			$datos = $dbcon->fetch_array($resultado);
 		?>
-              <option value="<?=$datos["idacat"]?>" >
-              <?=$datos["categoria"]?>
+              <option value="<?php echo $datos["idacat"]?>" >
+              <?php echo $datos["categoria"]?>
               </option>
-              <?
+              <?php
 	  }
 	  ?>
                                             </select>
@@ -178,7 +178,7 @@ else $msgtxt = "";
                                             <textarea rows="6" class="form-control form-control ckeditor" name="descripcion"></textarea>
                                         </div>
                                     </div>
-                                    <?
+                                    <?php
 									/*
                                     <div class="form-group ">
                                         <label for="codigo" class="control-label col-lg-2">Cantidad Maxima a solicitar</label>
@@ -317,7 +317,7 @@ else $msgtxt = "";
         <!--body wrapper end-->
 
         <!--footer section start-->
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 

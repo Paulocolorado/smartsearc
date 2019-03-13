@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 include "funciones.php";
@@ -49,7 +49,7 @@ $total = $dbcon->num_rows($resultado);
 <section>
     <!-- left side start-->
     
-    <? include("nav.php")?>
+    <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -64,7 +64,7 @@ $total = $dbcon->num_rows($resultado);
 
 
         <!--notification menu start -->
-   <? include("menusup.php")?>
+   <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -73,7 +73,7 @@ $total = $dbcon->num_rows($resultado);
         <!-- page heading start-->
         <div class="page-heading">
             <h3>
-               Permisos Carpeta: <strong><?=$vlncar?></strong>
+               Permisos Carpeta: <strong><?php echo $vlncar?></strong>
             </h3>
             <ul class="breadcrumb">
                 <li>
@@ -104,14 +104,14 @@ $total = $dbcon->num_rows($resultado);
         </thead>
         <tbody>
               
-              <?
+              <?php
 		for ($i=0; $i<$total; $i++)
 		{
 			$datos = $dbcon->fetch_array($resultado);
 		?>
         <tr >
          <td>
-         <?
+         <?php
 			 $vlpermiso = permisocarpeta($datos["iduc"], $_REQUEST["idcar"] );
 			//print "Permiso actual = ".$vlpermiso;
 			if ($vlpermiso == 1){ 
@@ -127,12 +127,12 @@ $total = $dbcon->num_rows($resultado);
 								$vloperacion = 1;
 			}
 			 ?>
-         <?
+         <?php
 		  print "<strong>".$datos["nombre"]." ".$datos["apellido"]."</strong>";
 		  ?></td>
-       <td><?=$vltxt?> - <a href="actpermisos.php?idcli=<?=$_REQUEST["idcli"]?>&idcar=<?=$_REQUEST["idcar"]?>&vlper=<?=$vloperacion?>&iduc=<?=$vlvalcb ?>"><?=$vltxtlink?></a></td>
+       <td><?php echo $vltxt?> - <a href="actpermisos.php?idcli=<?php echo $_REQUEST["idcli"]?>&idcar=<?php echo $_REQUEST["idcar"]?>&vlper=<?php echo $vloperacion?>&iduc=<?php echo $vlvalcb ?>"><?php echo $vltxtlink?></a></td>
         </tr>
-        <?
+        <?php
 		}
 		?>    
                 
@@ -140,9 +140,9 @@ $total = $dbcon->num_rows($resultado);
         </table>
         </div>
              <div class="form-group">
-                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?=$k?>">
-                          <input type="hidden" name="idcli" value="<?=$_REQUEST["idcli"]?>">
-                          <input type="hidden" name="idcar" value="<?=$_REQUEST["idcar"]?>">
+                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?php echo $k?>">
+                          <input type="hidden" name="idcli" value="<?php echo $_REQUEST["idcli"]?>">
+                          <input type="hidden" name="idcar" value="<?php echo $_REQUEST["idcar"]?>">
                 </div>
             </div> 
       </div>
@@ -159,7 +159,7 @@ $total = $dbcon->num_rows($resultado);
 
         <!--footer section start-->
        
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 
@@ -187,18 +187,18 @@ $total = $dbcon->num_rows($resultado);
                 <form name="fcarrito" action="agregarcarrito.php" method="post">
                     <input type="hidden" name="idprod" value="">
                     <input type="hidden" name="qt" value="">
-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
+                    <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                   </form>
                 <form name="fsort" action="resprod.php" method="post">
-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
+                    <input type="hidden" name="codigo" value="<?php echo $codigo?>">
+                    <input type="hidden" name="nombre" value="<?php echo $nombre?>">
+                    <input type="hidden" name="idcategoria" value="<?php echo $idcategoria?>">
+                    <input type="hidden" name="setbq" value="<?php echo $setbq?>">
+                    <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                     <input type="hidden" name="ordenarpor" value="">
                   </form>
  <form name="exportxls" action="expxls.php" method="post">
-                    <input type="hidden" name="query" value="<?=$queryexp?>">
+                    <input type="hidden" name="query" value="<?php echo $queryexp?>">
                     <input type="hidden" name="nombre" value="">
  </form>
 </body>

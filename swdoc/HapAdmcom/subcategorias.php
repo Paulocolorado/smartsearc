@@ -1,4 +1,4 @@
-	 <?
+	 <?php
 
 include "dbclass.php";
 session_start();
@@ -13,9 +13,9 @@ for ($i=0; $i<$total; $i++)
 {
 $datos = $dbcon->fetch_array($resultado);
 ?>
-  <option value="<?=$datos["idsubcat"]?>" >
-  <?=htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?>
+  <option value="<?php echo $datos["idsubcat"]?>" >
+  <?php echo htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?>
   </option>
-  <?
+  <?php
 }
 ?>

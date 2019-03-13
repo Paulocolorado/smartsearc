@@ -3,7 +3,7 @@
               
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <?=$_SESSION["vg_nombre"]?>
+                        <?php echo $_SESSION["vg_nombre"]?>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">

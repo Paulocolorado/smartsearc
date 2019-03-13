@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 include "funciones.php";
@@ -40,7 +40,7 @@ $total = $dbcon->num_rows($resultado);
 <section>
     <!-- left side start-->
     
-    <? include("nav.php")?>
+    <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -55,7 +55,7 @@ $total = $dbcon->num_rows($resultado);
 
 
         <!--notification menu start -->
-   <? include("menusup.php")?>
+   <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -98,23 +98,23 @@ $total = $dbcon->num_rows($resultado);
         </thead>
         <tbody>
               
-              <?
+              <?php
 		for ($i=0; $i<$total; $i++)
 		{
 			$datos = $dbcon->fetch_array($resultado);
 		?>
         <tr >
-          <td><?
+          <td><?php
 		  if ($datos["estado"]=="1")
 		  print "<strong>";
 		  ?>
-		      <? print $datos["nombre"]?>
-		      <?
+		      <?php print $datos["nombre"]?>
+		      <?php
 		  if ($datos["estado"]=="1")
 		  print "</strong>";
 		  ?></td>
-          <td ><?=$datos["identificacion"]?></td>
-          <td ><?=$datos["cuota"]/1000000000?> GB - Ocupado <? $tamarchi = tamanodocs($datos["id_cliente"]);
+          <td ><?php echo $datos["identificacion"]?></td>
+          <td ><?php echo $datos["cuota"]/1000000000?> GB - Ocupado <?php $tamarchi = tamanodocs($datos["id_cliente"]);
 			  	$vltmegas = $tamarchi / 1000000;
 				$vlgb = $tamarchi / 1000000000;
 			print round($vltmegas,2)." MB";
@@ -123,23 +123,23 @@ $total = $dbcon->num_rows($resultado);
 			  ?>
           
 			<div class="progress progress-xs">
-				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <?=$porcentaje?>%">
-					<span class=""><?=round($porcentaje,1)?>%</span>
+				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $porcentaje?>%">
+					<span class=""><?php echo round($porcentaje,1)?>%</span>
 				</div>
 			</div>
           
           </td>
-          <td ><?=$datos["estado"]?></td>
-          <td ><?
+          <td ><?php echo $datos["estado"]?></td>
+          <td ><?php
 			  if ($_SESSION["vg_id"] == 1 || $_SESSION["vg_id"] == 2 ) {
 			  ?>
-			  <a href="editarcliente.php?idc=<?=$datos["id_cliente"]?>" >Editar</a>&nbsp;&nbsp;-&nbsp;&nbsp;
-			<?
+			  <a href="editarcliente.php?idc=<?php echo $datos["id_cliente"]?>" >Editar</a>&nbsp;&nbsp;-&nbsp;&nbsp;
+			<?php
 			  }
-			  ?><a href="navegam.php?idc=<?=$datos["id_cliente"]?>&nom=<?=$datos["nombre"]?>" >Ver documentos </a>-&nbsp;&nbsp;
-       <a href="usuarios.php?idc=<?=$datos["id_cliente"]?>&nom=<?=$datos["nombre"]?>" >Ver usuarios </a></td>
+			  ?><a href="navegam.php?idc=<?php echo $datos["id_cliente"]?>&nom=<?php echo $datos["nombre"]?>" >Ver documentos </a>-&nbsp;&nbsp;
+       <a href="usuarios.php?idc=<?php echo $datos["id_cliente"]?>&nom=<?php echo $datos["nombre"]?>" >Ver usuarios </a></td>
         </tr>
-        <?
+        <?php
 		}
 		?>    
                 
@@ -147,8 +147,8 @@ $total = $dbcon->num_rows($resultado);
         </table>
         </div>
              <div class="form-group">
-                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?=$k?>">
-                          <input type="hidden" name="idcb" value="<?=$idcb?>">
+                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?php echo $k?>">
+                          <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                     <button class="btn btn-primary" type="submit">Adicionar Cliente</button>
                 </div>
             </div> 
@@ -166,7 +166,7 @@ $total = $dbcon->num_rows($resultado);
 
         <!--footer section start-->
        
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 
@@ -194,18 +194,18 @@ $total = $dbcon->num_rows($resultado);
                 <form name="fcarrito" action="agregarcarrito.php" method="post">
                     <input type="hidden" name="idprod" value="">
                     <input type="hidden" name="qt" value="">
-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
+                    <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                   </form>
                 <form name="fsort" action="resprod.php" method="post">
-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
+                    <input type="hidden" name="codigo" value="<?php echo $codigo?>">
+                    <input type="hidden" name="nombre" value="<?php echo $nombre?>">
+                    <input type="hidden" name="idcategoria" value="<?php echo $idcategoria?>">
+                    <input type="hidden" name="setbq" value="<?php echo $setbq?>">
+                    <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                     <input type="hidden" name="ordenarpor" value="">
                   </form>
  <form name="exportxls" action="expxls.php" method="post">
-                    <input type="hidden" name="query" value="<?=$queryexp?>">
+                    <input type="hidden" name="query" value="<?php echo $queryexp?>">
                     <input type="hidden" name="nombre" value="">
  </form>
 </body>

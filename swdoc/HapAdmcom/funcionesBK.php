@@ -1,4 +1,4 @@
-<?
+<?php
 
 
 $dbconft = new connection($ip, $login, $pass, $db, $query);

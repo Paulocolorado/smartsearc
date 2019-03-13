@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 session_start();
@@ -40,7 +40,7 @@ if ($msg==4) $msgtxt = "El producto no se encontró.<br>por favor verifique el c
 
 <section>
     <!-- left side start-->
-     <? include("nav.php") ?>
+     <?php include("nav.php") ?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -56,7 +56,7 @@ if ($msg==4) $msgtxt = "El producto no se encontró.<br>por favor verifique el c
       
 
         <!--notification menu start -->
-     <? include("menusup.php") ?>
+     <?php include("menusup.php") ?>
         <!--notification menu end -->
 
         </div>
@@ -132,7 +132,7 @@ if ($msg==4) $msgtxt = "El producto no se encontró.<br>por favor verifique el c
         <!--body wrapper end-->
 
         
- <? include("footer.php") ?>
+ <?php include("footer.php") ?>
 
 
     </div>

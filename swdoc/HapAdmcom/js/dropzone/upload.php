@@ -1,4 +1,4 @@
-<?
+<?php
 if(count($_FILES['uploads']['filesToUpload'])) {
 	foreach ($_FILES['uploads']['filesToUpload'] as $file) {
 	    
