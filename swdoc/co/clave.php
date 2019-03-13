@@ -1,6 +1,6 @@
 <?php
 error_reporting( E_ALL );
-$ip = "localhost"; //servidor mysql
+$ip = "127.0.0.1"; //servidor mysql
 $login = "haptrack_docu";
 $pass = "*SmartApp135";
 $db = "haptrack_docu";
