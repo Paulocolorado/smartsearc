@@ -33,8 +33,8 @@ echo($datosft["nombre"].">>".$datosft["padre"]);
 
 
 function conexion(){
-    $conexion = mysql_connect($ip,$login, $pass) or die ('No se ha podido conectar al servidor');
-    mysql_select_db($db) or die ('No se pudo seleccionar la base de datos');  
+    $conexion = mysqli_connect($ip,$login, $pass) or die ('No se ha podido conectar al servidor');
+    mysqli_select_db($db) or die ('No se pudo seleccionar la base de datos');
 }
  
 function menu($idc,$id){
@@ -45,16 +45,16 @@ function menu($idc,$id){
         {
         $query="SELECT nombre,padre,idcarpeta from carpetas where idcliente = ".$idc." and idcarpeta=".$id;
 			//print $query;
-        $result=mysql_query($query); 
+        $result=mysqli_query($query);
  
-        while($fila=mysql_fetch_array($result)){ 
+        while($fila=mysqli_fetch_array($result)){
             $nombre=$fila['nombre']; 
             $url=$fila['idcarpeta'];
             
             $query2="select padre from carpetas where idcliente = ".$idc." and idcarpeta='".$fila['padre']."'";
-            $result2=mysql_query($query2); 
+            $result2=mysqli_query($query2);
  
-            if ($fila2=mysql_fetch_array($result2)){ 
+            if ($fila2=mysqli_fetch_array($result2)){
                 echo "<li><a href='navega.php?idc=".$idc."&padre=".$url."'>".htmlentities($nombre, ENT_COMPAT, 'iso-8859-1')."</a></li>"; 
                         cargarmenu($idc,$fila['padre']);
                       
@@ -78,9 +78,9 @@ function menubase($idc){
 
         $query="SELECT nombre,padre,idcarpeta from carpetas where idcliente = ".$idc." and padre = 0";
 			//print $query;
-        $result=mysql_query($query); 
+        $result=mysqli_query($query);
  
-        while($fila=mysql_fetch_array($result)){ 
+        while($fila=mysqli_fetch_array($result)){
             $nombre=$fila['nombre']; 
             $url=$fila['idcarpeta'];
 			
@@ -101,9 +101,9 @@ function tamanodocs($idc){
 
         $query="SELECT sum(tamano) tamanores from documentos where idcliente = ".$idc;
 			//print $query;
-        $result=mysql_query($query); 
+        $result=mysqli_query($query);
  
-        while($fila=mysql_fetch_array($result)){ 
+        while($fila=mysqli_fetch_array($result)){
             $vgtam=$fila['tamanores']; 
           }
           
@@ -117,10 +117,10 @@ function permisocarpeta($idcli, $idcar){
         $query="SELECT permiso from usrpermiso where iducp = ".$idcli." and idcarpeta = ".$idcar;
 			//print $query;
 	//exit;
-        $result=mysql_query($query); 
+        $result=mysqli_query($query);
  		
 	$vgpermiso = 0;
-        while($fila=mysql_fetch_array($result)){ 
+        while($fila=mysqli_fetch_array($result)){
             $vgpermiso=$fila['permiso']; 
           }
           
