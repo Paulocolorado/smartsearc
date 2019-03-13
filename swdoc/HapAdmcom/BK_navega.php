@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 include "funciones.php";
@@ -85,7 +85,7 @@ $totald = $dbcond->num_rows($resultadod);
 <section>
     <!-- left side start-->
     
-    <? include("nav.php")?>
+    <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -100,7 +100,7 @@ $totald = $dbcond->num_rows($resultadod);
 
 
         <!--notification menu start -->
-   <? include("menusup.php")?>
+   <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -115,15 +115,15 @@ $totald = $dbcond->num_rows($resultadod);
                 <li>
                     <a href="navega.php">Inicio</a>
                 </li>
-                <?
+                <?php
 				if ($vlpadre>0){
 				?>
                 
-                    <?
+                    <?php
 					menu($vlidc, $vlpadre);
 					?>
                 
-                <?
+                <?php
 				}
 				?>
                 <li class="active">  </li>
@@ -136,17 +136,17 @@ $totald = $dbcond->num_rows($resultadod);
         
         <div class="row">
         
-               <?
+               <?php
 		for ($i=0; $i<$total; $i++)
 		{
 			$datos = $dbcon->fetch_array($resultado);
 		?>
         <div class="col-md-2">
-        <section class="panel"> <a href="#" onDblClick="cambiarfolder(<?=$datos["idcarpeta"]?>)"><img src="images/folder.png" width="90" height="64" alt=""/></a> 
-       	  <a href="#"><strong><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a>
+        <section class="panel"> <a href="#" onDblClick="cambiarfolder(<?php echo $datos["idcarpeta"]?>)"><img src="images/folder.png" width="90" height="64" alt=""/></a>
+       	  <a href="#"><strong><?php print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a>
         </section>
         </div>
-        <?
+        <?php
 		}
 		?>
         
@@ -156,24 +156,24 @@ $totald = $dbcond->num_rows($resultadod);
             
         <div class="row">
         
-               <?
+               <?php
 		for ($id=0; $id<$totald; $id++)
 		{
 			$datosd = $dbcond->fetch_array($resultadod);
 		?>
         <div class="col-md-2">
-        <section class="panel"> <a href="docs/<?=$datosd["adjunto"]?>"><img src="images/documento.png" width="50"  alt=""/></a> 
-       	  <a href="#"><strong><? print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a>  <?
+        <section class="panel"> <a href="docs/<?php echo $datosd["adjunto"]?>"><img src="images/documento.png" width="50"  alt=""/></a>
+       	  <a href="#"><strong><?php print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a>  <?php
 			
         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
 			?>
 		<br>	
-    <div align="center"> <a href="#" onClick="aaa('http://www.haptracking.com/swdoc/HapAdmcom/docs/<?=$datosd["adjunto"]?>')"><i class="fa fa-download"> Preview</i></a> </div>
-       <?
+    <div align="center"> <a href="#" onClick="aaa('http://www.haptracking.com/swdoc/HapAdmcom/docs/<?php echo $datosd["adjunto"]?>')"><i class="fa fa-download"> Preview</i></a> </div>
+       <?php
 		}
 			?></section>
         </div>
-        <?
+        <?php
 		}
 		?>
         
@@ -195,8 +195,8 @@ $totald = $dbcond->num_rows($resultadod);
                                 <div class="panel-body">
                                    
                 <form action="subirdoc.php" method="post" enctype="multipart/form-data" name="subedoc">
-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
+                    <input type="hidden" name="idc" value="<?php echo $vlidc?>">
+                    <input type="hidden" name="padre" value="<?php echo $vlpadre?>">
                    <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
                                     <div class="col-md-4">
@@ -227,8 +227,8 @@ $totald = $dbcond->num_rows($resultadod);
                                 <div class="panel-body">
                                    
                 <form action="crearcarpeta.php" method="post"  name="creac">
-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
-                    <input type="hidden" name="padre" value="<?=$vlpadre?>">
+                    <input type="hidden" name="idc" value="<?php echo $vlidc?>">
+                    <input type="hidden" name="padre" value="<?php echo $vlpadre?>">
                    <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Nombre</label>
                                     <div class="col-md-4">
@@ -254,7 +254,7 @@ $totald = $dbcond->num_rows($resultadod);
 
         <!--footer section start-->
        
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 
@@ -280,20 +280,20 @@ $totald = $dbcond->num_rows($resultadod);
 <script src="js/scripts.js"></script>
 
                 <form name="ffolder" action="navega.php" method="get">
-                    <input type="hidden" name="idc" value="<?=$vlidc?>">
+                    <input type="hidden" name="idc" value="<?php echo $vlidc?>">
                     <input type="hidden" name="padre" value="">
-                    <input type="hidden" name="padreactual" value="<?=$vlpadre?>">
+                    <input type="hidden" name="padreactual" value="<?php echo $vlpadre?>">
                   </form>
                 <form name="fsort" action="resprod.php" method="post">
-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
+                    <input type="hidden" name="codigo" value="<?php echo $codigo?>">
+                    <input type="hidden" name="nombre" value="<?php echo $nombre?>">
+                    <input type="hidden" name="idcategoria" value="<?php echo $idcategoria?>">
+                    <input type="hidden" name="setbq" value="<?php echo $setbq?>">
+                    <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                     <input type="hidden" name="ordenarpor" value="">
                   </form>
  <form name="exportxls" action="expxls.php" method="post">
-                    <input type="hidden" name="query" value="<?=$queryexp?>">
+                    <input type="hidden" name="query" value="<?php echo $queryexp?>">
                     <input type="hidden" name="nombre" value="">
  </form>
 </body>

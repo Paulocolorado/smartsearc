@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 session_start();
@@ -48,7 +48,7 @@ if ($msg==4) $msgtxt = "El producto no se encontró.<br>por favor verifique el c
 
 <section>
     <!-- left side start-->
-     <? include("nav.php") ?>
+     <?php include("nav.php") ?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -64,7 +64,7 @@ if ($msg==4) $msgtxt = "El producto no se encontró.<br>por favor verifique el c
       
 
         <!--notification menu start -->
-     <? include("menusup.php") ?>
+     <?php include("menusup.php") ?>
         <!--notification menu end -->
 
         </div>
@@ -119,19 +119,19 @@ if ($msg==4) $msgtxt = "El producto no se encontró.<br>por favor verifique el c
         </tr>
         </thead>
         <tbody>
-        <?
+        <?php
         for ($i=0; $i<$total; $i++){
 						
                         $datos = $dbcon->fetch_array($resultado);
                 ?>
         
         <tr class="gradeX">
-            <td><?=$datos["fecha"]?></td>
-            <td><?=htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
-            <td><?=$datos["tipo"]?></td>
-            <td><a href="docs/<?=$datos["adjunto"]?>">Ver</a></td>
+            <td><?php echo $datos["fecha"]?></td>
+            <td><?php echo htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
+            <td><?php echo $datos["tipo"]?></td>
+            <td><a href="docs/<?php echo $datos["adjunto"]?>">Ver</a></td>
         </tr>
-        <?
+        <?php
 		}
 		?>
         </tbody>
@@ -150,7 +150,7 @@ if ($msg==4) $msgtxt = "El producto no se encontró.<br>por favor verifique el c
         <!--body wrapper end-->
 
         
- <? include("footer.php") ?>
+ <?php include("footer.php") ?>
 
 
     </div>

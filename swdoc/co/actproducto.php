@@ -1,4 +1,4 @@
-<?
+<?php
 //$cadena = iconv('UTF-8','ISO-8859-1//TRANSLIT',$_POST["nombre"]);
 
 include "dbclass.php";

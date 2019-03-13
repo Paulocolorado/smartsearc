@@ -1,4 +1,4 @@
-<?
+<?php
 
 include "../dbclass.php";
 include "../funciones.php";
@@ -17,8 +17,8 @@ function listar_directorios_ruta($ruta, $vlpadre){
 		mkdir($rutabase, 0777); 
 		  
          while (($file = readdir($dh)) !== false) { 
-            //esta línea la utilizaríamos si queremos listar todo lo que hay en el directorio 
-            //mostraría tanto archivos como directorios 
+            //esta lï¿½nea la utilizarï¿½amos si queremos listar todo lo que hay en el directorio 
+            //mostrarï¿½a tanto archivos como directorios 
             //echo "<br>Nombre de archivo: $file : Es un: " . filetype($ruta . $file); 
             if (is_dir($ruta . $file) && $file!="." && $file!=".."){ 
                //solo si el archivo es un directorio, distinto que "." y ".." 

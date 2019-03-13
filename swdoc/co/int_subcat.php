@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 session_start();
@@ -40,7 +40,7 @@ $total = $dbcon->num_rows($resultado);
 <section>
     <!-- left side start-->
     
-    <? include("nav.php")?>
+    <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -55,7 +55,7 @@ $total = $dbcon->num_rows($resultado);
 
 
         <!--notification menu start -->
-   <? include("menusup.php")?>
+   <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -101,18 +101,18 @@ $total = $dbcon->num_rows($resultado);
         </thead>
         <tbody>
            
-		<?
+		<?php
 		for ($i=0; $i<$total; $i++)
 		{
 			$datos = $dbcon->fetch_array($resultado);
 		?>
         <tr >
-          <td ><? print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
-          <td ><? print htmlentities($_REQUEST["nom"], ENT_COMPAT, 'iso-8859-1')?></td>
-          <td ><? print htmlentities($datos["descripcion"], ENT_COMPAT, 'iso-8859-1')?></td>
-          <td ><a href="editarsubcat.php?idc=<?=$datos["idsubcat"]?>&nom=<?=$_REQUEST["nom"]?>" >Edit</a></td>
+          <td ><?php print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></td>
+          <td ><?php print htmlentities($_REQUEST["nom"], ENT_COMPAT, 'iso-8859-1')?></td>
+          <td ><?php print htmlentities($datos["descripcion"], ENT_COMPAT, 'iso-8859-1')?></td>
+          <td ><a href="editarsubcat.php?idc=<?php echo $datos["idsubcat"]?>&nom=<?php echo $_REQUEST["nom"]?>" >Edit</a></td>
         </tr>
-        <?
+        <?php
 		}
 		?>
                 
@@ -123,7 +123,7 @@ $total = $dbcon->num_rows($resultado);
       </div>
       <div class="form-group">
       <div class="col-lg-offset-2 col-lg-12">
-                        <button class="btn btn-primary" type="button" onClick="window.location='nuevasubcat.php?idc=<?=$_REQUEST["idc"]?>&nom=<?=$_REQUEST["nom"]?>'">Add Subcategory</button>
+                        <button class="btn btn-primary" type="button" onClick="window.location='nuevasubcat.php?idc=<?php echo $_REQUEST["idc"]?>&nom=<?php echo $_REQUEST["nom"]?>'">Add Subcategory</button>
                     </div>
                 </div>
     </form>
@@ -139,7 +139,7 @@ $total = $dbcon->num_rows($resultado);
 
         <!--footer section start-->
        
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 
@@ -167,18 +167,18 @@ $total = $dbcon->num_rows($resultado);
                 <form name="fcarrito" action="agregarcarrito.php" method="post">
                     <input type="hidden" name="idprod" value="">
                     <input type="hidden" name="qt" value="">
-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
+                    <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                   </form>
                 <form name="fsort" action="resprod.php" method="post">
-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
+                    <input type="hidden" name="codigo" value="<?php echo $codigo?>">
+                    <input type="hidden" name="nombre" value="<?php echo $nombre?>">
+                    <input type="hidden" name="idcategoria" value="<?php echo $idcategoria?>">
+                    <input type="hidden" name="setbq" value="<?php echo $setbq?>">
+                    <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                     <input type="hidden" name="ordenarpor" value="">
                   </form>
  <form name="exportxls" action="expxls.php" method="post">
-                    <input type="hidden" name="query" value="<?=$queryexp?>">
+                    <input type="hidden" name="query" value="<?php echo $queryexp?>">
                     <input type="hidden" name="nombre" value="">
  </form>
 </body>

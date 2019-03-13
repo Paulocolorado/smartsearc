@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 session_start();
 $dbcon = new connection($ip, $login, $pass, $db, $query);

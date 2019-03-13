@@ -1,4 +1,4 @@
-<?
+<?php
 $file = "../HapAdmcom/docs/".$_GET["Archivo"];
  
 $filename = $_GET["Archivo"];

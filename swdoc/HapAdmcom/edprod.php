@@ -1,4 +1,4 @@
-<?
+<?php
 // calc an offset of 24 hours
   $offset = 0;	
 // calc the string in GMT not localtime and add the offset
@@ -60,7 +60,7 @@ else $msgtxt = "";
 
 <section>
     <!-- left side start-->
-     <? include("nav.php")?>
+     <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -75,7 +75,7 @@ else $msgtxt = "";
 
 
         <!--notification menu start -->
-    <? include("menusup.php")?>
+    <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -111,15 +111,15 @@ else $msgtxt = "";
                                         <div class="selector-pais">
 <select name="categoria" required class="form-control input-sm m-bot15" id="categoria">
                                                 <option value="" >Select</option>
-                           <?
+                           <?php
 		for ($i=0; $i<$total; $i++)
 		{
 			$datos = $dbcon->fetch_array($resultado);
 			if ($datos["idacat"]==$datos2["idcategoria"]) $selcate = "selected";
 			else  $selcate = "";
 		?>
-              <option value="<?=$datos["idacat"]?>" <?=$selcate?>><?=htmlXentities($datos["categoria"])?></option>
-              <?
+              <option value="<?php echo $datos["idacat"]?>" <?php echo $selcate?>><?php echo htmlXentities($datos["categoria"])?></option>
+              <?php
 	  }
 	  ?>
                                             </select>
@@ -133,7 +133,7 @@ else $msgtxt = "";
                                         <div class="col-lg-10">
 <div class="sel-ciudad">                                        
 <select name="subcategoria" class="form-control input-sm m-bot15" id="subcategoria" required>
-	               <?
+	               <?php
 	
 $query = "select idsubcat,nombre from subcategorias where idsubcat = ".$datos2["idsubcat"];
 $dbcon->query($query);
@@ -142,8 +142,8 @@ $total = $dbcon->num_rows($resultado);
 		{
 			$datos = $dbcon->fetch_array($resultado);
 		?>
-              <option value="<?=$datos["idsubcat"]?>" selected><?=htmlXentities($datos["nombre"])?></option>
-              <?
+              <option value="<?php echo $datos["idsubcat"]?>" selected><?php echo htmlXentities($datos["nombre"])?></option>
+              <?php
 	  }
 	  ?>
 </select>
@@ -178,43 +178,43 @@ $total = $dbcon->num_rows($resultado);
                                   <div class="form-group ">
                                     <label for="nombre" class="control-label col-lg-2">Nombre</label>
                                         <div class="col-lg-10">
-                                            <input name="nombre" type="text" required class=" form-control" id="nombre" value="<?=htmlentities($datos2["nombre"], ENT_COMPAT, 'iso-8859-1')?>" />
+                                            <input name="nombre" type="text" required class=" form-control" id="nombre" value="<?php echo htmlentities($datos2["nombre"], ENT_COMPAT, 'iso-8859-1')?>" />
                                         </div>
                                   </div>
                                   <div class="form-group ">
                                         <label for="codigo" class="control-label col-lg-2">Código</label>
                                         <div class="col-lg-10">
-                                            <input name="codigo" type="text" class=" form-control" id="codigo" value="<?=$datos2["codigo"]?>" />
+                                            <input name="codigo" type="text" class=" form-control" id="codigo" value="<?php echo $datos2["codigo"]?>" />
                                         </div>
                                     </div>
                                   <div class="form-group ">
                                         <label for="codigo" class="control-label col-lg-2">Descripci&oacute;n</label>
                                         <div class="col-lg-10">
-                                            <textarea name="descripcion" rows="6" required class="form-control"><?=htmlentities($datos2["descripcion"], ENT_COMPAT, 'iso-8859-1')?></textarea>
+                                            <textarea name="descripcion" rows="6" required class="form-control"><?php echo htmlentities($datos2["descripcion"], ENT_COMPAT, 'iso-8859-1')?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="codigo" class="control-label col-lg-2">Alto</label>
                                         <div class="col-lg-2">
-                                            <input name="alto" type="text" required class=" form-control" id="alto"  value="<?=$datos2["alto"]?>" />
+                                            <input name="alto" type="text" required class=" form-control" id="alto"  value="<?php echo $datos2["alto"]?>" />
                                             </div>
                                     <label for="vlbase" class="control-label col-lg-2">Ancho</label>
                                             <div class="col-lg-2">
-                                              <input name="ancho" type="text" required class=" form-control" id="ancho"  value="<?=$datos2["ancho"]?>" />
+                                              <input name="ancho" type="text" required class=" form-control" id="ancho"  value="<?php echo $datos2["ancho"]?>" />
                                             </div>
                                     </div>
                                   <div class="form-group ">
                                     <label for="vlbase" class="control-label col-lg-2">Valor Base</label>
                                         <div class="col-lg-2">
-                                            <input name="vlbase" type="text" required class=" form-control" id="vlbase" value="<?=$datos2["vlbase"]?>" />
+                                            <input name="vlbase" type="text" required class=" form-control" id="vlbase" value="<?php echo $datos2["vlbase"]?>" />
                                         </div>
                                     <label for="vltotal" class="control-label col-lg-2">IVA</label>
                                         <div class="col-lg-2">
-                                            <input name="vliva" type="text" required class=" form-control" id="vliva" value="<?=$datos2["vliva"]?>" />
+                                            <input name="vliva" type="text" required class=" form-control" id="vliva" value="<?php echo $datos2["vliva"]?>" />
                                         </div>
                                     <label for="vltotal" class="control-label col-lg-2">Valor Total</label>
                                         <div class="col-lg-2">
-                                            <input name="vltotal" type="text" required class=" form-control" id="vltotal" value="<?=$datos2["vltotal"]?>" />
+                                            <input name="vltotal" type="text" required class=" form-control" id="vltotal" value="<?php echo $datos2["vltotal"]?>" />
                                         </div>
                                   </div>
 
@@ -222,23 +222,23 @@ $total = $dbcon->num_rows($resultado);
                                
                                <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Activo</label>
-                                    <div class="col-md-3"><?
+                                    <div class="col-md-3"><?php
                                     if ($datos2["activo"]==1) $seldestacado ="checked";
 									else $seldestacado ="";
 									?>
-                                        <input  type="radio"  name="activo" value="1" <?=$seldestacado?>>
-                                        <label>Si. </label><?
+                                        <input  type="radio"  name="activo" value="1" <?php echo $seldestacado?>>
+                                        <label>Si. </label><?php
                                     if ($datos2["activo"]==0) $seldestacado ="checked";
 									else $seldestacado ="";
 									?>
-                                        <input  name="activo"  type="radio" value="0" <?=$seldestacado?>>
+                                        <input  name="activo"  type="radio" value="0" <?php echo $seldestacado?>>
                                         <label>No. </label>
                                        
                                   </div>
                                   </div>
                                   
                                   
-                                  <?
+                                  <?php
 											$dbcon_lista = new connection($ip, $login, $pass, $db, $query);
 											   $txtli1="";
 											   $txtli2="";
@@ -289,24 +289,24 @@ $total = $dbcon->num_rows($resultado);
                                     <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Lista 1</label>
                                     <div class="col-md-2" >
-                                        <input  type="radio"  name="lista1" value="1" <?=$vlchksi1?>  onClick="document.getElementById('li1').style.display = 'block';">
+                                        <input  type="radio"  name="lista1" value="1" <?php echo $vlchksi1?>  onClick="document.getElementById('li1').style.display = 'block';">
                                         <label>Si. </label>
-                                        <input  name="lista1"  type="radio" value="0" <?=$vlchkno1?> onClick="document.getElementById('li1').style.display = 'none'; document.getElementById('l1tit').value ='-1'; document.getElementById('l1txt').value ='';">
+                                        <input  name="lista1"  type="radio" value="0" <?php echo $vlchkno1?> onClick="document.getElementById('li1').style.display = 'none'; document.getElementById('l1tit').value ='-1'; document.getElementById('l1txt').value ='';">
                                         <label>No. </label>
                                        
                                   </div>
                                   </div>
                                   
-									  <div id="li1" style="display: <?=$vll1hidden?>">
+									  <div id="li1" style="display: <?php echo $vll1hidden?>">
                                   <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Titulo</label>
 										   <div class="col-md-2" >
-												<input class=" form-control" id="l1tit" name="l1tit" type="text" value="<?=htmlentities($datos2["lista1"], ENT_COMPAT, 'iso-8859-1')?>" />
+												<input class=" form-control" id="l1tit" name="l1tit" type="text" value="<?php echo htmlentities($datos2["lista1"], ENT_COMPAT, 'iso-8859-1')?>" />
 										   </div>
 										   
                                     <label for="vltotal" class="control-label col-md-1">Contenido</label>
 										   <div class="col-md-2" >
-												<textarea name="l1txt" class="col-md-2 form-control" rows="10" id="l1txt"><?=$txtli1?></textarea>
+												<textarea name="l1txt" class="col-md-2 form-control" rows="10" id="l1txt"><?php echo $txtli1?></textarea>
 										   </div>
 									  </div>
 									</div>
@@ -315,24 +315,24 @@ $total = $dbcon->num_rows($resultado);
                                   <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Lista 2</label>
                                     <div class="col-md-2" >
-                                        <input  type="radio"  name="lista2" value="1" <?=$vlchksi2?>  onClick="document.getElementById('li2').style.display = 'block';">
+                                        <input  type="radio"  name="lista2" value="1" <?php echo $vlchksi2?>  onClick="document.getElementById('li2').style.display = 'block';">
                                         <label>Si. </label>
-                                        <input  name="lista2"  type="radio" value="0" <?=$vlchkno2?> onClick="document.getElementById('li2').style.display = 'none'; document.getElementById('l2tit').value ='-1'; document.getElementById('l2txt').value ='';">
+                                        <input  name="lista2"  type="radio" value="0" <?php echo $vlchkno2?> onClick="document.getElementById('li2').style.display = 'none'; document.getElementById('l2tit').value ='-1'; document.getElementById('l2txt').value ='';">
                                         <label>No. </label>
                                        
                                   </div>
                                   </div>
                                   
-									  <div id="li2" style="display: <?=$vll2hidden?>">
+									  <div id="li2" style="display: <?php echo $vll2hidden?>">
                                   <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Titulo</label>
 										   <div class="col-md-2" >
-												<input class=" form-control" id="l2tit" name="l2tit" type="text" value="<?=htmlentities($datos2["lista2"], ENT_COMPAT, 'iso-8859-1')?>" />
+												<input class=" form-control" id="l2tit" name="l2tit" type="text" value="<?php echo htmlentities($datos2["lista2"], ENT_COMPAT, 'iso-8859-1')?>" />
 										   </div>
 										   
                                     <label for="vltotal" class="control-label col-md-1">Contenido</label>
 										   <div class="col-md-2" >
-												<textarea name="l2txt" class="col-md-2 form-control" rows="10" id="l2txt"><?=$txtli2?></textarea>
+												<textarea name="l2txt" class="col-md-2 form-control" rows="10" id="l2txt"><?php echo $txtli2?></textarea>
 										   </div>
 									  </div>
 									</div>
@@ -341,18 +341,18 @@ $total = $dbcon->num_rows($resultado);
                                   <div class="form-group">
                                     
                                     <label for="vltotal" class="control-label col-lg-2">Destacado</label>
-                                    <div class="col-md-4"><?
+                                    <div class="col-md-4"><?php
                                     if ($datos2["destacado"]==1) $seldestacado ="checked";
 									else $seldestacado ="";
 									?>
-                                        <input  type="radio"  name="destacado" value="1" <?=$seldestacado?>>
+                                        <input  type="radio"  name="destacado" value="1" <?php echo $seldestacado?>>
                                         <label>Si. </label>
-                                      <input name="idprod" type="hidden" id="idprod" value="<?=$_GET["idprod"]?>">
-                                    <?
+                                      <input name="idprod" type="hidden" id="idprod" value="<?php echo $_GET["idprod"]?>">
+                                    <?php
                                     if ($datos2["destacado"]==0) $seldestacado ="checked";
 									else $seldestacado ="";
 									?>
-                                        <input  name="destacado"  type="radio" value="0" <?=$seldestacado?>>
+                                        <input  name="destacado"  type="radio" value="0" <?php echo $seldestacado?>>
                                         <label>No. </label>
                                        
                                   </div>
@@ -360,17 +360,17 @@ $total = $dbcon->num_rows($resultado);
                                   <div class="form-group">
                                     
                                     <label for="vltotal" class="control-label col-lg-2">Producto del mes</label>
-                                    <div class="col-md-4"><?
+                                    <div class="col-md-4"><?php
                                     if ($datos2["pdelmes"]==1) $seldestacado ="checked";
 									else $seldestacado ="";
 									?>
-                                        <input  type="radio"  name="pdelmes" value="1" <?=$seldestacado?>>
+                                        <input  type="radio"  name="pdelmes" value="1" <?php echo $seldestacado?>>
                                         <label>Si. </label>
-                                    <?
+                                    <?php
                                     if ($datos2["pdelmes"]==0) $seldestacado ="checked";
 									else $seldestacado ="";
 									?>
-                                        <input  name="pdelmes"  type="radio" value="0" <?=$seldestacado?>>
+                                        <input  name="pdelmes"  type="radio" value="0" <?php echo $seldestacado?>>
                                         <label>No. </label>
                                        
                                   </div>
@@ -419,10 +419,10 @@ $total = $dbcon->num_rows($resultado);
                                 <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Imagen Principal</label>
                                     <div class="col-md-3">
-                                    <img src="../co/img/product<?=$datos2["imagen"]?>" height="150" ></div>
+                                    <img src="../co/img/product<?php echo $datos2["imagen"]?>" height="150" ></div>
                                     <label for="vltotal" class="control-label col-lg-2">Imagen 2 </label>
                                     <div class="col-md-3">
-                                    <?
+                                    <?php
 									$vlimg2 = "/noimg.png";
 									$vlimg3 = "/noimg.png";
 									$vlimg4 = "/noimg.png";
@@ -436,13 +436,13 @@ $total = $dbcon->num_rows($resultado);
 											
 											   
 									?>
-                                    <img src="../co/img/product<?=$vlimg2?>" height="150" ></div>
+                                    <img src="../co/img/product<?php echo $vlimg2?>" height="150" ></div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Imagen 3</label>
                                     <div class="col-md-3">
-                                    <img src="../co/img/product<?=$vlimg3?>" height="150" ></div>
+                                    <img src="../co/img/product<?php echo $vlimg3?>" height="150" ></div>
                                 </div>
 
                                     <div class="form-group">
@@ -461,7 +461,7 @@ $total = $dbcon->num_rows($resultado);
         <!--body wrapper end-->
 
         <!--footer section start-->
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 

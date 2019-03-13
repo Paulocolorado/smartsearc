@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 	session_start();
 //session_save_path ('/nfs/cust/0/99/05/550990/web/tmp/');

@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 include "funciones.php";
@@ -42,7 +42,7 @@ $total = $dbcon->num_rows($resultado);
 <section>
     <!-- left side start-->
     
-    <? include("nav.php")?>
+    <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -57,7 +57,7 @@ $total = $dbcon->num_rows($resultado);
 
 
         <!--notification menu start -->
-   <? include("menusup.php")?>
+   <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -100,33 +100,33 @@ $total = $dbcon->num_rows($resultado);
         </thead>
         <tbody>
               
-              <?
+              <?php
 		for ($i=0; $i<$total; $i++)
 		{
 			$datos = $dbcon->fetch_array($resultado);
 		?>
         <tr >
-          <td><?
+          <td><?php
 		  if ($datos["estado"]=="1")
 		  print "<strong>";
 		  ?>
-		      <? print $datos["nombre"]?>
-		      <?
+		      <?php print $datos["nombre"]?>
+		      <?php
 		  if ($datos["estado"]=="1")
 		  print "</strong>";
 		  ?></td>
-          <td ><?=$datos["apellido"]?></td>
-          <td > <?=$datos["email"]?></td>
-          <td ><?=$datos["estado"]?></td> 
-          <td ><?
+          <td ><?php echo $datos["apellido"]?></td>
+          <td > <?php echo $datos["email"]?></td>
+          <td ><?php echo $datos["estado"]?></td> 
+          <td ><?php
 			  if ($_SESSION["vg_id"] == 1 || $_SESSION["vg_id"] == 2 ) {
 			  ?>
-			  <a href="editarusr.php?idc=<?=$datos["iduc"]?>" >Editar</a>
-			<?
+			  <a href="editarusr.php?idc=<?php echo $datos["iduc"]?>" >Editar</a>
+			<?php
 			  }
 			  ?></td>
         </tr>
-        <?
+        <?php
 		}
 		?>    
                 
@@ -134,8 +134,8 @@ $total = $dbcon->num_rows($resultado);
         </table>
         </div>
              <div class="form-group">
-                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?=$k?>">
-                          <input type="hidden" name="idcb" value="<?=$_REQUEST["idc"]?>">
+                <div class="col-lg-offset-2 col-lg-2"><input name="totalprods" type="hidden" id="totalprods" value="<?php echo $k?>">
+                          <input type="hidden" name="idcb" value="<?php echo $_REQUEST["idc"]?>">
                     <button class="btn btn-primary" type="submit">Adicionar Usuario</button>
                 </div>
             </div> 
@@ -153,7 +153,7 @@ $total = $dbcon->num_rows($resultado);
 
         <!--footer section start-->
        
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 
@@ -181,18 +181,18 @@ $total = $dbcon->num_rows($resultado);
                 <form name="fcarrito" action="agregarcarrito.php" method="post">
                     <input type="hidden" name="idprod" value="">
                     <input type="hidden" name="qt" value="">
-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
+                    <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                   </form>
                 <form name="fsort" action="resprod.php" method="post">
-                    <input type="hidden" name="codigo" value="<?=$codigo?>">
-                    <input type="hidden" name="nombre" value="<?=$nombre?>">
-                    <input type="hidden" name="idcategoria" value="<?=$idcategoria?>">
-                    <input type="hidden" name="setbq" value="<?=$setbq?>">
-                    <input type="hidden" name="idcb" value="<?=$idcb?>">
+                    <input type="hidden" name="codigo" value="<?php echo $codigo?>">
+                    <input type="hidden" name="nombre" value="<?php echo $nombre?>">
+                    <input type="hidden" name="idcategoria" value="<?php echo $idcategoria?>">
+                    <input type="hidden" name="setbq" value="<?php echo $setbq?>">
+                    <input type="hidden" name="idcb" value="<?php echo $idcb?>">
                     <input type="hidden" name="ordenarpor" value="">
                   </form>
  <form name="exportxls" action="expxls.php" method="post">
-                    <input type="hidden" name="query" value="<?=$queryexp?>">
+                    <input type="hidden" name="query" value="<?php echo $queryexp?>">
                     <input type="hidden" name="nombre" value="">
  </form>
 </body>

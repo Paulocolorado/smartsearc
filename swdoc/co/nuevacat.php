@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 session_start();
@@ -32,7 +32,7 @@ $datos = $dbcon->fetch_array($resultado);
 
 <section>
     <!-- left side start-->
-     <? include("nav.php")?>
+     <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -47,7 +47,7 @@ $datos = $dbcon->fetch_array($resultado);
 
 
         <!--notification menu start -->
-    <? include("menusup.php")?>
+    <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -102,7 +102,7 @@ $datos = $dbcon->fetch_array($resultado);
         <!--body wrapper end-->
 
         <!--footer section start-->
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 

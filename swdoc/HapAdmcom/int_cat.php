@@ -1,4 +1,4 @@
-<?
+<?php
 include "dbclass.php";
 include "validasession.php";
 session_start();
@@ -50,7 +50,7 @@ forma2 = document.ncat;
 <section>
     <!-- left side start-->
     
-    <? include("nav.php")?>
+    <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -65,7 +65,7 @@ forma2 = document.ncat;
 
 
         <!--notification menu start -->
-   <? include("menusup.php")?>
+   <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>
@@ -107,16 +107,16 @@ forma2 = document.ncat;
         </thead>
         <tbody>
            
-		<?
+		<?php
 		for ($i=0; $i<$total; $i++)
 		{
 			$datos = $dbcon->fetch_array($resultado);
 		?>
         <tr >
-          <td ><? print $datos["categoria"]?></td>
-          <td ><a href="editarcat.php?idc=<?=$datos["idacat"]?>" >Edit</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="int_subcat.php?idc=<?=$datos["idacat"]?>&nom=<?=$datos["categoria"]?>" >Sub Cat </a></td>
+          <td ><?php print $datos["categoria"]?></td>
+          <td ><a href="editarcat.php?idc=<?php echo $datos["idacat"]?>" >Edit</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="int_subcat.php?idc=<?php echo $datos["idacat"]?>&nom=<?php echo $datos["categoria"]?>" >Sub Cat </a></td>
         </tr>
-        <?
+        <?php
 		}
 		?>
                 
@@ -145,7 +145,7 @@ forma2 = document.ncat;
 
         <!--footer section start-->
        
-     <? include("footer.php")?>
+     <?php include("footer.php")?>
         <!--footer section end-->
 
 

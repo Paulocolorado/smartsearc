@@ -1,4 +1,4 @@
-<?
+<?php
 error_reporting( E_ALL );
 $ip = "localhost"; //servidor mysql
 $login = "haptrack_docu";

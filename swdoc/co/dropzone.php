@@ -1,4 +1,4 @@
-<?
+<?php
 // calc an offset of 24 hours
 header('Content-Type: text/html; charset=iso-8859-1');
   $offset = 0;	
@@ -43,7 +43,7 @@ else $msgtxt = "";
 
 <section>
     <!-- left side start-->
-     <? include("nav.php")?>
+     <?php include("nav.php")?>
     <!-- left side end-->
     
     <!-- main content start-->
@@ -63,7 +63,7 @@ else $msgtxt = "";
         <!--search end-->
 
         <!--notification menu start -->
-        <? include("menusup.php")?>
+        <?php include("menusup.php")?>
         <!--notification menu end -->
 
         </div>

@@ -1,4 +1,4 @@
-<?
+<?php
 $file = "docs/".$_GET["Archivo"];
  
 $filename = $_GET["Archivo"];
