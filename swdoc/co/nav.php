@@ -25,7 +25,7 @@
 
                 <h5 class="left-nav-title">Cuenta</h5>
                 <ul class="nav nav-pills nav-stacked custom-nav">
-                    <li><a href="cambiar_clave.php?mn=8"><i class="fa fa-cog"></i> <span>Cambiar Clave</span></a></li>
+                    <!-- <li><a href="cambiar_clave.php?mn=8"><i class="fa fa-cog"></i> <span>Cambiar Clave</span></a></li> -->
                     <li><a href="salir.php"><i class="fa fa-sign-out"></i> <span>Salir</span></a></li>
                 </ul>
             </div>
@@ -55,7 +55,7 @@
 				if ($mn == 8) $lnkselmenu = "class=\"active\"";
 				else $lnkselmenu = "";
 				?>
-                <li <?php print(" ".$lnkselmenu)?>><a href="cambiar_clave.php?mn=8"><i class="fa fa-key"></i> <span>Cambiar clave</span></a></li>
+                <!-- <li <?php print(" ".$lnkselmenu)?>><a href="cambiar_clave.php?mn=8"><i class="fa fa-key"></i> <span>Cambiar clave</span></a></li> -->
                 
                 <li><a href="salir.php"><i class="fa fa-sign-in"></i> <span>Salir</span></a></li>
 

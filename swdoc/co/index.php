@@ -29,7 +29,6 @@
         </div>
         <div class="login-wrap">
         <?php
-	
         if (isset($_GET["msg"]) && $_GET["msg"]==1) {
 		?>
                     <div class="alert-danger">

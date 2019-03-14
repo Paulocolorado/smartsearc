@@ -1,5 +1,5 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 include "validasession.php";
 include "funciones.php";
 session_start();
@@ -7,12 +7,12 @@ session_start();
 $vl_nombre = $_REQUEST["nombre"];
 $vl_nombre = str_replace("ñ","n",$vl_nombre);
 $vl_nombre = str_replace("Ñ","N",$vl_nombre);
-$dbcon = new connection($ip, $login, $pass, $db, $query);
+$dbcon = new connection();
 header("Content-Type: text/html;charset=utf-8");
 $query = "SELECT * FROM documentos  WHERE 
 nombre like '%".iconv('UTF-8','ISO-8859-1//TRANSLIT',$vl_nombre)."%' and idcliente = ".$_SESSION["vg_idc"];
 //print $query;
-$dbcon->query($query);
+$resultado=$dbcon->query($query);
 $total = $dbcon->num_rows($resultado);
 if ($msg==1) $msgtxt = "El producto ha sido ingresado satisfactoriamente";
 if ($msg==2) $msgtxt = "El producto se actualizó con éxito";

@@ -6,16 +6,16 @@
 //output the HTTP header
   Header($expire);
 
-include "dbclass.php";
+include "dbclass7.php";
 include "validasession.php";
 include "funciones.php";
+/*CC Tabla no existe
 session_start();
-
-$dbcon = new connection($ip, $login, $pass, $db, $query);
+$dbcon = new connection();
 $query = "select idacat,categoria from categorias ";
-$dbcon->query($query);
+$resultado = $dbcon->query($query);
 $total = $dbcon->num_rows($resultado);
-
+*/
 if ($msg == 2) $msgtxt="El producto se actualiz&oacute; con �xito";
 else $msgtxt = ""; 
 ?>
