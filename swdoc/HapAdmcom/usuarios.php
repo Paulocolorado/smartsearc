@@ -1,14 +1,14 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 include "validasession.php";
 include "funciones.php";
 session_start();
-$dbcon = new connection($ip, $login, $pass, $db, $query);
-$query = "select * from usuarioscliente where estado != 0 and id_cliente = ".$_REQUEST["idc"]." order by nombre ";
+$dbcon = new connection();
+$consulta = "select * from usuarioscliente where estado != 0 and id_cliente = ".$_REQUEST["idc"]." order by nombre ";
 
 //print $query;
 //exit;
-$dbcon->query($query);
+$resultado = $dbcon->query($consulta);
 $total = $dbcon->num_rows($resultado);
 ?>
 <!DOCTYPE html>

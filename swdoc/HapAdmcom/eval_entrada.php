@@ -5,12 +5,11 @@ session_start();
 $dbcon = new connection();
 
 
-$query = "select idusuario,nombre, apellido from usuarios where email = '".$_POST["email"]."' and clave = '".$_POST["clave"]."' and activo = 1";
+$consulta = "select idusuario,nombre, apellido from usuarios where email = '".$_POST["email"]."' and clave = '".$_POST["clave"]."' and activo = 1";
 
-//print $query."<b>".$ip;
-//exit;
-$resultado = $dbcon->query($query);
+$resultado = $dbcon->query($consulta);
 $total = $dbcon->num_rows($resultado);
+
 //print $total."---total";
 if ($total > 0){
 	$datos = $dbcon->fetch_array($resultado);

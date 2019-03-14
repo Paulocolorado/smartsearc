@@ -1,21 +1,21 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 include "validasession.php";
 
 //session_save_path ('/nfs/cust/0/99/05/550990/web/tmp/');
 if (!session_start())
 	session_start();
 	
-$dbcon = new connection($ip, $login, $pass, $db, $query);
+$dbcon = new connection();
 
 if ($_SESSION["vg_id"]) $clienteid = $_SESSION["vg_id"];
 else $clienteid = $idc;
-
-$query = "select id_cat_adm,nombre from cat_Adm where id_cliente = ".$clienteid;
+/* CC tabla no existe
+$consulta = "select id_cat_adm,nombre from cat_Adm where id_cliente = ".$clienteid;
 //print $query;
-$dbcon->query($query);
+$resultado = $dbcon->query($consulta);
 $total = $dbcon->num_rows($resultado);
-
+*/
 
 ?>
 <!DOCTYPE html>
@@ -188,8 +188,8 @@ $total = $dbcon->num_rows($resultado);
 
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
-                                            <button class="btn btn-primary" type="submit">Send</button>
-                                            <button class="btn btn-default" type="button" onClick="window.location = 'clientes.php'">Cancel</button>
+                                            <button class="btn btn-primary" type="submit">Crear</button>
+                                            <button class="btn btn-default" type="button" onClick="window.location = 'clientes.php'">Cancelar</button>
                                         </div>
                                     </div>
                               </form>

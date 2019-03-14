@@ -1,12 +1,12 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 include "validasession.php";
 include "funciones.php";
 session_start();
 $dbcon = new connection;
-$dbcon->connection($ip, $login, $pass, $db, $query);
-$query = "select * from usuarioscliente where iduc = -".$_REQUEST["idc"];
-$dbcon->query($query);
+
+$consulta= "select * from usuarioscliente where iduc = ".$_REQUEST["idcb"];
+$resultado = $dbcon->query($consulta);
 $total = $dbcon->num_rows($resultado);
 $datos = $dbcon->fetch_array($resultado);
 ?>
