@@ -1,8 +1,8 @@
 <?php
 
 
-//include("dbclass.php");
-$dbconft = new connection($ip, $login, $pass, $db, $query);
+//include("dbclass7.php");
+$dbconft = new connection();
 
 
 

@@ -1,15 +1,15 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 //include "validasession.php";
 session_start();
-$dbcon = new connection($ip, $login, $pass, $db, $query);
+$dbcon = new connection();
 
 
 $query = "select idusuario,nombre, apellido from usuarios where email = '".$_POST["email"]."' and clave = '".$_POST["clave"]."' and activo = 1";
 
 //print $query."<b>".$ip;
 //exit;
-$dbcon->query($query);
+$resultado = $dbcon->query($query);
 $total = $dbcon->num_rows($resultado);
 //print $total."---total";
 if ($total > 0){
