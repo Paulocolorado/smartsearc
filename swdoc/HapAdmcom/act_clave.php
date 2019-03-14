@@ -1,18 +1,18 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 	session_start();
 //session_save_path ('/nfs/cust/0/99/05/550990/web/tmp/');
 session_start();
 if($_POST["nclave"] == $_POST["cnclave"]){
-	$dbcon = new connection($ip, $login, $pass, $db, $query);
+	$dbcon = new connection();
 	
 	//$query = "select id_cliente,nombre from clientes where identificacion = '".$identificacion."' and clave = '".$clave."'";
-	$query = "select idusuario from usuarios where idusuario = '".$_SESSION["vg_id"]."' and clave = '".$_POST["clave"]."'";
+	$consulta = "select idusuario from usuarios where idusuario = '".$_SESSION["vg_id"]."' and clave = '".$_POST["clave"]."'";
 	//print $query;
 	//exit;
 	
 	//print $query;
-	$dbcon->query($query);
+	$resultado = $dbcon->query($consulta);
 	$total = $dbcon->num_rows($resultado);
 	if ($total > 0){
 		$query = "update usuarios set clave = '".$_POST["nclave"]."' where idusuario = '".$_SESSION["vg_id"]."'";
