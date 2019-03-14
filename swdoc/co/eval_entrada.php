@@ -8,7 +8,6 @@ $dbcon = new connection();
 
 //$consulta = "select a.id_cliente,a.nombre nc, a.cuota, b.nombre nus, b.apellido apus, b.estado, b.iduc from clientes a, usuarioscliente b where a.id_cliente = b.id_cliente and  b.email = '".mysqli_real_escape_string($dbcon,$_POST["email"])."' and b.clave = '".mysqli_real_escape_string($dbcon,$_POST["clave"])."' and a.estado = 1 and b.estado = 1";
 $consulta = "select a.id_cliente,a.nombre nc, a.cuota, b.nombre nus, b.apellido apus, b.estado, b.iduc from clientes a, usuarioscliente b where a.id_cliente = b.id_cliente and  b.email = '".$_POST["email"]."' and b.clave = '".$_POST["clave"]."' and a.estado = 1 and b.estado = 1";
-echo "$consulta";
 $resultado = $dbcon->query($consulta);
 
 $total=$dbcon->num_rows($resultado);

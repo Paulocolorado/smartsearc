@@ -1,10 +1,10 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 include "validasession.php";
 include "funciones.php";
 
 session_start();
-$dbcon = new connection($ip, $login, $pass, $db, $query);
+$dbcon = new connection();
 
 if (!$_REQUEST["padre"]) $vlpadre = 0;
 else $vlpadre = $_REQUEST["padre"];
@@ -12,7 +12,7 @@ if (!$_REQUEST["idc"]) $vlidc = 0;
 else $vlidc = $_REQUEST["idc"];
 $query = "select * from carpetas where idcliente = ".$_SESSION["vg_idc"]." and padre = 0 order by nombre";
 //print $query;
-$dbcon->query($query);
+$resultado = $dbcon->query($query);
 $total = $dbcon->num_rows($resultado);
 
 
