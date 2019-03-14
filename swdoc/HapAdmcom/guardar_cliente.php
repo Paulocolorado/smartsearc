@@ -1,12 +1,12 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 //include "validasession.php";
 session_start();
-$dbcon = new connection($ip, $login, $pass, $db, $query);
-$query = "insert into clientes (nombre, identificacion, email, direccion, telefono, ciudad, clave, estado, cuota) values ('".$_POST["nombre"]."','".$_POST["identificacion"]."','".$_POST["email"]."','".$_POST["direccion"]."','".$_POST["telefono"]."','".$_POST["ciudad"]."','".$_POST["clave"]."',".$_POST["estado"].", '".$_POST["cuota"]."000000000') ";
+$dbcon = new connection();
+$consulta = "insert into clientes (nombre, identificacion, email, direccion, telefono, ciudad, clave, estado, cuota) values ('".$_POST["nombre"]."','".$_POST["identificacion"]."','".$_POST["email"]."','".$_POST["direccion"]."','".$_POST["telefono"]."','".$_POST["ciudad"]."','".$_POST["clave"]."',".$_POST["estado"].", '".$_POST["cuota"]."000000000') ";
 //print $query;
 
-$dbcon->query($query);
+$dbcon->query($consulta);
 
 $vlidcli = $dbcon->last_insert();
 

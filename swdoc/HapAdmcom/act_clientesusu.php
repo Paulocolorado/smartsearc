@@ -1,10 +1,10 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 //include "validasession.php";
 session_start();
 $dbcon = new connection;
-$dbcon->connection($ip, $login, $pass, $db, $query);
-$query = "update usuarioscliente 
+
+$consulta = "update usuarioscliente 
 set nombre = '".$_POST["nombre"]."',
 apellido = '".$_POST["apellido"]."',
 email = '".$_POST["email"]."',
@@ -13,6 +13,6 @@ estado = ".$_POST["estado"]."
 where iduc = ".$_POST["idc"];
 //print $query."<br>--".$_POST["idc1"];
 //exit;
-$dbcon->query($query);
+$dbcon->query($consulta);
 header("Location: usuarios.php?idc=".$_POST["idc1"]);
 ?>

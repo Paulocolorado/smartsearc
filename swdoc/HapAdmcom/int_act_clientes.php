@@ -1,9 +1,8 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 //include "validasession.php";
 session_start();
 $dbcon = new connection;
-$dbcon->connection($ip, $login, $pass, $db, $query);
 $query = "update clientes 
 set nombre = '".$_POST["nombre"]."',
 identificacion = '".$_POST["identificacion"]."',

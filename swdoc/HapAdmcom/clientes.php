@@ -1,12 +1,12 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 include "validasession.php";
 include "funciones.php";
 session_start();
-$dbcon = new connection($ip, $login, $pass, $db, $query);
-$query = "select * from clientes where estado != 0 order by nombre ";
+$dbcon = new connection();
+$consulta= "select * from clientes where estado != 0 order by nombre ";
 
-$dbcon->query($query);
+$resultado = $dbcon->query($consulta);
 $total = $dbcon->num_rows($resultado);
 ?>
 <!DOCTYPE html>
