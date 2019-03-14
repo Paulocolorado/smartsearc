@@ -6,6 +6,7 @@ session_start();
 $dbcon = new connection();
 $dbcond = new connection();
 
+
 if (!$_REQUEST["padre"]) $vlpadre = 0;
 else $vlpadre = $_REQUEST["padre"];
 if (!$_REQUEST["idc"]) $vlidc = 0;

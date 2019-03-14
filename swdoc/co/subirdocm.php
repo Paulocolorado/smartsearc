@@ -1,17 +1,17 @@
 <?php
 
-include "dbclass.php";
+include "dbclass7.php";
 include "funciones.php";
 
 session_start();
 
-$dbcon = new connection($ip, $login, $pass, $db, $query); 
+$dbcon = new connection(); 
 
 
 
-$queryn = "SELECT nombre, email FROM clientes  WHERE id_cliente = '".$_SESSION["vg_idc"]."'";
+$consultan = "SELECT nombre, email FROM clientes  WHERE id_cliente = '".$_SESSION["vg_idc"]."'";
 
-$dbcon->query($queryn);
+$resultadojd = $dbcon->query($consultan);
 
 $datosjd = $dbcon->fetch_array($resultadojd);
 
@@ -75,9 +75,9 @@ foreach($_FILES['documento']['tmp_name'] as $key => $tmp_name ){
 
 
 
-$query = "insert into documentos set  idcliente = '".$_SESSION["vg_idc"]."', fecha = now(), nombre = '".$file_name."', adjunto = '".$nombredelimailBD."', padre = ".$_POST["padre"].", tipo = '".$tipodoc."', tamano = '".$vltamano ."'";
+$consulta = "insert into documentos set  idcliente = '".$_SESSION["vg_idc"]."', fecha = now(), nombre = '".$file_name."', adjunto = '".$nombredelimailBD."', padre = ".$_POST["padre"].", tipo = '".$tipodoc."', tamano = '".$vltamano ."'";
 
-$dbcon->query($query);
+$resultado = $dbcon->query($consulta);
 
 $total = $dbcon->num_rows($resultado);
 
