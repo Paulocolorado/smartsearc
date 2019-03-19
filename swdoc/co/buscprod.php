@@ -96,7 +96,7 @@ else $msgtxt = "";
                             <div class="form">
                                 <form action="productosresp.php" method="get"  class="cmxform form-horizontal adminex-form" id="guardarp">
                                  
-									<div class="form-group ">
+									<!--<div class="form-group ">
 										<label for="nombre" class="control-label col-lg-2"><span class="label label-default">búsqueda avanzada</span></label>
 										
                                         <div class="col-lg-10">
@@ -107,7 +107,7 @@ else $msgtxt = "";
                                           <input type="radio" name="radio" id="radio" value="1">
                                           <label for="radio">No. de NIT</label>
                                         </div>
-									</div>
+									</div>-->
                                  
                                   <div class="form-group ">
                                 <label for="nombre" class="control-label col-lg-2">Nombre</label>

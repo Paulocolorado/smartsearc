@@ -112,12 +112,25 @@ function tamanodocs($idc){
   
 }  
 
+function tamanodocs7($dbcon, $idc){
+    //print $idc."--".$id;
+    $url=""; //este es la url_raiz, ideal cuando tu web esta en otros niveles de carpetas
+    
+    $consulta="SELECT sum(tamano) tamanores from documentos where idcliente = ".$idc;
+    //print $query;
+    $resultado = $dbcon->query($consulta);
+    $fila = mysqli_fetch_array($resultado,MYSQLI_ASSOC);
+    if($fila){
+        $vgtam=$fila['tamanores'];
+    }
+    return($vgtam);
+    
+}  
+
 
 function permisocarpeta($idcli, $idcar){
 
         $query="SELECT permiso from usrpermiso where iducp = ".$idcli." and idcarpeta = ".$idcar;
-			//print $query;
-	//exit;
         $result=mysqli_query($query);
  		
 	$vgpermiso = 0;
@@ -128,6 +141,8 @@ function permisocarpeta($idcli, $idcar){
 		return($vgpermiso);
   
 }
+
+
 
 
 
@@ -175,6 +190,54 @@ function reArrayFiles(&$file_post) {
          //print "<br>-".$padrefinal."-<br>";  
 			return($padrefinal);
        }
+       
+       
+       function permisocarpeta7($dbcon, $idcli, $idcar){
+           
+           $query="SELECT permiso from usrpermiso where iducp = ".$idcli." and idcarpeta = ".$idcar;
+           $result=$dbcon->query($query);
+           
+           $vgpermiso = 0;
+           $fila=mysqli_fetch_array($result);
+           if($fila){
+               $vgpermiso=$fila['permiso'];
+           }
+           
+           return($vgpermiso);
+           
+       }
+       
+   function menu7($dbcon,$idc,$id){
+       //print $idc."--".$id;
+       $url=""; //este es la url_raiz, ideal cuando tu web esta en otros niveles de carpetas
+       //print $id;
+       function cargarmenu7($dbcon, $idc,$id)
+       {
+           $query="SELECT nombre,padre,idcarpeta from carpetas where idcliente = ".$idc." and idcarpeta=".$id;          
+           $result=$dbcon->query($query);
+           $fila=mysqli_fetch_array($result,MYSQLI_ASSOC);
+           
+           if($fila){
+               $nombre=$fila['nombre'];
+               $url=$fila['idcarpeta'];
+               
+               $query2="select padre from carpetas where idcliente = ".$idc." and idcarpeta='".$fila['padre']."'";
+               $result2=$dbcon->query($query2);
+               $fila2=mysqli_fetch_array($result2);
+               
+               if ($fila2){
+                   echo "<li><a href='navega.php?idc=".$idc."&padre=".$url."'>".htmlentities($nombre, ENT_COMPAT, 'iso-8859-1')."</a></li>";
+                   cargarmenu7($dbcon, $idc,$fila['padre']);
+                   
+               }else{
+                   echo "<li><a href='navega.php?idc=".$idc."&padre=".$url."'>".htmlentities($nombre, ENT_COMPAT, 'iso-8859-1')."</a></li>";
+               }
+           }
+           
+       }
+       
+       cargarmenu7($dbcon, $idc,$id);// Donde 0 es el Idseccion principal
+   }
 
 
 ?>

@@ -1,21 +1,21 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 include "validasession.php";
 include "funciones.php";
 session_start();
-$dbcon = new connection($ip, $login, $pass, $db, $query);
+$dbcon = new connection();
 
 
-$query = "select nombre from carpetas where idcarpeta = ".$_REQUEST["idcar"];
+$consulta = "select nombre from carpetas where idcarpeta = ".$_REQUEST["idcar"];
 
-$dbcon->query($query);
+$resultado = $dbcon->query($consulta);
 $total = $dbcon->num_rows($resultado);
 $datos = $dbcon->fetch_array($resultado);
 $vlncar = $datos["nombre"];
 
 $query = "select * from usuarioscliente where estado != 0 and id_cliente = ".$_REQUEST["idcli"]." order by nombre ";
 
-$dbcon->query($query);
+$resultado = $dbcon->query($query);
 $total = $dbcon->num_rows($resultado);
 ?>
 <!DOCTYPE html>

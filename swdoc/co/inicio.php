@@ -149,7 +149,7 @@ $total = $dbcon->num_rows($resultado);
         
                             <section class="panel col-md-6">
              <div class="panel-body btn-gap center-block">
-			 	<?php echo $_SESSION["vg_cuota"]/1000000000?> GB - Ocupado <?php $tamarchi = tamanodocs($_SESSION["vg_idc"]);
+			 	<?php echo $_SESSION["vg_cuota"]/1000000000?> GB - Ocupado <?php $tamarchi = tamanodocs7($dbcon, $_SESSION["vg_idc"]);
 			  	$vltmegas = $tamarchi / 1000000;
 				$vlgb = $tamarchi / 1000000000;
 			print round($vltmegas,2)." MB";
