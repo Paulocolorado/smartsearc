@@ -114,7 +114,7 @@ $total = $dbcon->num_rows($resultado);
 		  print "</strong>";
 		  ?></td>
           <td ><?php echo $datos["identificacion"]?></td>
-          <td ><?php echo $datos["cuota"]/1000000000?> GB - Ocupado <?php $tamarchi = tamanodocs($datos["id_cliente"]);
+          <td ><?php echo $datos["cuota"]/1000000000?> GB - Ocupado <?php $tamarchi = tamanodocs7($dbcon, $datos["id_cliente"]);
 			  	$vltmegas = $tamarchi / 1000000;
 				$vlgb = $tamarchi / 1000000000;
 			print round($vltmegas,2)." MB";

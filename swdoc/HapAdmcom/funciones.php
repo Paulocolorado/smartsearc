@@ -1,7 +1,6 @@
 <?php
 
-
-$dbconft = new connection($ip, $login, $pass, $db, $query);
+$dbconft = new connection();
 
 
 
@@ -69,6 +68,36 @@ function menu($idc,$id){
 }  
 
 
+function menu7($dbcon, $idc,$id){
+    //print $idc."--".$id;
+    $url=""; //este es la url_raiz, ideal cuando tu web esta en otros niveles de carpetas
+    //print $id;
+    function cargarmenu7($dbcon, $idc,$id)
+    {
+        $query="SELECT nombre,padre,idcarpeta from carpetas where idcliente = ".$idc." and idcarpeta=".$id;
+        print_r($query);        
+        $result=mysqli_query($dbcon,$query);
+        
+        while($fila=mysqli_fetch_array($result)){
+            $nombre=$fila['nombre'];
+            $url=$fila['idcarpeta'];
+            
+            $query2="select padre from carpetas where idcliente = ".$idc." and idcarpeta='".$fila['padre']."'";
+            $result2=mysqli_query($dbcon, $query2);
+            
+            if ($fila2=mysqli_fetch_array($result2)){
+                echo "<li><a href='navega.php?idc=".$idc."&padre=".$url."'>".htmlentities($nombre, ENT_COMPAT, 'iso-8859-1')."</a></li>";
+                cargarmenu7($dbcon, $idc,$fila['padre']);
+                
+            }else{
+                echo "<li><a href='navega.php?idc=".$idc."&padre=".$url."'>".htmlentities($nombre, ENT_COMPAT, 'iso-8859-1')."</a></li>";
+            }
+        }
+        
+    }
+    
+    cargarmenu7($dbcon, $idc,$id);// Donde 0 es el Idseccion principal
+}
 
 
 function menubase($idc){
@@ -102,15 +131,29 @@ function tamanodocs($idc){
         $query="SELECT sum(tamano) tamanores from documentos where idcliente = ".$idc;
 			//print $query;
         $result=mysqli_query($query);
- 
+        print($result);
         while($fila=mysqli_fetch_array($result)){
             $vgtam=$fila['tamanores']; 
           }
-          
 		return($vgtam);
   
 }  
 
+
+function tamanodocs7($dbcon, $idc){
+    //print $idc."--".$id;
+    $url=""; //este es la url_raiz, ideal cuando tu web esta en otros niveles de carpetas
+    
+    $consulta="SELECT sum(tamano) tamanores from documentos where idcliente = ".$idc;
+    //print $query;
+    $resultado = $dbcon->query($consulta);
+    $fila = mysqli_fetch_array($resultado,MYSQLI_ASSOC);
+    if($fila){
+        $vgtam=$fila['tamanores'];
+    }
+    return($vgtam);
+    
+}  
 
 function permisocarpeta($idcli, $idcar){
 
