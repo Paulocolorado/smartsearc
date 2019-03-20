@@ -12,7 +12,7 @@ function ftree($padreactual,$idc,$dbconft)
 $queryft = "select idcarpeta, nombre, padre from carpetas where idcliente = ".$idc." and idcarpeta = ".$padreactual;
 	//print $queryft ;
 	//exit;
-$dbconft->query($queryft);
+$resultadoft = $dbconft->query($queryft);
 $totalft = $dbconft->num_rows($resultadoft);
 $datosft = $dbconft->fetch_array($resultadoft);
 //print $login."<br>";
@@ -94,6 +94,26 @@ function menubase($idc){
   
 }  
 
+function menubase7($dbcon,$idc){
+    //print $idc."--".$id;
+    $url=""; //este es la url_raiz, ideal cuando tu web esta en otros niveles de carpetas
+    //print $id;
+    
+    $query="SELECT nombre,padre,idcarpeta from carpetas where idcliente = ".$idc." and padre = 0";
+    $result=$dbcon->query($query);    
+    while($fila=mysqli_fetch_array($result)){
+        $nombre=$fila['nombre'];
+        $url=$fila['idcarpeta'];
+        
+        echo("<li ><a href='navegam.php?padre=".$url."'><i class='fa fa-folder'></i> <span>".htmlentities($nombre, ENT_COMPAT, 'iso-8859-1'));
+        
+        echo("</span></a></li>");
+    }
+    
+    
+    
+} 
+
 
 function tamanodocs($idc){
 	//print $idc."--".$id;
@@ -164,24 +184,25 @@ function reArrayFiles(&$file_post) {
 
 
 
-    function buscarpadre2($id,$pf)
+function buscarpadre27($dbcon, $id,$pf)
         {
-			$padrefinal = $pf;
-        $query="SELECT padre,idcarpeta from carpetas where idcarpeta=".$id;
-			//print $query."<br>";
-        $result=mysqli_query($query);
-		$total = mysqli_num_rows($result);
- 		if ($total>0){
+		$padrefinal = $pf;
+        $query="SELECT padre, idcarpeta from carpetas where idcarpeta=".$id;		
+        $result=$dbcon->query($query);        
+        $total = mysqli_num_rows($result);
+ 		if ($total>0){ 		    
         $fila=mysqli_fetch_array($result);
+
+        
             $padre=$fila['padre']; 
             $idc=$fila['idcarpeta'];
             
+
 			if($padre !=0){
 				//$padrefinal = $idc;
-				$padrefinal = buscarpadre2($padre, $padrefinal);
+			    $padrefinal = buscarpadre27($dbcon, $padre, $padrefinal);
 			}else{
                 $padrefinal = $idc;
-				//print "<br>-".$padrefinal."-<br>"; 
 			return($padrefinal);
           }
 		}else{
@@ -193,13 +214,11 @@ function reArrayFiles(&$file_post) {
        
        
        function permisocarpeta7($dbcon, $idcli, $idcar){
-           
+           $vgpermiso = 0;
            $query="SELECT permiso from usrpermiso where iducp = ".$idcli." and idcarpeta = ".$idcar;
            $result=$dbcon->query($query);
-           
-           $vgpermiso = 0;
            $fila=mysqli_fetch_array($result);
-           if($fila){
+           if(isset($fila)){
                $vgpermiso=$fila['permiso'];
            }
            

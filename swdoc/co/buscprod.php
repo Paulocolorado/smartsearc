@@ -9,9 +9,10 @@
 include "dbclass7.php";
 include "validasession.php";
 include "funciones.php";
-/*CC Tabla no existe
+
 session_start();
 $dbcon = new connection();
+/*CC Tabla no existe
 $query = "select idacat,categoria from categorias ";
 $resultado = $dbcon->query($query);
 $total = $dbcon->num_rows($resultado);

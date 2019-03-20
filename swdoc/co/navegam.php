@@ -133,7 +133,7 @@ $totald = $dbcond->num_rows($resultadod);
 				?>
                 
                     <?php
-					menu($_SESSION["vg_iduc"], $vlpadre);
+                    menu7($dbcon, $_SESSION["vg_iduc"], $vlpadre);
 					?>
                 
                 <?php
@@ -170,9 +170,9 @@ $totald = $dbcond->num_rows($resultadod);
         <div class="row">
                <?php	
 
-			$vlpadre= buscarpadre2($vlpadre, -5);		
+               $vlpadre= buscarpadre27($dbcon,$vlpadre, -5);		
 			
-			$vlpermiso = permisocarpeta( $_SESSION["vg_iduc"] , $vlpadre);
+               $vlpermiso = permisocarpeta7($dbcon, $_SESSION["vg_iduc"] , $vlpadre);
 
 	if ($vlpermiso == 1){
 			

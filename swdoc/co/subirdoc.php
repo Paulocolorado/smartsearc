@@ -1,16 +1,15 @@
 <?php
 
-include "dbclass.php";
+include "dbclass7.php";
 
 session_start();
 
-$dbcon = new connection($ip, $login, $pass, $db, $query); 
-
+$dbcon = new connection(); 
 
 
 $queryn = "SELECT nombre, email FROM clientes  WHERE id_cliente = '".$_SESSION["vg_idc"]."'";
 
-$dbcon->query($queryn);
+$resultadojd = $dbcon->query($queryn);
 
 $datosjd = $dbcon->fetch_array($resultadojd);
 
@@ -45,25 +44,23 @@ if (is_uploaded_file($_FILES['documento']['tmp_name'])) {
 		mkdir ($vgpathdocs.$_SESSION["vg_idc"]."/");
 		//print "Nopi";
 	}
-	if (!file_exists ( $vgpathdocs.$_SESSION["vg_idc"]."/".$_POST["padre"]."/")){
-		mkdir ($vgpathdocs.$_SESSION["vg_idc"]."/".$_POST["padre"]."/");
+	if (!file_exists ( $vgpathdocs.$_SESSION["vg_idc"]."/".$_REQUEST["padre"]."/")){
+		mkdir ($vgpathdocs.$_SESSION["vg_idc"]."/".$_REQUEST["padre"]."/");
 		//print "Nopi";
 	}
 	
 
-	$nombredelimail = $vgpathdocs.$_SESSION["vg_idc"]."/".$_POST["padre"]."/".$_SESSION["vg_idc"]."_".$a."_".$_FILES['documento']['name'];
-	//print $nombredelimail;
-	//exit;
+	$nombredelimail = $vgpathdocs.$_SESSION["vg_idc"]."/".$_REQUEST["padre"]."/".$_SESSION["vg_idc"]."_".$a."_".$_FILES['documento']['name'];
 
-	$nombredelimailBD = $_SESSION["vg_idc"]."/".$_POST["padre"]."/".$_SESSION["vg_idc"]."_".$a."_".$_FILES['documento']['name'];
+	$nombredelimailBD = $_SESSION["vg_idc"]."/".$_REQUEST["padre"]."/".$_SESSION["vg_idc"]."_".$a."_".$_FILES['documento']['name'];
 
-	
+
 
 	copy($_FILES['documento']['tmp_name'],$nombredelimail);
 
 
 
-$query = "insert into documentos set  idcliente = '".$_SESSION["vg_idc"]."', fecha = now(), nombre = '".utf8_decode($_POST["nombre"])."', adjunto = '".$nombredelimailBD."', padre = ".$_POST["padre"].", tipo = '".$tipodoc."', tamano = '".$vltamano ."'";
+	$query = "insert into documentos set  idcliente = '".$_SESSION["vg_idc"]."', fecha = now(), nombre = '".utf8_decode($_FILES['documento']['name'])."', adjunto = '".$nombredelimailBD."', padre = ".$_REQUEST["padre"].", tipo = '".$tipodoc."', tamano = '".$vltamano ."'";
 
 $dbcon->query($query);
 
@@ -109,9 +106,7 @@ $encabezados .= "Content-type: text/html\r\n";
 //if ($visiblecliente == 1) mail($emailcliente,"Carga doc  ",$msg,$encabezados);
 
 
-
-
-	header("Location: navega.php?idc=".$_SESSION["vg_idc"]."&padre=".$_POST["padre"]);
+	header("Location: navega.php?idc=".$_SESSION["vg_idc"]."&padre=".$_REQUEST["padre"]);
 
 }else{
 
