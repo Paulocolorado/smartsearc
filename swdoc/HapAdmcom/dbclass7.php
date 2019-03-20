@@ -5,8 +5,8 @@ class connection{
     var $conexion;
     var $bd = "haptrack_docu";
     var $usuario = "haptrack_docu";
-    var $clave = "SmartApp135";
-    //PRODUCCION var $clave = "*SmartApp135";
+    //var $clave = "SmartApp135";
+    var $clave = "*SmartApp135";
     var $tipo;
 
 
@@ -21,8 +21,8 @@ class connection{
         $this->usuario=$bdusuario;
         $this->clave=$bdclave;
         $this->tipo="mysqli";
-        $this->conexion = mysqli_connect("localhost", "haptrack_docu", "SmartApp135","haptrack_docu") or die('Error al conectarse');
-        //PRODUCCION $this->conexion = mysqli_connect("localhost", "haptrack_docu", "*SmartApp135","haptrack_docu") or die('Error al conectarse');
+        //$this->conexion = mysqli_connect("localhost", "haptrack_docu", "SmartApp135","haptrack_docu") or die('Error al conectarse');
+        $this->conexion = mysqli_connect("localhost", "haptrack_docu", "*SmartApp135","haptrack_docu") or die('Error al conectarse');
         mysqli_set_charset($this->conexion,"utf8");
         mysqli_select_db($this->conexion,"haptrack_docu") or die('Error en la selección de la base de datos');
         //print_r($this->conexion);
