@@ -6,12 +6,12 @@ include "funciones.php";
 session_start();
 $dbcon = new connection();
 
-if (!$_REQUEST["padre"]) $vlpadre = 0;
+if (isset($_REQUEST["padre"])) $vlpadre = 0;
 else $vlpadre = $_REQUEST["padre"];
-if (!$_REQUEST["idc"]) $vlidc = 0;
+if (isset($_REQUEST["idc"])) $vlidc = 0;
 else $vlidc = $_REQUEST["idc"];
+
 $query = "select * from carpetas where idcliente = ".$_SESSION["vg_idc"]." and padre = 0 order by nombre";
-//print $query;
 $resultado = $dbcon->query($query);
 $total = $dbcon->num_rows($resultado);
 
@@ -44,8 +44,7 @@ $total = $dbcon->num_rows($resultado);
 		document.ffolder.padre.value = padre;
 		document.ffolder.submit();
 	}
-	</script>
-	<script>
+
 	function aaa(docu){
 	$obj = $('<object>');
 	$obj.attr("data",docu);
@@ -124,8 +123,8 @@ $total = $dbcon->num_rows($resultado);
         <div class="row">
         
    	
-                            <section class="panel">
-                                <div class="panel-body btn-gap center-block">
+    <section class="panel">
+    <div class="panel-body btn-gap center-block">
                <?php
 		for ($i=0; $i<$total; $i++)
 		{
@@ -136,10 +135,11 @@ $total = $dbcon->num_rows($resultado);
   /* IMPORTANTE */
   text-align: center;";
 			$datos = $dbcon->fetch_array($resultado);
+
 		?>
         <div class="col-md-2" style="<?php echo $fondo?>">
-        <a href="#"  onClick="cambiarfolder(<?php echo $datos["idcarpeta"]?>)"><img src="images/folder_azul.png"  alt=""/></a> <br>
-       	  <a href="#"><strong><?php print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+         <img src="images/folder_azul.png"  alt="<?php echo $datos["idcarpeta"];?>"/><br>
+       	 <a href="navega.php?idc=<?php echo $datos["idcliente"];?>&padre=<?php echo $datos["idcarpeta"];?>"><strong><?php print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a>        	  
         </div>
         <?php
 		}
@@ -147,7 +147,7 @@ $total = $dbcon->num_rows($resultado);
 			</div>
 			</section>
         
-                            <section class="panel col-md-6">
+        <section class="panel col-md-6">
              <div class="panel-body btn-gap center-block">
 			 	<?php echo $_SESSION["vg_cuota"]/1000000000?> GB - Ocupado <?php $tamarchi = tamanodocs7($dbcon, $_SESSION["vg_idc"]);
 			  	$vltmegas = $tamarchi / 1000000;
@@ -188,9 +188,9 @@ $total = $dbcon->num_rows($resultado);
 </section>
 
                 <form name="ffolder" action="navega.php" method="get">
-                    <input type="hidden" name="idc" value="<?php echo $vlidc?>">
+                    <input type="hidden" name="idc" value="<?php echo $vlidc;?>">
                     <input type="hidden" name="padre" value="">
-                    <input type="hidden" name="padreactual" value="<?php echo $vlpadre?>">
+                    <input type="hidden" name="padreactual" value="<?php echo $vlpadre;?>">
                   </form>
 <!-- Placed js at the end of the document so the pages load faster -->
 <script src="js/jquery-1.10.2.min.js"></script>

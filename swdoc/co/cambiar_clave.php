@@ -1,12 +1,14 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 include "validasession.php";
 include "funciones.php";
-$dbcon = new connection($ip, $login, $pass, $db, $query);
+$dbcon = new connection();
 
+/*CC tabla no existe
 $query = "select id_subcat_adm,nombre from subcat_Adm where id_cat_adm = ".$id_cat_adm." order by nombre";
-$dbcon->query($query);
+$resultado = $dbcon->query($query);
 $total = $dbcon->num_rows($resultado);
+*/
 if ($_REQUEST["msg"] == 2) $msgtxt = "La clave actual ingresada no corresponde";
 if ($_REQUEST["msg"] == 3) $msgtxt = "La clave nueva y la confirmacion de esta deben ser iguales";
 

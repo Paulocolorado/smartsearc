@@ -47,7 +47,7 @@
                 <li <?php print(" ".$lnkselmenu)?>><a href="buscprod.php?mn=2"><i class="fa fa-search"></i> <span>Buscar Documento</span></a></li>
 			
  				<?php
-					menubase($_SESSION["vg_idc"]);
+ 				menubase7($dbcon,$_SESSION["vg_idc"]);
 				
 				?>
  				
@@ -55,7 +55,7 @@
 				if ($mn == 8) $lnkselmenu = "class=\"active\"";
 				else $lnkselmenu = "";
 				?>
-                <!-- <li <?php print(" ".$lnkselmenu)?>><a href="cambiar_clave.php?mn=8"><i class="fa fa-key"></i> <span>Cambiar clave</span></a></li> -->
+                <li <?php print(" ".$lnkselmenu)?>><a href="cambiar_clave.php?mn=8"><i class="fa fa-key"></i> <span>Cambiar clave</span></a></li>
                 
                 <li><a href="salir.php"><i class="fa fa-sign-in"></i> <span>Salir</span></a></li>
 

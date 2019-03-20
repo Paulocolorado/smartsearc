@@ -7,20 +7,25 @@ $dbcon = new connection();
 $dbcond = new connection();
 
 
-if (!$_REQUEST["padre"]) $vlpadre = 0;
-else $vlpadre = $_REQUEST["padre"];
-if (!$_REQUEST["idc"]) $vlidc = 0;
-else $vlidc = $_REQUEST["idc"];
-$query = "select * from carpetas where idcliente = ".$_SESSION["vg_idc"]." and padre = ".$vlpadre." order by nombre";
 
+if (!isset($_REQUEST["padre"])) {
+    $vlpadre = 0;
+}else {
+    $vlpadre = $_REQUEST["padre"];
+}
+if (!isset($_REQUEST["idc"])){
+    $vlidc = 0;
+}else{
+    $vlidc = $_REQUEST["idc"];
+}
+$query = "select * from carpetas where idcliente = ".$_SESSION["vg_idc"]." and padre = ".$vlpadre." order by nombre";
 $resultado = $dbcon->query($query);
 $total = $dbcon->num_rows($resultado);
 
-
 $queryd = "select * from documentos where idcliente = ".$_SESSION["vg_idc"]." and padre = ".$vlpadre." order by nombre";
-
 $resultadod = $dbcond->query($queryd);
 $totald = $dbcond->num_rows($resultadod);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -151,15 +156,17 @@ $totald = $dbcond->num_rows($resultadod);
         <div class="row">
         
                <?php
+
 		for ($i=0; $i<$total; $i++)
 		{
-			if ($fondo == "background-color: #F5F5F5") $fondo = "background-color: white;";
+			if ($fondo == "background-color: #F5F5F5") 
+			    $fondo = "background-color: white;";
 			else $fondo = "background-color: #F5F5F5";
 			$datos = $dbcon->fetch_array($resultado);
 		?>
         <div class="col-md-12" style="<?php echo $fondo?>">
-        <a href="#" onClick="cambiarfolder(<?php echo $datos["idcarpeta"]?>)"><img src="images/folder.png" height="30" alt=""/></a> 
-       	  <a href="#" onClick="cambiarfolder(<?php echo $datos["idcarpeta"]?>)"><strong><?php print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+        <img src="images/folder.png" height="30" alt=""/>
+       	<a href="navega.php?idc=<?php echo $datos["idcliente"];?>&padre=<?php echo $datos["idcarpeta"];?>"><strong><?php print htmlentities($datos["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
         </div>
         <?php
 		}
@@ -172,40 +179,41 @@ $totald = $dbcond->num_rows($resultadod);
         <div class="row">
         
                <?php
-	$vlpadre= buscarpadre27($vlpadre, -5);		
-			
-	$vlpermiso = permisocarpeta7($dbcon,$_SESSION["vg_iduc"] , $vlpadre);	
-			//print $vlpadre."*****";
-			
-	if ($vlpermiso == 1){
-			
-		for ($id=0; $id<$totald; $id++)
-		{
-			if ($fondo == "background-color: #F5F5F5") $fondo = "background-color: white;";
-			else $fondo = "background-color: #F5F5F5";
-			$datosd = $dbcond->fetch_array($resultadod);
-			$vlicono = "documento.png";
-        if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
-			$vlicono = "pdf.png";
-		}
+
+               $vlpadreactual = buscarpadre27($dbcon, $vlpadre, -5);	
+               
+
+               $vlpermiso = permisocarpeta7($dbcon,$_SESSION["vg_iduc"] , $vlpadreactual);	
+
+            	if ($vlpermiso == 1){
+
+            		for ($id=0; $id<$totald; $id++)
+            		{
+            			if ($fondo == "background-color: #F5F5F5") $fondo = "background-color: white;";
+            			else $fondo = "background-color: #F5F5F5";
+            			$datosd = $dbcond->fetch_array($resultadod);
+            			$vlicono = "documento.png";
+                    if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
+            			$vlicono = "pdf.png";
+            		}
 		?>
         <section>
         <div class="col-md-8 " style="<?php echo $fondo?>">
-        <a href="../HapAdmcom/docs/<?php echo $datosd["adjunto"]?>" target="_blank" ><img src="images/<?php echo $vlicono?>" width="25"  alt=""/></a> 
+        <a href="../HapAdmcom/docs/<?php echo $datosd["adjunto"]?>" target="_blank" ><img src="images/<?php echo $vlicono;?>" width="25"  alt=""/></a> 
        	  <a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><strong><?php print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
         </div>
          <?php
         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
 		
 			?>	
-        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" ><i class="fa fa-eye"> Preview</i></a></div>	
-        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
+        <div  class="col-md-2 " style="<?php echo $fondo;?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" ><i class="fa fa-eye"> Preview</i></a></div>	
+        <div  class="col-md-2 " style="<?php echo $fondo;?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
        <?php
 		}else{
 			?>
 			
-        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
-        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
+        <div  class="col-md-2 " style="<?php echo $fondo;?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
+        <div  class="col-md-2 " style="<?php echo $fondo;?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
 			<?php
 		}
 			?>
@@ -219,7 +227,7 @@ $totald = $dbcond->num_rows($resultadod);
 			}else{
 		?>
 	<section>
-        <div class="col-md-10 " style="<?php echo $fondo?>">
+        <div class="col-md-10 " style="<?php echo $fondo;?>">
 
                             <div class="alert alert-block alert-danger fade in">
                                 <button type="button" class="close close-sm" data-dismiss="alert">
@@ -252,12 +260,12 @@ $totald = $dbcond->num_rows($resultadod);
            
         <div class="col-md-6">
         <section class="panel panel-primary"> 
-                                <div class="panel-heading">
+                        <div class="panel-heading">
                             <h3 class="panel-title">Subir Archivo</h3>
                         </div>
                                 <div class="panel-body">
                                    
-                <form action="subirdocm.php" method="post" enctype="multipart/form-data" name="subedoc">
+                <form action="subirdoc.php" method="post" enctype="multipart/form-data" name="subedoc">
                     <input type="hidden" name="idc" value="<?php echo $vlidc?>">
                     <input type="hidden" name="padre" value="<?php echo $vlpadre?>">
                    <div class="form-group">
@@ -339,11 +347,11 @@ $totald = $dbcond->num_rows($resultadod);
 <!--common scripts for all pages-->
 <script src="js/scripts.js"></script>
 
-                <form name="ffolder" action="navega.php" method="get">
+                 <form name="ffolder" action="navega.php" method="get">
                     <input type="hidden" name="idc" value="<?php echo $vlidc?>">
                     <input type="hidden" name="padre" value="">
                     <input type="hidden" name="padreactual" value="<?php echo $vlpadre?>">
-                  </form>
+                  </form> 
                 <form name="fsort" action="resprod.php" method="post">
                     <input type="hidden" name="codigo" value="<?php echo $codigo?>">
                     <input type="hidden" name="nombre" value="<?php echo $nombre?>">
