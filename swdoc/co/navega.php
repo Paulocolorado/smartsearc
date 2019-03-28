@@ -206,8 +206,8 @@ $totald = $dbcond->num_rows($resultadod);
         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
 		
 			?>	
-        <div  class="col-md-2 " style="<?php echo $fondo;?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" ><i class="fa fa-eye"> Preview</i></a></div>	
-        <div  class="col-md-2 " style="<?php echo $fondo;?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
+        <div  class="col-md-2 " style="<?php echo $fondo;?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="../HapAdmcom/docs/<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" ><i class="fa fa-eye"> Preview</i></a></div>	
+        <div  class="col-md-2 " style="<?php echo $fondo;?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="../HapAdmcom/docs/<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" download><i class="fa fa-download"> Download</i></a></div>
        <?php
 		}else{
 			?>
