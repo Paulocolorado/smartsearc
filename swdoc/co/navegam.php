@@ -189,20 +189,20 @@ $totald = $dbcond->num_rows($resultadod);
         <section>
         <div class="col-md-8 " style="<?php echo $fondo?>">
         <a href="../HapAdmcom/docs/<?php echo $datosd["adjunto"]?>" target="_blank" ><img src="images/<?php echo $vlicono?>" width="25"  alt=""/></a> 
-       	  <a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><strong><?php print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
+       	  <a href="../HapAdmcom/docs/<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><strong><?php print htmlentities($datosd["nombre"], ENT_COMPAT, 'iso-8859-1')?></strong></a> 
         </div>
          <?php
         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
 		
 			?>	
-        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>"  target="_blank"><i class="fa fa-eye"> Preview</i></a></div>	
-        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
+        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="../HapAdmcom/docs/<?php echo $vgpathdocsweb.$datosd["adjunto"]?>"  target="_blank"><i class="fa fa-eye"> Preview</i></a></div>	
+        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="../HapAdmcom/docs/<?php echo $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
        <?php
 		}else{
 			?>
 			
         <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
-        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" download><i class="fa fa-download"> Download</i></a></div>
+        <div  class="col-md-2 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="../HapAdmcom/docs/<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank" download><i class="fa fa-download"> Download</i></a></div>
 			<?php
 		}
 			?>
