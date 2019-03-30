@@ -2,13 +2,13 @@
 include "dbclass.php";
 //include "validasession.php";
 
-$dbcon2 = new connection($ip, $login, $pass, $db, $query);
-$dbcon3 = new connection($ip, $login, $pass, $db, $query);
+$dbcon2 = new connection();
+$dbcon3 = new connection();
 
 				
 					$query = "select * from  documentos where iddocumento = ".$_POST["idcborrar"];
 			
-				$dbcon2->query($query);
+					$resultado2 = $dbcon2->query($query);
 				$total2 = $dbcon2->num_rows($resultado2);
 					
 					

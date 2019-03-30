@@ -340,6 +340,7 @@ function cambiandoc(idcar, nombrec){
                 <form action="subirdocm.php" method="post" enctype="multipart/form-data" name="subedoc">
                     <input type="hidden" name="idc" value="<?php echo $vlidc?>">
                     <input type="hidden" name="padre" value="<?php echo $vlpadre?>">
+                    <input type="hidden" name="padreactual" value="1180">
                    <div class="form-group">
                                     <label for="vltotal" class="control-label col-lg-2">Archivo</label>
                                     <div class="col-md-4">
