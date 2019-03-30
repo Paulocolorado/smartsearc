@@ -32,6 +32,7 @@ if (is_uploaded_file($_FILES['documento']['tmp_name'])) {
 	$extfile = substr($_FILES['documento']['name'],-3);
 	$tipodoc = $_FILES['documento']['type'];
 	$vltamano = $_FILES['documento']['size'];
+	$vgpathdocs = "../HapAdmcom/docs/";
 
 	
 
