@@ -291,15 +291,15 @@ function cambiandoc(idcar, nombrec){
         if (strtoupper(substr($datosd["nombre"], -3)) == "PDF"){
 		
 			?>	
-        <div  class="col-md-1 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><i class="fa fa-eye"> Preview</i></a></div>	
-        <div  class="col-md-1 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
+        <div  class="col-md-1 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="docs/<?php echo $vgpathdocsweb.$datosd["adjunto"]?>" target="_blank"><i class="fa fa-eye"> Preview</i></a></div>	
+        <div  class="col-md-1 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png" height="33" alt=""/><a href="docs/<?php echo $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div>
         <div  class="col-md-1 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?php echo $datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
        <?php
 		}else{
 			?>
 			
         <div  class="col-md-1 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/>&nbsp;</div>
-        <div  class="col-md-1 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="<?php echo $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div> 
+        <div  class="col-md-1 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="docs/<?php echo $vgpathdocsweb.$datosd["adjunto"]?>"  download><i class="fa fa-download"> Download</i></a></div> 
         <div  class="col-md-1 " style="<?php echo $fondo?> "><img src="images/palitoblanco.png"  height="33"  alt=""/><a href="#"  onClick="fborrardocu(<?php echo $datosd["iddocumento"]?>)" ><i class="fa fa-edit"> Borrar</i></a></div>
 			<?php
 		}
