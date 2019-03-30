@@ -45,6 +45,8 @@ foreach($_FILES['documento']['tmp_name'] as $key => $tmp_name ){
 	$extfile = substr($file_name,-3);
 	$tipodoc = $file_type;
 	$vltamano = $_FILES['documento']['size'][$key];
+	$vgpathdocs = "docs/";
+	
 
 	//print "-- ".$file_type."<br>";
 
