@@ -97,7 +97,6 @@ function menubase($idc){
 function menubase7($dbcon,$idc){
     //print $idc."--".$id;
     $url=""; //este es la url_raiz, ideal cuando tu web esta en otros niveles de carpetas
-    //print $id;
     
     $query="SELECT nombre,padre,idcarpeta from carpetas where idcliente = ".$idc." and padre = 0";
     $result=$dbcon->query($query);    
@@ -105,7 +104,7 @@ function menubase7($dbcon,$idc){
         $nombre=$fila['nombre'];
         $url=$fila['idcarpeta'];
         
-        echo("<li ><a href='navegam.php?padre=".$url."'><i class='fa fa-folder'></i> <span>".htmlentities($nombre, ENT_COMPAT, 'iso-8859-1'));
+        echo("<li ><a href='navegam.php?padre=".$url."&idc=".$idc."'><i class='fa fa-folder'></i> <span>".htmlentities($nombre, ENT_COMPAT, 'iso-8859-1'));
         
         echo("</span></a></li>");
     }
