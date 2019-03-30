@@ -6,12 +6,19 @@ session_start();
 $dbcon = new connection();
 $dbcond = new connection();
 
-if (!$_REQUEST["padre"]) $vlpadre = 0;
-else $vlpadre = $_REQUEST["padre"];
-if (!$_REQUEST["idc"]) $vlidc = 0;
-else $vlidc = $_REQUEST["idc"];
+if (!isset($_REQUEST["padre"])) {
+    $vlpadre = 0;
+}else {
+    $vlpadre = $_REQUEST["padre"];
+}
+if (!isset($_REQUEST["idc"])){
+    $vlidc = 0;
+}else{
+    $vlidc = $_REQUEST["idc"];
+}
+
 $consulta = "select * from carpetas where idcliente = ".$_SESSION["vg_idc"]." and padre = ".$vlpadre." order by nombre";
-//print $query;
+
 $resultado = $dbcon->query($consulta);
 $total = $dbcon->num_rows($resultado);
 
