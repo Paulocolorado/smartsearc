@@ -112,7 +112,7 @@ $total = $dbcon->num_rows($resultado);
         <tr >
          <td>
          <?php
-			 $vlpermiso = permisocarpeta($datos["iduc"], $_REQUEST["idcar"] );
+         $vlpermiso = permisocarpeta7($dbcon, $datos["iduc"], $_REQUEST["idcar"] );
 			//print "Permiso actual = ".$vlpermiso;
 			if ($vlpermiso == 1){ 
 								$vlvalcb = $datos["iduc"];

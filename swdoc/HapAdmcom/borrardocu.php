@@ -1,5 +1,5 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 //include "validasession.php";
 
 $dbcon2 = new connection();

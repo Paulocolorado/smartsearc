@@ -171,6 +171,22 @@ function permisocarpeta($idcli, $idcar){
   
 }
 
+function permisocarpeta7($dbcon, $idcli, $idcar){
+    
+    $query="SELECT permiso from usrpermiso where iducp = ".$idcli." and idcarpeta = ".$idcar;
+    //print $query;
+    //exit;
+    $result=$dbcon->query($query);
+    $fila = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $vgpermiso = 0;
+    if($fila){
+        $vgpermiso=$fila['permiso'];
+    }
+    
+    return($vgpermiso);
+    
+}
+
 function reArrayFiles(&$file_post) {
 
     $file_ary = array();
