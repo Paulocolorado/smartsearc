@@ -1,19 +1,19 @@
 <?php
-include "dbclass.php";
+include "dbclass7.php";
 //include "validasession.php";
 
-$dbcon = new connection($ip, $login, $pass, $db, $query);
-$dbcon2 = new connection($ip, $login, $pass, $db, $query);
-$dbcon3 = new connection($ip, $login, $pass, $db, $query);
+$dbcon = new connection();
+$dbcon2 = new connection();
+$dbcon3 = new connection();
 
 				$query = "select * from  carpetas where padre = ".$_POST["idcborrar"];
 				//print $query."<br>";
-				$dbcon->query($query);
+				$resultado = $dbcon->query($query);
 				$total = $dbcon->num_rows($resultado);
 				if ($total==0){ 
 					$query = "select * from  documentos where padre = ".$_POST["idcborrar"];
 					//print $query;
-				$dbcon2->query($query);
+					$resultado2 = $dbcon2->query($query);
 				$total2 = $dbcon2->num_rows($resultado2);
 					
 					
