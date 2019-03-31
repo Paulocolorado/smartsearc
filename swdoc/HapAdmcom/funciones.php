@@ -68,24 +68,25 @@ function menu($idc,$id){
 }  
 
 
-function menu7($dbcon, $idc,$id){
+function menu7($dbcon,$idc,$id){
     //print $idc."--".$id;
     $url=""; //este es la url_raiz, ideal cuando tu web esta en otros niveles de carpetas
     //print $id;
     function cargarmenu7($dbcon, $idc,$id)
     {
         $query="SELECT nombre,padre,idcarpeta from carpetas where idcliente = ".$idc." and idcarpeta=".$id;
-        print_r($query);        
-        $result=mysqli_query($dbcon,$query);
+        $result=$dbcon->query($query);
+        $fila=mysqli_fetch_array($result,MYSQLI_ASSOC);
         
-        while($fila=mysqli_fetch_array($result)){
+        if($fila){
             $nombre=$fila['nombre'];
             $url=$fila['idcarpeta'];
             
             $query2="select padre from carpetas where idcliente = ".$idc." and idcarpeta='".$fila['padre']."'";
-            $result2=mysqli_query($dbcon, $query2);
+            $result2=$dbcon->query($query2);
+            $fila2=mysqli_fetch_array($result2);
             
-            if ($fila2=mysqli_fetch_array($result2)){
+            if ($fila2){
                 echo "<li><a href='navega.php?idc=".$idc."&padre=".$url."'>".htmlentities($nombre, ENT_COMPAT, 'iso-8859-1')."</a></li>";
                 cargarmenu7($dbcon, $idc,$fila['padre']);
                 
@@ -98,7 +99,6 @@ function menu7($dbcon, $idc,$id){
     
     cargarmenu7($dbcon, $idc,$id);// Donde 0 es el Idseccion principal
 }
-
 
 function menubase($idc){
 	//print $idc."--".$id;
