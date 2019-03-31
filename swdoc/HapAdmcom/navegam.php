@@ -230,7 +230,7 @@ function cambiandoc(idcar, nombrec){
 				?>
                 
                     <?php
-					menu($vlidc, $vlpadre);
+                    menu7($dbcon, $vlidc, $vlpadre);
 					?>
                 
                 <?php
