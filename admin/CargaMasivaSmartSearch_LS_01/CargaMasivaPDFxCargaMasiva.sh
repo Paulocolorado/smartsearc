@@ -6,7 +6,7 @@ sql_password="*ubuntuCarga123"
 sql_database="haptrack_docu"
 url_smart="/var/www/html/smartsearc/swdoc/HapAdmcom/docs/"
 
-chmod 777 -R PDFxCargaMasiva
+sudo chmod 777 -R PDFxCargaMasiva
 cd PDFxCargaMasiva
 #Obtiene información de cargue cliente carpeta y tipo de archivo del txt _ClienteCarpetaCarga.txt
 while read LINEA; do
