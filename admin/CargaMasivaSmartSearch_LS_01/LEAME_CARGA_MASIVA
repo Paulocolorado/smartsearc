@@ -1,0 +1,30 @@
+#Leame Carga Masiva Smart Search
+#Versión 1.0
+#Descripcion proceso de carga masiva instructivo
+
+1. Valide y/o modifique el archivo _ClienteCarpetaCarga.info  con la siguiente información:
+
+1.1. id cliente: número de identificación del cliente en la aplicación [:]
+1.2. id carpeta padre: número de identificación de la carpeta en la aplicación [:]
+
+#Separador [:] en la misma línea
+#Ejm -> 1:126
+
+2. Ponga los archivos a cargar en la ruta
+
+2.1 /var/www/html/admin/CargaMasivaSmartSearch_LS_01/PDFxCargaMasiva/
+
+3. copie las siguientes instrucciones en la consola:
+
+3.1 cd /var/www/html/admin/CargaMasivaSmartSearch_LS_01
+
+3.2 ./CargaMasivaPDFxCargaMasiva.sh
+#Ya ha iniciado la carga valide los archivos que no se cargaron con éxito en la
+#carpeta PDFxCargaMasiva
+
+
+
+#Crear usuario para cargaMasiva para localhost con permiso de insert en haptrack_docu
+#usuario base de datos: ubuntuCarga
+#clave:*ubuntuCarga123
+#UPDATE user SET password=PASSWORD('*ubuntuCarga123') WHERE user='ubuntuCarga';

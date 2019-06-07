@@ -28,7 +28,6 @@ $emailcliente = $datosjd["email"];
 $a= time();
 
 
-
 if ($_FILES['documento']) {
 	
     //$file_ary = reArrayFiles($_FILES['documento']);
