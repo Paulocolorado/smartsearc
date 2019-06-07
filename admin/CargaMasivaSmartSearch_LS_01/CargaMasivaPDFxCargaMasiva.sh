@@ -1,12 +1,14 @@
 #!/bin/bash
+chmod 777 -R PDFxCargaMasiva
 
 sql_host="localhost"
 slq_usuario="ubuntuCarga"
 sql_password="*ubuntuCarga123"
 sql_database="haptrack_docu"
-url_smart="/var/www/html/smartsearc/swdoc/HapAdmcom/docs/"
+url_smart="/var/www/html/swdoc/HapAdmcom/docs/"
+#url_smart="/var/www/html/smartsearc/swdoc/HapAdmcom/docs/"
 
-sudo chmod 777 -R PDFxCargaMasiva
+
 cd PDFxCargaMasiva
 #Obtiene información de cargue cliente carpeta y tipo de archivo del txt _ClienteCarpetaCarga.txt
 while read LINEA; do
@@ -36,6 +38,3 @@ done
 #Conectarse a la BD
 sql_args="-h $sql_host -u $slq_usuario -p$sql_password -D $sql_database -s -e"
 mysql $sql_args "$sql_insert";
-
-
-#echo ${PARTES[1]};
